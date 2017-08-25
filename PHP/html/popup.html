@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)http://mastersnakou.fr/# -->
+<html lang="FR" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>MasterSnakou | Extension</title>
+        <style type="text/css">
+            /*!---------- 14. PROGRESS BARS ----------*/
+        .progress-bars {
+          margin-bottom: 0;
+        }
+        .progress {
+          height: auto;
+          box-shadow: none;
+          margin-bottom: 0!important;
+        }
+        .progress-bar {
+          background: #058d7c;
+          box-shadow: none !important;
+        }
+        .bg-primary .progress-bar {
+          background: #63c18b;
+        }
+        .progress-1 {
+          height: 32px;
+          margin-bottom: 0;
+          border-radius: 0;
+          border: none;
+        }
+        .progress-1:last-child {
+          margin-bottom: 0;
+        }
+        .progress-1 .progress-bar {
+          text-align: right;
+          padding-right: 12px;
+          line-height: 32px;
+          border-radius: 0;
+        }
+        .progress-1 .progress-bar span {
+          font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 12px;
+          line-height: 24px;
+          font-weight: 400;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 700;
+          font-size: 11px;
+        }
+        .progress-2 {
+          height: auto;
+          background: none;
+          text-align: center;
+          margin-bottom: 8px;
+        }
+        .progress-2 span {
+          font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 12px;
+          line-height: 24px;
+          font-weight: 400;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 700;
+          display: inline-block;
+          margin-bottom: 0;
+        }
+        .progress-2 .bar-holder {
+          height: 16px;
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid #058d7c;
+        }
+        .bg-primary .progress-2 .bar-holder {
+          border-color: #71c795;
+        }
+        td{
+            padding: 7px!important;
+        }
+		
+		#uptime{
+			color: #298A08;
+		}
+        </style>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body class="homepage  mCustomScrollbar _mCS_1">
+      <div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
+
+        <div class="global-overlay" style="opacity: 1;">
+          <div class="videoBG_wrapper" style="position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; z-index: 0;">
+            <div class="global-overlay" style="opacity: 1;">
+              <div class="overlay light-overlay skew-part">
+                <div id="stars"></div>
+                <div id="stars2"></div>
+                <div id="stars3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <section id="left-side" class="" style="opacity: 1;">
+		<a href="http://mastersnakou.fr" target="_blank">
+          <img src="../images/icon128.png" alt="" class="brand-logo mCS_img_loaded" id="brand-logo-channel">
+		  <img src="" alt="" id="game-logo">
+        </a>
+        <div class="content">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="http://www.twitch.tv/mastersnakou" target="_blank" id="channel_link" class="action-btn action-btn-twitch trigger text-intro animated-middle fadeInUp">
+                        Twitch.tv/MasterSnakou
+                        </a>
+                    </li>
+                    <li id="login" style="display:none;">
+                        <a href="https://game.mastersnakou.fr/login" target="_blank" id="mastergame-button" class="action-btn trigger text-intro">
+                        Master Game
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="row" id="player" style="display:none;">
+              <center>
+                <table>
+                    <tr>
+                        <td style="width:55px; vertical-align:middle">
+                          <img id="player-logo" class="img-circle" src="" style="width:55px; border:3px solid #FFF;" />
+                        </td>
+                        <td style="vertical-align:middle">
+                          <span style="margin-bottom: 0;" id="player-name"></span>
+                        </td>
+                        <td style="vertical-align:middle">
+                            <h4 style="margin: 0" id="player-lvl"></h4>
+                        </td>
+                    </tr>
+                </table>
+              </center>
+            </div>
+
+            <h1 id="live" class="text-intro animated-middle" style="display:none;">
+              Prochain live dans :
+              <div id="getting-started"></div>
+            </h1>
+			<span id="uptime"></span>
+        </div>
+		<div class="social-icons middle" id="social-media">
+			<a href="https://twitter.com/MasterSnakou" class="redirect" target="_blank" title="Twitter">
+				<i class="fa fa-twitter" aria-hidden="true"></i>
+			</a>
+			<a href="https://www.youtube.com/user/MasterSnakou" class="redirect" target="_blank" title="Youtube">
+				<i class="fa fa-youtube-play" aria-hidden="true"></i>
+			</a>
+			<a href="https://www.instagram.com/mastersnakou/" class="redirect" target="_blank" title="Instagram">
+				<i class="fa fa-instagram" aria-hidden="true"></i>
+			</a>
+			<a href="https://fr-fr.facebook.com/MasterSnakou/" class="redirect" target="_blank" title="Facebook">
+				<i class="fa fa-facebook" aria-hidden="true"></i>
+			</a>
+			<a title="Snapchat" id="snapchat">
+				<i class="fa fa-snapchat-square" aria-hidden="true"></i>
+			</a>
+			<a href="http://www.mastersnakou.fr/" class="redirect" target="_blank" title="Mon site">
+				<i class="fa fa-globe" aria-hidden="true"></i>
+			</a>
+			<a title="QRCode" id="qrcode">
+				<i class="fa fa-qrcode" aria-hidden="true"></i>
+			</a>
+			<a href="html/options.html" class="redirect" target="_blank" title="Options" id="options">
+				<i class="fa fa-wrench" aria-hidden="true"></i>
+			</a>
+		  </div>
+    </section>
+
+    <script src="../libs/jquery/dist/jquery.min.js"></script>
+    <script src="../libs/jquery.countdown/dist/jquery.countdown.min.js"></script>
+    <script src="../js/popup.js"></script>
+
+  </div>
+</body>
+</html>

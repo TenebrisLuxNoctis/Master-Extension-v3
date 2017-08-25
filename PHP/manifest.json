@@ -1,0 +1,31 @@
+{
+   "background": {
+       "scripts": [ "js/fonctions.js", "js/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "images/icon128.png",
+      "default_popup": "html/popup.html",
+      "default_title": "Master Snakou"
+   },
+   "options_page":"html/options.html",
+   "content_scripts": [ {
+      "js": [ "libs/jquery/dist/jquery.min.js", "js/username-grabber.js" ],
+      "matches": [ "https://game.mastersnakou.fr/" ]
+   }, {
+      "css": [ "css/twitch-event.css" ],
+      "js": [ "libs/jquery/dist/jquery.min.js", "libs/socket.io-client/socket.io.js", "js/twitch-event.js" ],
+      "matches": [ "http://www.twitch.tv/mastersnakou", "https://www.twitch.tv/mastersnakou" ]
+   } ],
+   "description": "Ne rate plus mes live et vidéos avec la Master Extension !",
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp/Gw3Dr44LQIdxvMoCoMisKnbC70cX/1pfaxVhm458tCQS+MahR2iUi81KyrTzM6dmccBW2Njcx8IzSPp2ifiSYfDa0R05e95/K1seaypJDanP19mPnhqENJuiMcA2mjKpQN+fk5yUuWbrkHY/Azg5y4hQQy+V5HFQVnMzIY+5X4r+wJtpc6oPlAGcAQBfEmUCNA45L8OTH+ANs0pZL4PTjzBx38EpW1aewV2qYliCeXotNoVVJ2zqvNZAlQs+1uSdJLpKSLQhA8KfRXqkh1RfT77eKsq3paXjnlfwSut3l8HXMUQn0OPFh2uj/d/F4YXXiSBPy9/1Xbx+MzfWgBhQIDAQAB",
+   "manifest_version": 2,
+   "name": "Master Snakou",
+   "permissions": [ "storage", "notifications", "tabs", "http://*/*", "https://*/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.5.0"
+}

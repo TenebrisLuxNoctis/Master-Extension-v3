@@ -1,0 +1,38 @@
+
+
+<script>
+CLIENT_ID_HERE = "YKJ0WtGYx4KpaOO5tqvShvpDfOzmjn2rR7gAPTUd";
+REDIRECT_URI_HERE = "http://judogourin.free.fr/api/streamlabs.html";
+
+function checkalerts()
+{ 
+ var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			/*Récupération des données*/
+			var tmp = xmlhttp.responseText;
+			data = JSON.parse(tmp);
+
+			if(data.items.length > 0) {
+				var tmp = data.items[0].snippet.publishedAt;
+				var d = new Date(tmp);
+				d.setTime(d.getTime()+1000);
+				chrome.storage.local.set({'yt_time': d.toISOString()}, function(){});
+				for (var video of data.items) {
+					LaunchNotifYouTube(video.snippet.title, video.id.videoId);
+				}
+			}	
+		}
+	}
+
+	chrome.storage.local.get(['yt_time'], function(result){
+		var lastTime = null;
+		if(result.yt_time)
+			lastTime = new Date(result.yt_time);
+
+		/*Lancement de la requête à l'API*/
+		xmlhttp.open("GET", "https://www.twitchalerts.com/api/v1.0/authorize?client_id="+CLIENT_ID_HERE+"&redirect_uri="+REDIRECT_URI_HERE+"&response_type=code&scope=legacy.token+donations.read+alerts.create",true);
+		xmlhttp.send();
+	});
+	}
+</script>

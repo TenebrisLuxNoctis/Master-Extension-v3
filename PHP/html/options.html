@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="FR" >
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>MasterSnakou | Options</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<style>
+		body{
+			background-color: black;
+		}
+		.checkbox
+		{
+			font-size : 1.5em;
+		}
+		
+		.checkbox input
+		{
+			position : relative;
+		}
+		
+		.checkbox span
+		{
+			padding-left : 10px;
+		}
+		label
+		{
+			padding-bottom: 1px;
+			width: 100%;
+			font-size : 1.5em;
+		}
+		.etiquette{
+			font-size : 1.5em;
+		}
+		td{
+			border : none!important;
+		}
+		
+		.disable, .disable:hover{
+			color : black;
+			background-color: #d9534f;
+			border : 1px solid #d9534f; 
+			background-image: repeating-linear-gradient(130deg, transparent, transparent 25px, rgba(255, 255, 255, 0.5) 25px, rgba(255,255,255,0.5) 50px);
+		}
+	</style>
+
+<body class="homepage ">
+
+	<!-- Overlay and Star effect -->
+	<div class="global-overlay" style="opacity: 1;">
+        <div class="videoBG_wrapper" style="position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; z-index: 0;">
+            <div class="global-overlay" style="opacity: 1;">
+              <div class="overlay light-overlay skew-part">
+                <div id="stars"></div>
+                <div id="stars2"></div>
+                <div id="stars3"></div>
+              </div>
+            </div>
+        </div>
+    </div>
+	<div class="videoBG" style="position: fixed; z-index: -1; top: 0px; left: 0px; height: 100%; width: 100%; opacity: 1; overflow: hidden;">
+		<video poster="" autoplay="autoplay" src="https://mastersnakou.fr/theme/frontend/img/video.webm" style="position: absolute; z-index: -1; top: 0px; left: 0px; min-width: 100%; min-height: 100%;" loop ></video>
+	</div>
+	
+<!-- START -->
+
+	<!--<div id="mCSB_1_container" class="mCSB_container">-->
+		<section id="left-side" class="" style="opacity: 1;">
+			<!-- Logo -->
+			<img src="../images/icon128.png" alt="" class="brand-logo mCS_img_loaded">
+			<div class="content">
+				<h1>Options de la Master Extension</h1>
+				<br/>	
+			
+				<form id="options-form" class="form-signin">
+					<table class="table">
+						<tr>
+							<td class="etiquette">
+								Notification de live
+							</td>
+							<td>
+								<div id="notifL" class="trigger" data-toggle="buttons">
+									<label class="btn btn-lg btn-success">
+										<input type="checkbox" name="options" id="notifLC" autocomplete="off" checked />
+										<i class="fa fa-check"></i> <span>Activé</span>
+									</label>          
+								</div>
+							</td>
+							<td>
+								<div id="songL" class="trigger mute" data-toggle="buttons">
+									<label class="btn btn-lg btn-success">
+										<input type="checkbox" name="options" id="songLC" autocomplete="off" checked />
+										<i class="fa fa-volume-up"></i>
+									</label>          
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="etiquette">
+								Notification de changement de jeu
+							</td>
+							<td>
+								<div id="notifG" class="trigger" data-toggle="buttons">
+									<label class="btn btn-lg btn-danger">
+										<input type="checkbox" name="options" id="notifGC" autocomplete="off">
+										<i class="fa fa-warning"></i> <span>Désactivé</span>
+									</label>							
+								</div>
+							</td>
+							<td>
+								<div id="songG" class="trigger mute" data-toggle="buttons">
+									<label class="btn btn-lg btn-danger">
+										<input type="checkbox" name="options" id="songGC" autocomplete="off"/>
+										<i class="fa fa-volume-off"></i>
+									</label>          
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="etiquette">
+								Notification de vidéo (youtube)
+							</td>
+							<td>
+								<div id="notifV" class="trigger" data-toggle="buttons">
+									<label class="btn btn-lg btn-success">
+										<input type="checkbox" name="options" id="notifVC" autocomplete="off" checked />
+										<i class="fa fa-check"></i> <span>Activé</span>
+									</label>          
+								</div>
+							</td>
+							<td>
+								<div id="songV" class="trigger mute" data-toggle="buttons">
+									<label class="btn btn-lg btn-success">
+										<input type="checkbox" name="options" id="songVC" autocomplete="off" checked />
+										<i class="fa fa-volume-up"></i>
+									</label>          
+								</div>
+							</td>
+						</tr>
+					</table>
+					<label for="baseurl">Site web utilisé pour les redirections vers le live : </label>
+					<select class="form-control" name="baseurl" id="baseurl" style="width : 35%;">
+						<option value="https://www.twitch.tv/">Twitch</option>
+						<option value="http://multitwitch.tv/">MultiTwitch</option>
+						<option value="http://speedrun.tv/">Speedrun.tv</option>
+						<option value="http://kadgar.net/live/">Kadgar.net</option>
+					</select>
+					<br/>
+					<button type="button" class="btn btn-lg btn-primary" id="save-cfg">Enregistrer</button>
+					<button type="button" class="btn btn-lg btn-warning" id="quit-tab">Quitter</button>
+				</form>
+			</div>
+		</section>
+	</div>
+</body>
+<script src="/libs/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/js/fonctions.js"></script>
+<script type="text/javascript" src="/js/options.js"></script>
+</html>
