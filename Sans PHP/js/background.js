@@ -243,6 +243,8 @@ function check_stream() {
 			/*Si le live est lancé*/
 			if(created_at != "offline" && created_at != "error")
 			{
+					manageGameNotif(game, tmp);
+					game = tmp;
 					if(created_at != stream)
 					{
 						/*Sauvegarde du timestamp afin de pas relancer la notification*/
