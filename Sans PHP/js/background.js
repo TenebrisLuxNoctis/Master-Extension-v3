@@ -234,17 +234,15 @@ function check_stream() {
 			var data = xmlhttp.responseText;
 			var tmp = analyze(JSON.parse(data));
 			
-			manageGameNotif(game, tmp[1]);
-			
-			game = (tmp[1])? tmp[1] : "";
+			game_tmp = tmp[1];
 			var created_at = tmp[0];
-			console.log("*****"+game+"*******"+created_at);
+			console.log("*****"+game_tmp+"*******"+created_at);
 			
 			/*Si le live est lancé*/
 			if(created_at != "offline" && created_at != "error")
 			{
-					manageGameNotif(game, tmp);
-					game = tmp;
+					manageGameNotif(game, game_tmp);
+					game = game_tmp;
 					if(created_at != stream)
 					{
 						/*Sauvegarde du timestamp afin de pas relancer la notification*/
