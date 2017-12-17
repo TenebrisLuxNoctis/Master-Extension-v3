@@ -1,7 +1,7 @@
 /************************************************
 *	Page principale qui gère les notifications  *
 * 												*
-*	Dernière modification : août 2017 			*
+*	Dernière modification : novembre 2017 			*
 ************************************************/
 
 
