@@ -1,16 +1,18 @@
 /************************************************
 *	Page principale qui gère les notifications  *
 * 												*
-*	Dernière modification : novembre 2017 			*
+*	Dernière modification : Mai 2018 			*
 ************************************************/
 
 
 /*	Variables globales
 ************************************************/
 
-channel = "MasterSnakou";
+channel = "Spade_";
 stream 	= "";						/*Stockage du timestamp du live*/
 game = "";							/*Stockage du jeu joué*/	
+
+Youtube_channel_ID	=	"UCOhP0t6arWMXqmcroJjMJ7A";
 
 /*Clé API*/	
 API_key_twitch = "1low3gl5nz7ep5o6qgj0xtrpd96mszn";
@@ -128,7 +130,7 @@ function LaunchNotifYouTube(title, id)
 *	Analyse data et retourne les informations utiles (timestamp et jeu actuel)
 */
 function analyze(data)
-{
+{console.log(data);
 	/*Construction de la structure de retour*/
 	var stream_data= new Array();
 	
@@ -146,6 +148,8 @@ function analyze(data)
 		/*Sauvegarde du timestamp et du jeu actuel*/
 		stream_data[0]=data.stream.created_at;
 		stream_data[1]= data.stream.game;
+		stream_data[2]= data.stream.viewers;
+		stream_data[3]= data.stream.channel.status;
 	}
 	else
 	{
@@ -188,9 +192,6 @@ function manageGameNotif(gameL, jeu)
 		/*Le jeu actuel vient de changer*/
 		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
 		{
-			console.log("Changement de jeu détecté");
-			console.log("live : "+live+" off: "+off+" game: "+game+" jeu: "+jeu);
-					
 			/*Récupération des options liées au changement de jeu*/
 			chrome.storage.local.get(['gamechange', 'songGame'], function(result){
 				
@@ -236,7 +237,6 @@ function check_stream() {
 			
 			game_tmp = tmp[1];
 			var created_at = tmp[0];
-			console.log("*****"+game_tmp+"*******"+created_at);
 			
 			/*Si le live est lancé*/
 			if(created_at != "offline" && created_at != "error")
@@ -245,10 +245,9 @@ function check_stream() {
 					game = game_tmp;
 					if(created_at != stream)
 					{
-						/*Sauvegarde du timestamp afin de pas relancer la notification*/
+						/*Sauvegarde du timestamp afin de ne pas relancer la notification*/
 						stream = created_at;
 						LaunchNotif();
-						console.log("Channel just went online");
 						/*Sauvegarde du timestamp de création de la session actuelle*/
 						chrome.storage.local.set({'time': stream}, function(){
 						});
@@ -265,14 +264,13 @@ function check_stream() {
 					/*Mise à jour de la barre du navigateur*/
 					chrome.browserAction.setIcon({path:LiveOff});
 					chrome.browserAction.setTitle({title : messageLiveOff});
-					console.log("Channel just went offline");
 					live = 0;
 				}	
 				off += 1;	
 			}
 			
 			/*Sauvegarde du statut du live en local (pour la popup)*/
-			chrome.storage.local.set({'living': live, 'game': game}, function(){
+			chrome.storage.local.set({'living': live, 'game': game, 'viewers' : tmp[2], 'title': tmp[3]}, function(){
 			});
 			
 		}
@@ -316,7 +314,7 @@ function checkNewVideos() {
 		if(result.yt_time)
 			lastTime = new Date(result.yt_time);
 		
-		var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCOhP0t6arWMXqmcroJjMJ7A&order=date&key="+API_key_youtube+"&maxResults=1"+(lastTime?("&publishedAfter="+lastTime.toISOString()):"");
+		var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId="+Youtube_channel_ID+"&order=date&key="+API_key_youtube+"&maxResults=1"+(lastTime?("&publishedAfter="+lastTime.toISOString()):"");
 
 		/*Lancement de la requête à l'API*/
 		xmlhttp.open("GET",url,true);

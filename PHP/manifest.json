@@ -1,11 +1,11 @@
 {
    "background": {
-       "scripts": [ "js/fonctions.js", "js/background.js" ]
+      "scripts": [ "js/fonctions.js", "js/background.js" ]
    },
    "browser_action": {
       "default_icon": "images/icon128.png",
       "default_popup": "html/popup.html",
-      "default_title": "Master Snakou"
+      "default_title": "Master Test"
    },
    "options_page":"html/options.html",
    "content_scripts": [ {
@@ -22,9 +22,8 @@
       "16": "images/icon16.png",
       "48": "images/icon48.png"
    },
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp/Gw3Dr44LQIdxvMoCoMisKnbC70cX/1pfaxVhm458tCQS+MahR2iUi81KyrTzM6dmccBW2Njcx8IzSPp2ifiSYfDa0R05e95/K1seaypJDanP19mPnhqENJuiMcA2mjKpQN+fk5yUuWbrkHY/Azg5y4hQQy+V5HFQVnMzIY+5X4r+wJtpc6oPlAGcAQBfEmUCNA45L8OTH+ANs0pZL4PTjzBx38EpW1aewV2qYliCeXotNoVVJ2zqvNZAlQs+1uSdJLpKSLQhA8KfRXqkh1RfT77eKsq3paXjnlfwSut3l8HXMUQn0OPFh2uj/d/F4YXXiSBPy9/1Xbx+MzfWgBhQIDAQAB",
    "manifest_version": 2,
-   "name": "Master Snakou",
+   "name": "Test Preview",
    "permissions": [ "storage", "notifications", "tabs", "http://*/*", "https://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "2.4.0"

@@ -79,6 +79,52 @@ table {
   border-spacing: 0;
 }
 
+#live {
+    font-size: 22px!important;
+	margin-bottom : 10px;
+}
+
+#viewersCount{
+	position: absolute;
+    margin: 5px;
+}
+
+.opacity1{
+	opacity: 1!important;
+}
+
+.videoBG{
+	position: fixed; 
+	z-index: -1;
+	top: 0px; 
+	left: 0px; 
+	height: 100%; 
+	width: 100%; 
+	opacity: 1; 
+	overflow: hidden;
+}
+
+video{
+	position: absolute; 
+	z-index: -1; 
+	top: 0px; 
+	left: 0px; 
+	min-width: 100%; 
+	min-height: 100%;
+}
+
+.videoBG_wrapper{
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	height: 100%; 
+	width: 100%; 
+	z-index: 0;
+}
+
+.width35{
+	width : 35%;
+}
 
 /* ------------------------------------- */
 /* Preloader styles .................... */
@@ -480,7 +526,7 @@ sup {
   background: #009c89;
   font-weight: 600;
   margin-right: 10px;
-  padding: 0.7em 2em;
+  padding: 0.3em 0em!important;
   color: #FFFFFF;
   border: 2px solid #009c89;
   display: block;
@@ -1643,8 +1689,8 @@ footer p {
 
 #player-nav {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 25px;
+  bottom: 25px;
   text-align: center;
 }
 #player-nav li {
@@ -1981,7 +2027,7 @@ footer p {
   }
 
   .action-btn {
-    max-width: 70%;
+    max-width: 60%;
     min-width: 60%;
   }
 
@@ -2038,7 +2084,7 @@ footer p {
   }
 
   .action-btn {
-    max-width: 80%;
+    max-width: 70%;
     min-width: 70%;
   }
 

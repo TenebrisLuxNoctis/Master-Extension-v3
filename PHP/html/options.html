@@ -5,53 +5,15 @@
     <meta charset="utf-8">
     <title>MasterSnakou | Options</title>
     <link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/options.css">
 </head>
-
-<style>
-		body{
-			background-color: black;
-		}
-		.checkbox
-		{
-			font-size : 1.5em;
-		}
-		
-		.checkbox input
-		{
-			position : relative;
-		}
-		
-		.checkbox span
-		{
-			padding-left : 10px;
-		}
-		label
-		{
-			padding-bottom: 1px;
-			width: 100%;
-			font-size : 1.5em;
-		}
-		.etiquette{
-			font-size : 1.5em;
-		}
-		td{
-			border : none!important;
-		}
-		
-		.disable, .disable:hover{
-			color : black;
-			background-color: #d9534f;
-			border : 1px solid #d9534f; 
-			background-image: repeating-linear-gradient(130deg, transparent, transparent 25px, rgba(255, 255, 255, 0.5) 25px, rgba(255,255,255,0.5) 50px);
-		}
-	</style>
 
 <body class="homepage ">
 
 	<!-- Overlay and Star effect -->
-	<div class="global-overlay" style="opacity: 1;">
-        <div class="videoBG_wrapper" style="position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; z-index: 0;">
-            <div class="global-overlay" style="opacity: 1;">
+	<div class="global-overlay opacity1">
+        <div class="videoBG_wrapper">
+            <div class="global-overlay opacity1">
               <div class="overlay light-overlay skew-part">
                 <div id="stars"></div>
                 <div id="stars2"></div>
@@ -60,14 +22,12 @@
             </div>
         </div>
     </div>
-	<div class="videoBG" style="position: fixed; z-index: -1; top: 0px; left: 0px; height: 100%; width: 100%; opacity: 1; overflow: hidden;">
-		<video poster="" autoplay="autoplay" src="https://mastersnakou.fr/theme/frontend/img/video.webm" style="position: absolute; z-index: -1; top: 0px; left: 0px; min-width: 100%; min-height: 100%;" loop ></video>
+	<div class="videoBG">
+		<video poster="" autoplay="autoplay" src="https://mastersnakou.fr/theme/frontend/img/video.webm" loop ></video>
 	</div>
 	
 <!-- START -->
-
-	<!--<div id="mCSB_1_container" class="mCSB_container">-->
-		<section id="left-side" class="" style="opacity: 1;">
+		<section id="left-side" class="opacity1">
 			<!-- Logo -->
 			<img src="../images/icon128.png" alt="" class="brand-logo mCS_img_loaded">
 			<div class="content">
@@ -141,7 +101,7 @@
 						</tr>
 					</table>
 					<label for="baseurl">Site web utilisé pour les redirections vers le live : </label>
-					<select class="form-control" name="baseurl" id="baseurl" style="width : 35%;">
+					<select class="form-control width35" name="baseurl" id="baseurl">
 						<option value="https://www.twitch.tv/">Twitch</option>
 						<option value="http://multitwitch.tv/">MultiTwitch</option>
 						<option value="http://speedrun.tv/">Speedrun.tv</option>

@@ -43,7 +43,7 @@ $(function() {
 				if(username==null || username=="") {
 					return false;
 				}
-				display_event($('.chat-room'), username)
+				display_event($('.tw-z-default'), username)
 			})
 		};
 

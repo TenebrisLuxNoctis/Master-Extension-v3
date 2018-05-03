@@ -1,7 +1,7 @@
 /************************************************
 *	Page de gestion de la fenêtre popup			*
 * 												*
-*	Dernière modification : août 2017 			*
+*	Dernière modification : Avril 2018 			*
 ************************************************/
 
 
@@ -10,8 +10,8 @@
 
 domain = "https://game.mastersnakou.fr";
 channel = "MasterSnakou";
-//token = "1low3gl5nz7ep5o6qgj0xtrpd96mszn";
 
+img = null;
 qrcode = false;
 snap = false;
 
@@ -66,11 +66,10 @@ function manageTabs(elem)
 /*	Programme principal
 *************************************************/
 
-chrome.storage.local.get(['baseurl', 'living', 'game', 'time'], function(result){
+chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title'], function(result){
 	/*On récupère les informations sur le statut du live*/
 	var bool = [0, 1];
 	var urls = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
-	var prec = 0;
 
 	if (jQuery.inArray(result.living, bool) == -1){
 		result.living = 0;
@@ -94,9 +93,12 @@ chrome.storage.local.get(['baseurl', 'living', 'game', 'time'], function(result)
 					$('#live').hide();
 			} else {
 				/*intégration du countdown dans la popup*/
-				$("getting-started").countdown(streamDate, function (event) {
-					$(this).text(event.strftime('%Dj %Hh %Mm %Ss'));
-				});
+				$("#getting-started")
+                    .countdown(streamDate, function (event) {
+                        $(this).text(
+                            event.strftime('%Dj %Hh %Mm %Ss')
+                        );
+                    });
 			}
 		});
 	}
@@ -111,10 +113,12 @@ chrome.storage.local.get(['baseurl', 'living', 'game', 'time'], function(result)
 		$('#brand-logo-channel').attr("src", '/images/LiveOn.png');
 		/*On change le texte de la popup*/
 		$('#live').html("Je suis actuellement en live!");
-		$('#live').css('color', '#FF0000');
+		$('#live').css('color', '#CF0202');
+		$('#viewersCount').html("🔴 "+result.viewers+" viewers");
 		
 		var uptimeText = uptime(result.time);
 		$('#uptime').text(uptimeText);
+		$('#title').text(result.title);
 	}
 	$('#live').fadeIn(1000);
 });
@@ -132,9 +136,10 @@ var show_player = (player) => {
     $('#player-logo').attr("src", player['logo']);
     $('#player-xp').text('Exp. ' + player['remaining_xp'] + '/' + player['lvl_xp']);
     $('#player-lvl').text('Niv. ' + player['lvl']);
-    $('#progress-bar').css('width', function () {
+   //Inutile car non affiché !
+    /*$('#progress-bar').css('width', function () {
         return Math.floor(player['remaining_xp'] / player['lvl_xp'] * 100)
-    });
+    });*/
     $('#player').fadeIn(1000);
 };
 
@@ -155,8 +160,10 @@ get_username(function (username) {
 /*Lors du clic sur le logo "QRCode"*/
 $(document).on('click', '#qrcode',function(){
 	qrcode = !qrcode;
+	
 	if(qrcode)
 	{
+		img = $('#brand-logo-channel').attr("src");
 		/*On affiche le qrcode*/
 		$('#brand-logo-channel').attr("src", '/images/qrcode.jpg');
 		$('#brand-logo-channel').css('z-index', 11);
@@ -164,7 +171,7 @@ $(document).on('click', '#qrcode',function(){
 	else
 	{
 		/*On affiche le logo de l'extension*/
-		$('#brand-logo-channel').attr("src", '/images/icon128.png');
+		$('#brand-logo-channel').attr("src", img);
 		$('#brand-logo-channel').css('z-index', 1);
 	}
 });
