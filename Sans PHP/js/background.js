@@ -8,7 +8,7 @@
 /*	Variables globales
 ************************************************/
 
-channel = "Spade_";
+channel = "MasterSnakou";
 stream 	= "";						/*Stockage du timestamp du live*/
 game = "";							/*Stockage du jeu joué*/	
 
