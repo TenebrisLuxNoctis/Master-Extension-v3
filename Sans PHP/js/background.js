@@ -130,7 +130,7 @@ function LaunchNotifYouTube(title, id)
 *	Analyse data et retourne les informations utiles (timestamp et jeu actuel)
 */
 function analyze(data)
-{console.log(data);
+{
 	/*Construction de la structure de retour*/
 	var stream_data= new Array();
 	
