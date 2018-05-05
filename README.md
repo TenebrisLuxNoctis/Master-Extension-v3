@@ -28,6 +28,8 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 
 ### Images tirées de l'extension
 
+![Icon Live Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/edit/master/images/bariconoff.png)
+![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/edit/master/images/bariconon.png)
 
 ## Documentation
 
