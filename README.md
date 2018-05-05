@@ -1,3 +1,76 @@
-<h1>Proposition d'amélioration de la Master Extension</h1>
+# Proposition d'amélioration de la Master Extension
 
-Lire le fichier <a href="https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/Documentation.pdf">Documentation.pdf</a> pour plus d'informations
+Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [crome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr)
+
+Le code source est disponible ici, dans ce repository.
+
+## Présentation
+
+### Nouvelles fonctionnalités
+
+Ma proposition regroupe plusieurs nouvelles fonctionalités :
+  * affichage du jeu actuel dans la notification du navigateur et dans la popup 
+  * changement de l'icône dans la barre du navigateur quand le stream est lancé 
+  * meilleure gestion des onglets (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau) pour les liens
+  * ajout d'une liste de liens vers les réseaux sociaux dans la popup 
+  * ajout d'une notification lors d'un changement de jeu
+  * ajout d'une notification lorsqu'une nouvelle vidéo youtube sort
+  * ajout d'une page "options" qui permet de :
+    * désactiver les notifications 
+    * désactiver le son des notifications 
+    * modifier le site vers lequel redirige le lien de la chaîne twitch
+  * ajout d'un QRcode pour rejoindre la page twitch directement depuis la popup 
+  * ajout de l'uptime du live, du titre ainsi que le nombre de viewers dans la popup
+  * utilisation du stockage local afin d'avoir des options différentes sur des périphériques différents
+  * suppression de l'appel à l'API twitch dans la popup
+  * optimisation de taille (suppression de librairies inutilisées)
+  * possibilité de cacher la clé twitch dans l'extension (cf la partie Documentation, 3.2) 
+
+### Images tirées de l'extension
+
+
+## Documentation
+
+Ma solution contient deux versions :
+  * l'une appelant directement les API twitch et youtube
+  * l'autre utilisant des scripts PHP intermédiaires
+
+La première est construite de la même façon que l'extension actuelle. La seconde utilise des scripts externes afin de camoufler les clés API, et ainsi éviter toute utilisation par une autre personne (elle sont affichées en clair dans les sources de l'extension actuelle)
+
+Les deux versions utilisent la clé API twitch de l'extension actuelle.
+
+Une clé API youtube a été crée spécialement pour l'occasion mais peut être modifiée aisément dans les deux versions.
+
+
+L'ensemble du code js modifié (background.js, popup.js, options.js) est commenté afin de faciliter la lecture ainsi que la compréhension. Les autres scripts (html,css) ont subies de légères modifications.
+
+### Intégration version PHP
+
+  * upload les fichiers `php/twitch.php` et `php/youtube.php`
+  * reporter l'url du répertoire dans `js/background.js` à la 12e ligne : `domainurl = "PUT_YOUR_DOMAIN_NAME_HERE";`
+  * Publier l'extension mise à jour
+
+### Intégration version sans PHP
+
+Cette version ne nécessite aucune manipulation autre que de publier la mise à jour de l'extension
+
+
+
+La modification des clé d'API se fait depuis le fichier `js/background.js`  aux lignes 16 et 17 :
+```
+API_key_twitch = "1low3gl5nz7ep5o6•••••••••••••••••";
+API_key_youtube = "AIzaSyAANw33DQWRi5O•••••••••••••••••";
+```
+
+## Améliorations possibles
+
+La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher.
+
+  * Modifier le son en fonction de la notification (vidéo/live/changement de jeu)
+  * Modifier l'image des notifications
+  * Ajouter l'uptime sur le jeu courant
+  * ...
+
+## Support
+
+N'hésitez pas à me contacter pour toute question
