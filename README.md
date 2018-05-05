@@ -28,8 +28,14 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 
 ### Images tirées de l'extension
 
-![Icon Live Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/edit/master/images/bariconoff.png)
-![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/edit/master/images/bariconon.png)
+![Icon Live Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/bariconoff.PNG)
+![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/bariconon.PNG)
+
+![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notif.PNG)
+
+![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/showcase%20snakou.png)
+
+![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/options.png)
 
 ## Documentation
 
