@@ -13,9 +13,9 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
   * changement de l'icône dans la barre du navigateur quand le stream est lancé 
   * meilleure **gestion des onglets** (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau) pour les liens de la popup
   * ajout d'une liste de liens vers les réseaux sociaux dans la popup 
-  * ajout d'une notification lors d'un **changement de jeu** *(paramétrable)
-    * La notification est désactivée lorsque la page twitch est active *(**en cours de développement**)
-  * ajout d'une notification lorsqu'une nouvelle **vidéo** youtube sort *(paramétrable)
+  * ajout d'une notification lors d'un **changement de jeu** *(paramétrable)*
+    * La notification est désactivée lorsque la page twitch est active *(**en cours de développement**)*
+  * ajout d'une notification lorsqu'une nouvelle **vidéo** youtube sort *(paramétrable)*
     * Le clic sur la notification ouvre directement la page de la vidéo
   * ajout d'une page **"options"** qui permet de :
     * désactiver les notifications 
