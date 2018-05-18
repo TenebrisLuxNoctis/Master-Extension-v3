@@ -27,6 +27,7 @@
     * Diminution de la taille des boutons dans la popup
     * Diminution de la taille des éléments liés au Master Game (avatar, pseudo et niveau)
     * Réaffichage de l'événement '+25 xP' en début de live
+* Supression de bibliothèques inutilisées
     
 ### Version 2.5.0
 
