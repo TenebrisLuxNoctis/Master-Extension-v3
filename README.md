@@ -28,7 +28,7 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
   * utilisation du stockage local afin d'avoir des options différentes sur des périphériques différents
   * suppression de l'appel à l'API twitch dans la popup
   * optimisation de taille (suppression de librairies inutilisées)
-  * possibilité de cacher la clé twitch dans l'extension (cf la partie Documentation, 3.2) 
+  * possibilité de cacher la clé twitch dans l'extension (cf la partie [Documentation](/README.md#documentation)) 
 
 ### Images tirées de l'extension
 
