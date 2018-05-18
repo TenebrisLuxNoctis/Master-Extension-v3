@@ -8,7 +8,7 @@
 /*	Variables globales
 ************************************************/
 
-channel = "MasterSnakou";
+channel = "mastersnakou";
 stream 	= "";						/*Stockage du timestamp du live*/
 game = "";							/*Stockage du jeu joué*/	
 
@@ -37,23 +37,28 @@ messageLiveOn	= channel + " - LIVE!";
 LiveOff			= "images/icon128.png";
 messageLiveOff	= channel;
 
+gamechangeeffective = null;
+chrome.runtime.onMessage.addListener(function(message){
+	gamechangeeffective = message.gamechangeeffective;
+});
+
 
 /*	Fonctions
 *************************************************/
 
-/*	
-*	notify(options)
-*	Paramètres : options = tableau contenant les options de l'utilisateur
-*	lance la notification à partir des paramètres de l'utilisateur
-*/
+/**
+ * Lance la notification à partir des paramètres de l'utilisateur.
+ * @param {string[]} options tableau contenant les options de l'utilisateur
+ */
 function notify(options)
 {    	
+
 	/*Si l'utilisateur a activé les notifications*/
 	if(options[0] == 1) 
 	{
 		chrome.notifications.create(channel+'notifL', { type: "basic", title: title, message: message+game+" !", iconUrl: url}, function(id) {});
 		chrome.notifications.onClicked.addListener(function(id){
-			if(id==channel+'notifL')
+			if(id== channel+'notifL')
 			{
 				chrome.tabs.create({ url: options[2] + channel });
 			}
@@ -70,11 +75,13 @@ function notify(options)
 	chrome.browserAction.setTitle({title : messageLiveOn});
 }
 
-/*
-*	notifYouTube(title, id)
-*	Paramètres : title = chaîne / id = int / options = tableau des options utilisateur
-*	Génère une notification pour la vidéo ayant le titre title
-*/
+
+/**
+ * Génère une notification pour la vidéo ayant le titre 'title'.
+ * @param {string} title titre de la vidéo
+ * @param {string} id id de la vidéo
+ * @param {string[]} options tableau des options utilisateur
+ */
 function notifYouTube(title, id, options) {
     if(options[0] == 1)
 	{
@@ -99,11 +106,9 @@ function notifYouTube(title, id, options) {
 	}
 }
 
-/*	
-*	LaunchNotif()
-*	Paramètres : /
-*	Récupère les paramètres de l'utilisateur et appelle la fonction notif()
-*/
+/**
+ * Récupère les paramètres de l'utilisateur et appelle la fonction notif() pour notifier du lancement du live.
+ */
 function LaunchNotif()
 {
 	chrome.storage.local.get(['baseurl', 'notif', 'song'], function(result){
@@ -120,6 +125,11 @@ function LaunchNotif()
 	});
 }
 
+/**
+ * Récupère les paramètres de l'utilisateur et appelle la fonction notifYouTube() pour notifier d'une sortie de vidéo.
+ * @param {string} title titre de la vidéo
+ * @param {string} id id de la vidéo
+ */
 function LaunchNotifYouTube(title, id)
 {
 	chrome.storage.local.get(['youtubenotif', 'songyt'], function(result){
@@ -131,11 +141,10 @@ function LaunchNotifYouTube(title, id)
 	});
 }
 
-/*	
-*	analyze()
-*	Paramètres : data = données reçues de l'API twitch
-*	Analyse data et retourne les informations utiles (timestamp et jeu actuel)
-*/
+/**
+ * Analyse 'data' et retourne les informations utiles à l'affichage.
+ * @param {string} data données reçues de l'API twitch
+ */
 function analyze(data)
 {
 	/*Construction de la structure de retour*/
@@ -166,11 +175,11 @@ function analyze(data)
 	return stream_data;
 }
 
-/*
-*	DetectGameSwitch(oldJ, newJ)
-*	Paramètres : oldG = jeu avant changement / newJ = jeu après changement
-*	Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
-*/
+/**
+ * Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
+ * @param {string} oldG jeu avant changement
+ * @param {string} newJ jeu après changement
+ */
 function DetectGameSwitch(oldJ, newJ)
 {
 	var bool = true;
@@ -186,16 +195,16 @@ function DetectGameSwitch(oldJ, newJ)
 	return bool;
 }
 
-/*
-*	manageGameNotif(gameL, jeu)
-*	Paramètres : gameL = jeu de la requête précédente / jeu = jeu de la requête actuelle
-*	Détecte si il faut ou non lancer une notification de changement de jeu
-*/
+/**
+ * Détecte si il faut ou non lancer une notification de changement de jeu
+ * @param {string} gameL jeu de la requête précédente
+ * @param {string} jeu jeu de la requête actuelle
+ */
 function manageGameNotif(gameL, jeu)
 {
 	if(live == 1)
 	{
-		var doIchange = DetectGameSwitch(gameL, jeu);
+		var doIchange = true;//DetectGameSwitch(gameL, jeu);
 		/*Le jeu actuel vient de changer*/
 		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
 		{
@@ -203,14 +212,14 @@ function manageGameNotif(gameL, jeu)
 			chrome.storage.local.get(['gamechange', 'songGame'], function(result){
 				
 				result.gamechange = setBool(result.gamechange, 0);
+				gamechangeeffective = setBool(gamechangeeffective, result.gamechange);
 				result.songGame = setBool(result.songGame, 0);
-				
-				if(result.gamechange == 1)
+
+				if(gamechangeeffective == 1)
 				{
-					
 						chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+jeu+" !", iconUrl: url}, function(id) {});
 						chrome.notifications.onClicked.addListener(function(id){
-							if(id==channel+'notifG')
+							if(id==channel+"notifG")
 							{
 								chrome.notifications.clear(id, function(){});
 							}
@@ -227,11 +236,9 @@ function manageGameNotif(gameL, jeu)
 }
 
 
-/*	
-*	check_stream()
-*	Paramètres : /
-*	Teste le statut du stream et appelle LaunchNotif() si besoin
-*/
+/**
+ * Teste le statut du stream et appelle LaunchNotif() si besoin
+ */
 function check_stream() {
 	/*Initialisation de la requête*/
     var xmlhttp=new XMLHttpRequest();
@@ -289,11 +296,9 @@ function check_stream() {
     xmlhttp.send();
 }
 
-/*	
-*	checkNewVideos()
-*	Paramètres : /
-*	Teste le statut ddes vidéos youtube et lance des notifications si besoin
-*/
+/**
+ * Teste le statut des vidéos youtube et lance des notifications si besoin
+ */
 function checkNewVideos() {
 	/*Initialisation de la requête*/
     var xmlhttp=new XMLHttpRequest();

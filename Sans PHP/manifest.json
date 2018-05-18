@@ -5,7 +5,7 @@
    "browser_action": {
       "default_icon": "images/icon128.png",
       "default_popup": "html/popup.html",
-      "default_title": "Master Test"
+      "default_title": "Master Sans Cou"
    },
    "options_page":"html/options.html",
    "content_scripts": [ {
@@ -13,18 +13,18 @@
       "matches": [ "https://game.mastersnakou.fr/" ]
    }, {
       "css": [ "css/twitch-event.css" ],
-      "js": [ "libs/jquery/dist/jquery.min.js", "libs/socket.io-client/socket.io.js", "js/twitch-event.js" ],
+      "js": [ "libs/jquery/dist/jquery.min.js", "libs/socket.io-client/socket.io.js", "js/twitch-event.js", "js/notif-jeu-able.js" ],
       "matches": [ "http://www.twitch.tv/mastersnakou", "https://www.twitch.tv/mastersnakou" ]
    } ],
-   "description": "Ne rate plus mes live et vidéos avec la Master Extension !",
+   "description": "Ne rate plus les live et vidéos de Snakou avec la Master Extension !",
    "icons": {
       "128": "images/icon128.png",
       "16": "images/icon16.png",
       "48": "images/icon48.png"
    },
    "manifest_version": 2,
-   "name": "Test Preview",
+   "name": "Master Sans Cou",
    "permissions": [ "storage", "notifications", "tabs", "http://*/*", "https://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "2.4.0"
+   "version": "2.6.3"
 }

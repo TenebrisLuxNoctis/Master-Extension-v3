@@ -22,11 +22,10 @@ $.ajaxSetup({
 /*	Fonctions
 ************************************************/
 
-/*
-*	uptime(streamDate)
-*	Paramètres : streamDate = timestamp correspondant au début du live
-*	Caclcule l'uptime de la session en cours
-*/
+/**
+ * Caclcule l'uptime de la session en cours
+ * @param {string} streamDate timestamp correspondant au début du live
+ */
 function uptime(streamDate)
 {
 	var d= new Date(streamDate);
@@ -42,6 +41,10 @@ function uptime(streamDate)
 	return res;
 }
 
+/**
+ * Vérifie si l'onglet courant est utilisé ou non puis l'utilise ou en crée un nouveau selon le résultat
+ * @param {string} elem élément jquery (classe ou id CSS)
+ */
 function manageTabs(elem)
 {
 	/*On récupère les infos sur l'onglet courant*/
