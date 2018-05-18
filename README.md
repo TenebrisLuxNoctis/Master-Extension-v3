@@ -2,7 +2,7 @@
 
 Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [crome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr)
 
-Le code source est disponible ici, dans ce repository.
+Le code source est disponible ici, dans ce repository. (note : ce code n'est pas réalisé en intégration continue, via Git)
 
 ## Présentation
 
@@ -11,16 +11,18 @@ Le code source est disponible ici, dans ce repository.
 Ma proposition regroupe plusieurs nouvelles fonctionalités :
   * affichage du jeu actuel dans la notification du navigateur et dans la popup 
   * changement de l'icône dans la barre du navigateur quand le stream est lancé 
-  * meilleure gestion des onglets (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau) pour les liens
+  * meilleure **gestion des onglets** (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau) pour les liens de la popup
   * ajout d'une liste de liens vers les réseaux sociaux dans la popup 
-  * ajout d'une notification lors d'un changement de jeu
-  * ajout d'une notification lorsqu'une nouvelle vidéo youtube sort
-  * ajout d'une page "options" qui permet de :
+  * ajout d'une notification lors d'un **changement de jeu** *(paramétrable)
+    * La notification est désactivée lorsque la page twitch est active *(**en cours de développement**)
+  * ajout d'une notification lorsqu'une nouvelle **vidéo** youtube sort *(paramétrable)
+    * Le clic sur la notification ouvre directement la page de la vidéo
+  * ajout d'une page **"options"** qui permet de :
     * désactiver les notifications 
     * désactiver le son des notifications 
     * modifier le site vers lequel redirige le lien de la chaîne twitch
-  * ajout d'un QRcode pour rejoindre la page twitch directement depuis la popup 
-  * ajout de l'uptime du live, du titre ainsi que le nombre de viewers dans la popup
+  * ajout d'un QRcode pour rejoindre la page twitch directement depuis la popup
+  * ajout de l'**uptime** du live, du **titre** ainsi que le **nombre de viewers** dans la popup
   * utilisation du stockage local afin d'avoir des options différentes sur des périphériques différents
   * suppression de l'appel à l'API twitch dans la popup
   * optimisation de taille (suppression de librairies inutilisées)
