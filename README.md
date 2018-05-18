@@ -2,7 +2,7 @@
 
 Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [chrome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr)
 
-Le code source est disponible ici, dans ce repository (__NB__ : ce code n'est pas réalisé en intégration continue, via Git)
+Le code source est disponible ici, dans ce repository
 
 __Note :__ *Ceci est un petit projet sans prétention aucune. Il a été initié en juillet 2017 pour le fun avant tout ! C'est à coup de petites retouches ponctuelles quand j'en ai l'envie que je le mets à jour, et il s'écoule parfois un long moment avant que je n'y retouche* :)
 
