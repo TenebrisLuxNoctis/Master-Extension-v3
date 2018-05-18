@@ -14,11 +14,12 @@ channel = "MasterSnakou";
 /*	Fonctions
 *************************************************/
 
-/*
-*	disableIt(elem1, elem2, bool)
-*	Paramètres : elem{1:2} = éléments jquery / bool = booléen
-*	Désactive ou non les boutons son passés en paramètres
-*/
+/**
+ * Désactive ou non les boutons son passés en paramètres
+ * @param {string} elem1 élément jquery (classe ou id CSS)
+ * @param {string} elem2 élément jquery (classe ou id CSS)
+ * @param {boolean} bool booléen état des éléments
+ */
 function disableIt(elem1, elem2, bool)
 {
 	$(elem1).prop('disabled', bool);
@@ -29,11 +30,9 @@ function disableIt(elem1, elem2, bool)
 		$(elem1).children('label').removeClass('disable');
 }
 
-/*	
-*	checkAble()
-*	Paramètres : /
-*	Vérifie si la case "son" doit être activée ou non
-*/
+/**
+ * Vérifie si la case "son" doit être activée ou non
+ */
 function checkAble()
 {
 	disableIt($('#songL'), $('#songLC'), !$('#notifLC').is(':checked'));
@@ -43,11 +42,16 @@ function checkAble()
 	disableIt($('#songV'), $('#songVC'), !$('#notifVC').is(':checked'));
 }
 
-/*
-*	manageCheckbox()
-*	Paramètres : elem = élément jquery / oldclass,newClass, deactivate, activate = Classe css / checked,texte = Booléens
-*	Gère l'affichage des checkbox-boutons (cochées ou non)
-*/
+/**
+ * Gère l'affichage des checkbox-boutons (cochées ou non)
+ * @param {string} elem élément jquery (classe ou id CSS)
+ * @param {string} oldclass élément jquery (classe ou id CSS)
+ * @param {string} newclass élément jquery (classe ou id CSS)
+ * @param {string} deactivate élément jquery (classe ou id CSS)
+ * @param {string} activate élément jquery (classe ou id CSS)
+ * @param {boolean} checked booléen état des éléments
+ * @param {boolean} texte booléen état des éléments
+ */
 function manageCheckbox(elem, oldclass, newclass, deactivate, activate, checked, texte)
 {
 		$(elem).children('label').removeClass(oldclass).addClass(newclass);
@@ -58,11 +62,11 @@ function manageCheckbox(elem, oldclass, newclass, deactivate, activate, checked,
 		checkAble();
 }
 
-/*
-*	checkIt(elem, bool)
-*	Paramètres : elem = élément jquery / bool = Booléen
-*	Coche/Décoche la checkbox passée en argument
-*/
+/**
+ * Coche/Décoche la checkbox passée en argument
+ * @param {*} elem élément jquery (classe ou id CSS)
+ * @param {*} bool booléen état de l'élément
+ */
 function checkIt(elem, bool)
 {
 	if(bool && $(elem).children('label').hasClass('btn-danger')){
@@ -73,11 +77,9 @@ function checkIt(elem, bool)
 	}
 }
 
-/*	
-*	restaurerLesOptions()
-*	Paramètres : /
-*	Récupère les options depuis le stockage local et prérempli le formulaire
-*/
+/**
+ * Récupère les options depuis le stockage local et prérempli le formulaire
+ */
 function restaurerLesOptions()
 {
 	chrome.storage.local.get(['baseurl', 'notif', 'song', 'gamechange', 'songGame', 'youtubenotif', 'songyt'], function(result){
@@ -120,11 +122,9 @@ function restaurerLesOptions()
 	});
 }
 
-/*	
-*	enregistrer()
-*	Paramètres : /
-*	Enregistre les options, fonction appelée par clic sur le bouton
-*/
+/**
+ * Enregistre les options, fonction appelée par clic sur le bouton
+ */
 function enregistrer()
 {			
 	/*Récupération des données saisies*/
