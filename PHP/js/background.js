@@ -44,9 +44,9 @@ messageLiveOff = channel;
 function notify(options) {
 	/*Si l'utilisateur a activé les notifications*/
 	if (options[0] == 1) {
-		chrome.notifications.create('notifL', { type: "basic", title: title, message: message + game + " !", iconUrl: url }, function (id) { });
+		chrome.notifications.create(channel+'notifL', { type: "basic", title: title, message: message + game + " !", iconUrl: url }, function (id) { });
 		chrome.notifications.onClicked.addListener(function (id) {
-			if (id == "notifL") {
+			if (id == channel+'notifL') {
 				chrome.tabs.create({ url: options[2] + channel });
 			}
 			chrome.notifications.clear(id, function () { });
@@ -75,7 +75,14 @@ function notifYouTube(title, id, options) {
 			message: title,
 			iconUrl: url
 		}
-		chrome.notifications.create(id, opt);
+		chrome.notifications.create(id+"#YT", opt);
+		chrome.notifications.onClicked.addListener(function(id){
+			if(id.includes("#YT"))
+			{
+				chrome.tabs.create({ url: "https://www.youtube.com/watch?v="+id.replace("#YT", "") });
+			}
+			chrome.notifications.clear(id, function(){});
+		});
 		if(options[1] == 1)
 		{
 			notifsound.play();
@@ -163,13 +170,13 @@ function manageGameNotif(gameL, jeu)
 				if(result.gamechange == 1)
 				{
 					
-						chrome.notifications.create('notifG', { type: "basic", title: title, message: messageG+jeu+" !", iconUrl: url}, function(id) {});
+						chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+jeu+" !", iconUrl: url}, function(id) {});
 						chrome.notifications.onClicked.addListener(function(id){
-							if(id=="notifL")
+							if(id==channel+'notifG')
 							{
-								chrome.tabs.create({ url: options[2] + channel });
+								chrome.notifications.clear(id, function(){});
 							}
-							chrome.notifications.clear(id, function(){});
+							
 						});
 						/*Si l'utilisateur a activé le son*/
 						if(result.songGame == 1)
