@@ -56,7 +56,7 @@ Une clé API youtube a été crée spécialement pour l'occasion mais peut être
 
 L'ensemble du code js modifié (background.js, popup.js, options.js) est commenté afin de faciliter la lecture ainsi que la compréhension. Les autres scripts (html,css) ont subies de légères modifications.
 
-NOTE : L'évènement de la master extension pour le master game ne s'affiche plus, il faudrait voir à changer la classe pour l'afficher correctement
+__NOTE__ : L'évènement de la Master Extension pour le Master Game ne s'affiche plus, il faudrait voir à changer la classe CSS pour l'afficher correctement
 
 ### Intégration version PHP
 
