@@ -31,12 +31,15 @@
 ### Version 2.5.0
 
 Deuxième version stable
+
 Fonctionnalité principale :  Gestion des vidéos youtube
 
 ### Version 2.4.0
 
 Première version stable
+
 Fonctionnalité principale : Gestion du jeu dans l'extension
+
 Fonctionnalité secondaire : Modifications graphiques et structurelles de l'interface utilisateur
 
 ### Version 2.3.0
