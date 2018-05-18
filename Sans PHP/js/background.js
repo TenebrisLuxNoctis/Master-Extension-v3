@@ -212,9 +212,8 @@ function manageGameNotif(gameL, jeu)
 						chrome.notifications.onClicked.addListener(function(id){
 							if(id==channel+'notifG')
 							{
-								chrome.tabs.create({ url: options[2] + channel });
+								chrome.notifications.clear(id, function(){});
 							}
-							chrome.notifications.clear(id, function(){});
 						});
 						/*Si l'utilisateur a activé le son*/
 						if(result.songGame == 1)
