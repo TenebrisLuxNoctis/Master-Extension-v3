@@ -5,12 +5,6 @@
 ************************************************/
 
 
-/*	Variables globales
-************************************************/
-
-channel = "MasterSnakou";
-
-
 /*	Fonctions
 *************************************************/
 
@@ -83,8 +77,6 @@ function checkIt(elem, bool)
 function restaurerLesOptions()
 {
 	chrome.storage.local.get(['baseurl', 'notif', 'song', 'gamechange', 'songGame', 'youtubenotif', 'songyt'], function(result){
-		var bool = [0, 1];
-		var urls = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
 				
 		result.notif = setBool(result.notif, 1);
 		checkIt($('#notifL'), (result.notif==1));

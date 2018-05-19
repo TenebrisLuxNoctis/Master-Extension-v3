@@ -8,7 +8,6 @@
 /*	Variables globales
 ************************************************/
 
-channel = "mastersnakou";
 stream 	= "";						/*Stockage du timestamp du live*/
 game = "";							/*Stockage du jeu joué*/	
 
@@ -36,12 +35,6 @@ LiveOn			= "images/LiveOn.png";
 messageLiveOn	= channel + " - LIVE!";
 LiveOff			= "images/icon128.png";
 messageLiveOff	= channel;
-
-gamechangeeffective = null;
-chrome.runtime.onMessage.addListener(function(message){
-	gamechangeeffective = message.gamechangeeffective;
-});
-
 
 /*	Fonctions
 *************************************************/
@@ -212,26 +205,55 @@ function manageGameNotif(gameL, jeu)
 			chrome.storage.local.get(['gamechange', 'songGame'], function(result){
 				
 				result.gamechange = setBool(result.gamechange, 0);
-				gamechangeeffective = setBool(gamechangeeffective, result.gamechange);
-				result.songGame = setBool(result.songGame, 0);
-
-				if(gamechangeeffective == 1)
-				{
-						chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+jeu+" !", iconUrl: url}, function(id) {});
-						chrome.notifications.onClicked.addListener(function(id){
-							if(id==channel+"notifG")
-							{
-								chrome.notifications.clear(id, function(){});
-							}
-						});
-						/*Si l'utilisateur a activé le son*/
-						if(result.songGame == 1)
-						{
-							notifsound.play();
-						}
-				}
+				result.songGame = setBool(result.songGame, 0);	
+	
+				LaunchGameNotif([result.gamechange, result.songGame, jeu]);
 			});
 		}
+	}
+}
+
+/**
+ * Lance la notyification du changement de jeu
+ * @param {array} opt Paramètres utilisateurs + jeu
+ */
+function LaunchGameNotif(opt){
+
+	if(opt[0] == 1){
+		chrome.tabs.getSelected(null, function(onglet){
+			console.log("LaunchGameNotif getSelected");
+			var change = 0;
+			let i = 0;
+			console.log(onglet.url);
+			while(i< urls.length && onglet.url.toLowerCase() != urls[i]+channel.toLowerCase())
+			{
+				console.log(urls[i]+channel);
+				i++;
+			}	
+			console.log("i "+i);
+			change= (i< urls.length)? true: false;
+	
+			console.log("change " +change);
+			console.log("opt[0] "+opt[0] );
+	
+			gamechangeeffective = (change)? false: true;
+			console.log("gamechangeeffective "+gamechangeeffective)
+			if(gamechangeeffective == 1)
+			{
+				chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+opt[2]+" !", iconUrl: url}, function(id) {});
+				chrome.notifications.onClicked.addListener(function(id){
+					if(id==channel+"notifG")
+					{
+						chrome.notifications.clear(id, function(){});
+					}
+				});
+				/*Si l'utilisateur a activé le son*/
+				if(opt[1] == 1)
+				{
+					notifsound.play();
+				}
+			}
+		});
 	}
 }
 
@@ -341,8 +363,8 @@ function checkNewVideos() {
 setInterval(check_stream,15000);
 check_stream();
 
-setInterval(checkNewVideos,60000);
-checkNewVideos();
+/*setInterval(checkNewVideos,60000);
+checkNewVideos();*/
 
 /*On réinitialise l'icône dans la barre du navigateur*/
 chrome.browserAction.setIcon({path:LiveOff});

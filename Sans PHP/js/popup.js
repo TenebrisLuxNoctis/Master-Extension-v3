@@ -9,7 +9,6 @@
 ************************************************/
 
 domain = "https://game.mastersnakou.fr";
-channel = "MasterSnakou";
 
 img = null;
 qrcode = false;
@@ -71,12 +70,8 @@ function manageTabs(elem)
 
 chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title'], function(result){
 	/*On récupère les informations sur le statut du live*/
-	var bool = [0, 1];
-	var urls = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
+	result.living = setBool(result.living, 0);	
 
-	if (jQuery.inArray(result.living, bool) == -1){
-		result.living = 0;
-	}	
 	if (jQuery.inArray(result.baseurl, urls) == -1){
 		result.baseurl = "https://www.twitch.tv/";
 	}
