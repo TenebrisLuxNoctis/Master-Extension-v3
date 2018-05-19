@@ -1,4 +1,4 @@
-var username = $("#username").html()
+var username = $("#username").html();
 if(username!=[]){
 	chrome.runtime.sendMessage({username: username}, function(response) {
 	  console.log("OK!");

@@ -2,13 +2,18 @@
 
 ## A venir 
 
-### Version 2.6.3
+### Version 2.6.4
+
+* Correctif notification vidéo
+
+## Anciennes versions
+
+### Version 2.6.3 *(Version courante)*
 
 * Correction de l'apparition possible de notifications parasites anciennes lorsqu'une nouvelle notification apparaît
 * Ajout d'une fonctionnalité de désactivation des notifications de changement de jeu lorsque la page twitch du live est active
 * Ajout du lien de la vidéo au clic sur la notification d'une vidéo youtube
-
-## Anciennes versions
+* Centralisation des variables globales communes dans le fichier `fonctions.js`
 
 ### Version 2.6.2
 

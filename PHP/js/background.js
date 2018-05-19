@@ -8,7 +8,6 @@
 /*	Variables globales
 ************************************************/
 
-channel 	= "MasterSnakou";
 domainurl 	= "PUT_YOUR_DOMAIN_HERE";	/*L'url du chemin de la page php que vous avez upload */
 stream 		= "";						/*Stockage du timestamp du live*/
 game 		= "";						/*Stockage du jeu joué*/
@@ -148,16 +147,17 @@ function DetectGameSwitch(oldJ, newJ)
 	return bool;
 }
 
-/*
-*	manageGameNotif(gameL, jeu)
-*	Paramètres : gameL = jeu de la requête précédente / jeu = jeu de la requête actuelle
-*	Détecte si il faut ou non lancer une notification de changement de jeu
-*/
+
+/**
+ * Détecte si il faut ou non lancer une notification de changement de jeu
+ * @param {string} gameL jeu de la requête précédente
+ * @param {string} jeu jeu de la requête actuelle
+ */
 function manageGameNotif(gameL, jeu)
 {
 	if(live == 1)
 	{
-		var doIchange = DetectGameSwitch(gameL, jeu);
+		var doIchange = true;//DetectGameSwitch(gameL, jeu);
 		/*Le jeu actuel vient de changer*/
 		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
 		{
@@ -165,30 +165,57 @@ function manageGameNotif(gameL, jeu)
 			chrome.storage.local.get(['gamechange', 'songGame'], function(result){
 				
 				result.gamechange = setBool(result.gamechange, 0);
-				result.songGame = setBool(result.songGame, 0);
-				
-				if(result.gamechange == 1)
-				{
-					
-						chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+jeu+" !", iconUrl: url}, function(id) {});
-						chrome.notifications.onClicked.addListener(function(id){
-							if(id==channel+'notifG')
-							{
-								chrome.notifications.clear(id, function(){});
-							}
-							
-						});
-						/*Si l'utilisateur a activé le son*/
-						if(result.songGame == 1)
-						{
-							notifsound.play();
-						}
-				}
+				result.songGame = setBool(result.songGame, 0);	
+	
+				LaunchGameNotif([result.gamechange, result.songGame, jeu]);
 			});
 		}
 	}
 }
 
+/**
+ * Lance la notyification du changement de jeu
+ * @param {array} opt Paramètres utilisateurs + jeu
+ */
+function LaunchGameNotif(opt){
+
+	if(opt[0] == 1){
+		chrome.tabs.getSelected(null, function(onglet){
+			console.log("LaunchGameNotif getSelected");
+			var change = 0;
+			let i = 0;
+			console.log(onglet.url);
+			while(i< urls.length && onglet.url.toLowerCase() != urls[i]+channel.toLowerCase())
+			{
+				console.log(urls[i]+channel);
+				i++;
+			}	
+			console.log("i "+i);
+			change= (i< urls.length)? true: false;
+	
+			console.log("change " +change);
+			console.log("opt[0] "+opt[0] );
+	
+			gamechangeeffective = (change)? false: true;
+			console.log("gamechangeeffective "+gamechangeeffective)
+			if(gamechangeeffective == 1)
+			{
+				chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+opt[2]+" !", iconUrl: url}, function(id) {});
+				chrome.notifications.onClicked.addListener(function(id){
+					if(id==channel+"notifG")
+					{
+						chrome.notifications.clear(id, function(){});
+					}
+				});
+				/*Si l'utilisateur a activé le son*/
+				if(opt[1] == 1)
+				{
+					notifsound.play();
+				}
+			}
+		});
+	}
+}
 /*	
 *	check_stream()
 *	Paramètres : /

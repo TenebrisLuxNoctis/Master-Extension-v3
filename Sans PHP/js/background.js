@@ -257,7 +257,6 @@ function LaunchGameNotif(opt){
 	}
 }
 
-
 /**
  * Teste le statut du stream et appelle LaunchNotif() si besoin
  */
@@ -363,8 +362,8 @@ function checkNewVideos() {
 setInterval(check_stream,15000);
 check_stream();
 
-/*setInterval(checkNewVideos,60000);
-checkNewVideos();*/
+setInterval(checkNewVideos,60000);
+checkNewVideos();
 
 /*On réinitialise l'icône dans la barre du navigateur*/
 chrome.browserAction.setIcon({path:LiveOff});
