@@ -1,7 +1,7 @@
 /************************************************
 *	Page contenant des fonctions réutilisables  *
 * 			dans les autres scripts				*
-*	Dernière modification : mai 2018 			*
+*	Dernière modification : Mai 2018 			*
 ************************************************/
 
 /**

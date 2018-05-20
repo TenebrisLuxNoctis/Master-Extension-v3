@@ -19,14 +19,15 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
     * La notification est désactivée lorsque la page twitch est active
   * ajout d'une notification lorsqu'une nouvelle **vidéo** youtube sort *(paramétrable)*
     * Le clic sur la notification ouvre directement la page de la vidéo
-  * ajout d'une page **"options"** qui permet de :
+  * ajout d'une page d'**options** qui permet de :
     * désactiver les notifications 
     * désactiver le son des notifications 
     * modifier le site vers lequel redirige le lien de la chaîne twitch
   * ajout d'un QRcode pour rejoindre la page twitch directement depuis la popup
+  * ajout du snapcode lors du clic sur le bouton correspondant dans la popup
   * ajout de l'**uptime** du live, du **titre** ainsi que le **nombre de viewers** dans la popup
   * ajout de l'uptime du jeu courant dans la popup
-  * ajout de différentes images pour les notifications de l'extension
+  * ajout d'images pour les différentes notifications de l'extension
   * utilisation du stockage local afin d'avoir des options différentes sur des périphériques différents
   * suppression de l'appel à l'API twitch dans la popup
   * optimisation de taille (suppression de librairies inutilisées)

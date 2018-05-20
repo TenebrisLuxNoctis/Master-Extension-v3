@@ -1,6 +1,6 @@
 # Notes de versions
 
-## A venir 
+## A venir (mardi)
 
 ### Version 2.6.5
 
@@ -8,10 +8,10 @@
 * Correctif notification changement de jeu (le changement pouvait être détecté plusieurs fois de suite)
 * Ajout de l'uptime du jeu courant dans la popup (disponible uniquement si l'extension était active lors du changement de jeu)
 * Ajout d'images pour les différentes notifications :
-    * Live - logo classique
-    * Vidéo - masterOMG
-    * Changement de jeu - masterGOTY
-    * Changement options - masterKC
+    * Live                  - logo classique
+    * Vidéo                 - masterOMG
+    * Changement de jeu     - masterGOTY
+    * Changement options    - masterKC
 * Ajout d'une page de configuration de l'extension
 * Ajout du snapcode lors du clic sur le bouton correspondant dans la popup
 

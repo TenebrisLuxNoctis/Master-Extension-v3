@@ -1,7 +1,7 @@
 /************************************************
 *	Page de gestion des options utilisateur		*
 * 												*
-*	Dernière modification : août 2017 			*
+*	Dernière modification : Mai 2018 			*
 ************************************************/
 
 
