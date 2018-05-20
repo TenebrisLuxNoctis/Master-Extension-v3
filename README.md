@@ -1,6 +1,7 @@
 # Proposition d'amélioration de la Master Extension
 
-Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [chrome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr) en non répertoriée
+Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [chrome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr) en non répertoriée.
+
 Le code source est disponible ici, dans ce repository
 
 __Note :__ *Ceci est un petit projet sans prétention aucune. Il a été initié en juillet 2017 pour le fun avant tout ! C'est à coup de petites retouches ponctuelles quand j'en ai l'envie que je le mets à jour, et il s'écoule parfois un long moment avant que je n'y retouche* :)
@@ -78,7 +79,7 @@ API_key_youtube = "AIzaSyAANw33DQWRi5O••••••••••••••
 
 La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher.
 
-  * Réparer l'event de lancement du live (+25xp) (il faudrait chercher la nouvelle classe css à cibler (peut être `chat-resub-notification` ?)
+  * Réparer l'event de lancement du live (+25xp) (il faudrait chercher la nouvelle classe css à cibler (peut être `chat-resub-notification` ?))
   * Modifier le son en fonction de la notification (vidéo/live/changement de jeu)
   * Modifier l'image des notifications
   * Ajouter l'uptime sur le jeu courant
