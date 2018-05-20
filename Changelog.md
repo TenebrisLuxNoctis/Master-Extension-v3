@@ -7,11 +7,11 @@
 * Suppression du debug dans la fonctionnalité de changement de jeu
 * Correctif notification changement de jeu (le changement pouvait être détecté plusieurs fois de suite)
 * Ajout de l'uptime du jeu courant dans la popup (disponible uniquement si l'extension était active lors du changement de jeu)
-* Notifications :
-    * Live - image classique
-    * Vidéo - masterOMG ?
-    * Changement de jeu - masterGOTY  ?
-    * Changement options - masterKC ?
+* Ajout d'images pour les différentes notifications :
+    * Live - logo classique
+    * Vidéo - masterOMG
+    * Changement de jeu - masterGOTY
+    * Changement options - masterKC
 * Ajout d'une page de configuration de l'extension
 
 ## Version courante
