@@ -24,8 +24,9 @@ $.ajaxSetup({
 /**
  * Caclcule l'uptime de la session en cours
  * @param {string} streamDate timestamp correspondant au début du live
+ * @param {string} text texte précédent l'affichage de l'uptime
  */
-function uptime(streamDate)
+function uptime(streamDate, text = "Uptime : ")
 {
 	var d= new Date(streamDate);
 	var t= new Date();
@@ -35,7 +36,7 @@ function uptime(streamDate)
 	var min = Math.trunc(Math.trunc(uptime-(3600000*h))/60000);
 	min = (min < 10) ? '0'+min : min;
 	
-	var res = "Uptime : "+h+"h"+min;
+	var res = text + h + "h" + min;
 	
 	return res;
 }
@@ -68,7 +69,7 @@ function manageTabs(elem)
 /*	Programme principal
 *************************************************/
 
-chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title'], function(result){
+chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title', 'lastGameChange'], function(result){
 	/*On récupère les informations sur le statut du live*/
 	result.living = setBool(result.living, 0);	
 
@@ -76,8 +77,13 @@ chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title
 		result.baseurl = "https://www.twitch.tv/";
 	}
 	
+	if(result.lastGameChange != null){
+		$("#game_uptime").text(uptime(result.lastGameChange, "Depuis : "));
+	}
+
 	$("#channel_link").attr("href", result.baseurl + channel);
-	
+	$("#game_link").attr("href", result.baseurl + channel);
+
 	/*Si le live est off*/
 	if(result.living == 0)
 	{

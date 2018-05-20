@@ -35,6 +35,7 @@ LiveOn			= "images/LiveOn.png";
 messageLiveOn	= channel + " - LIVE!";
 LiveOff			= "images/icon128.png";
 messageLiveOff	= channel;
+lastGameChange 	= null;
 
 /*	Fonctions
 *************************************************/
@@ -142,7 +143,7 @@ function analyze(data)
 {
 	/*Construction de la structure de retour*/
 	var stream_data= new Array();
-	
+
 	/*Si la requête a retournée des données*/
 	if(!data)
 	{
@@ -197,7 +198,7 @@ function manageGameNotif(gameL, jeu)
 {
 	if(live == 1)
 	{
-		var doIchange = true;//DetectGameSwitch(gameL, jeu);
+		var doIchange = DetectGameSwitch(gameL, jeu);
 		/*Le jeu actuel vient de changer*/
 		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
 		{
@@ -206,9 +207,13 @@ function manageGameNotif(gameL, jeu)
 				
 				result.gamechange = setBool(result.gamechange, 0);
 				result.songGame = setBool(result.songGame, 0);	
-	
+
+				lastGameChange = Date.now();
+
 				LaunchGameNotif([result.gamechange, result.songGame, jeu]);
 			});
+		}else if(jeu == "Talk Shows"){
+			lastGameChange = null;
 		}
 	}
 }
@@ -221,23 +226,16 @@ function LaunchGameNotif(opt){
 
 	if(opt[0] == 1){
 		chrome.tabs.getSelected(null, function(onglet){
-			console.log("LaunchGameNotif getSelected");
 			var change = 0;
 			let i = 0;
-			console.log(onglet.url);
+
 			while(i< urls.length && onglet.url.toLowerCase() != urls[i]+channel.toLowerCase())
 			{
-				console.log(urls[i]+channel);
 				i++;
 			}	
-			console.log("i "+i);
 			change= (i< urls.length)? true: false;
-	
-			console.log("change " +change);
-			console.log("opt[0] "+opt[0] );
-	
 			gamechangeeffective = (change)? false: true;
-			console.log("gamechangeeffective "+gamechangeeffective)
+
 			if(gamechangeeffective == 1)
 			{
 				chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+opt[2]+" !", iconUrl: url}, function(id) {});
@@ -304,7 +302,7 @@ function check_stream() {
 			}
 			
 			/*Sauvegarde du statut du live en local (pour la popup)*/
-			chrome.storage.local.set({'living': live, 'game': game, 'viewers' : tmp[2], 'title': tmp[3]}, function(){
+			chrome.storage.local.set({'living': live, 'game': game, 'viewers' : tmp[2], 'title': tmp[3], 'lastGameChange': lastGameChange}, function(){
 			});
 			
 		}
