@@ -76,7 +76,7 @@ function notifYouTube(title, id, options) {
 	{
 		var opt = {
 			type: "basic",
-			title: channel + " Nouvelle vidéo YouTube",
+			title: channel + " - Nouvelle vidéo YouTube",
 			message: title,
 			iconUrl: VideoIconUrl
 		}
