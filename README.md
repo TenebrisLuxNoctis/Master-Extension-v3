@@ -36,6 +36,9 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 ![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/bariconon.PNG)
 
 ![Icon Notification](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notif.PNG)
+![Icon Notification youtube](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifyt.png)
+![Icon Notification game](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifGame.png)
+![Icon Notification options](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifOpt.png)
 
 ![Icon Popup](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/showcase%20snakou.png)
 
