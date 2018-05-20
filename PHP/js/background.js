@@ -19,6 +19,7 @@ live 	= 0;
 /*Variable utilisée pour détecter le changement de jeu*/
 oldG = "";
 newG = "";
+lastGameChange 	= null;
 
 /*Paramètres de la notification*/
 title 		= channel + " - Je suis en live !";
@@ -34,37 +35,42 @@ messageLiveOff = channel;
 /*	Fonctions
 *************************************************/
 
-/*	
-*	notify(options)
-*	Paramètres : options = tableau contenant les options de l'utilisateur
-*	lance la notification à partir des paramètres de l'utilisateur
-*/
+/**
+ * Lance la notification à partir des paramètres de l'utilisateur.
+ * @param {string[]} options tableau contenant les options de l'utilisateur
+ */
+function notify(options)
+{    	
 
-function notify(options) {
 	/*Si l'utilisateur a activé les notifications*/
-	if (options[0] == 1) {
-		chrome.notifications.create(channel+'notifL', { type: "basic", title: title, message: message + game + " !", iconUrl: url }, function (id) { });
-		chrome.notifications.onClicked.addListener(function (id) {
-			if (id == channel+'notifL') {
+	if(options[0] == 1) 
+	{
+		chrome.notifications.create(channel+'notifL', { type: "basic", title: title, message: message+game+" !", iconUrl: url}, function(id) {});
+		chrome.notifications.onClicked.addListener(function(id){
+			if(id== channel+'notifL')
+			{
 				chrome.tabs.create({ url: options[2] + channel });
 			}
-			chrome.notifications.clear(id, function () { });
+			chrome.notifications.clear(id, function(){});
 		});
 		/*Si l'utilisateur a activé le son*/
-		if (options[1] == 1) {
+		if(options[1] == 1)
+		{
 			notifsound.play();
 		}
 	}
 	/*Mise à jour de la barre du navigateur*/
-	chrome.browserAction.setIcon({ path: LiveOn });
-	chrome.browserAction.setTitle({ title: messageLiveOn });
+	chrome.browserAction.setIcon({path:LiveOn});
+	chrome.browserAction.setTitle({title : messageLiveOn});
 }
 
-/*
-*	notifYouTube(title, id)
-*	Paramètres : title = chaîne / id = int / options = tableau des options utilisateur
-*	Génère une notification pour la vidéo ayant le titre title
-*/
+
+/**
+ * Génère une notification pour la vidéo ayant le titre 'title'.
+ * @param {string} title titre de la vidéo
+ * @param {string} id id de la vidéo
+ * @param {string[]} options tableau des options utilisateur
+ */
 function notifYouTube(title, id, options) {
     if(options[0] == 1)
 	{
@@ -89,16 +95,12 @@ function notifYouTube(title, id, options) {
 	}
 }
 
-/*	
-*	LaunchNotif()
-*	Paramètres : /
-*	Récupère les paramètres de l'utilisateur et appelle la fonction notif()
-*/
+/**
+ * Récupère les paramètres de l'utilisateur et appelle la fonction notif() pour notifier du lancement du live.
+ */
 function LaunchNotif()
 {
-	chrome.storage.local.get(['baseurl', 'notif', 'song'], function(result){
-		var urls = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
-		
+	chrome.storage.local.get(['baseurl', 'notif', 'song'], function(result){		
 		result.notif = setBool(result.notif, 1);		
 		result.song = setBool(result.song, 1);
 
@@ -110,11 +112,11 @@ function LaunchNotif()
 	});
 }
 
-/*	
-*	LaunchNotifYouTube()
-*	Paramètres : /
-*	Récupère les paramètres de l'utilisateur et appelle la fonction notifYoutube()
-*/
+/**
+ * Récupère les paramètres de l'utilisateur et appelle la fonction notifYouTube() pour notifier d'une sortie de vidéo.
+ * @param {string} title titre de la vidéo
+ * @param {string} id id de la vidéo
+ */
 function LaunchNotifYouTube(title, id)
 {
 	chrome.storage.local.get(['youtubenotif', 'songyt'], function(result){
@@ -126,12 +128,11 @@ function LaunchNotifYouTube(title, id)
 	});
 }
 
-
-/*
-*	DetectGameSwitch(oldJ, newJ)
-*	Paramètres : oldG = jeu avant changement / newJ = jeu après changement
-*	Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
-*/
+/**
+ * Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
+ * @param {string} oldG jeu avant changement
+ * @param {string} newJ jeu après changement
+ */
 function DetectGameSwitch(oldJ, newJ)
 {
 	var bool = true;
@@ -147,7 +148,6 @@ function DetectGameSwitch(oldJ, newJ)
 	return bool;
 }
 
-
 /**
  * Détecte si il faut ou non lancer une notification de changement de jeu
  * @param {string} gameL jeu de la requête précédente
@@ -157,7 +157,7 @@ function manageGameNotif(gameL, jeu)
 {
 	if(live == 1)
 	{
-		var doIchange = true;//DetectGameSwitch(gameL, jeu);
+		var doIchange = DetectGameSwitch(gameL, jeu);
 		/*Le jeu actuel vient de changer*/
 		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
 		{
@@ -166,9 +166,13 @@ function manageGameNotif(gameL, jeu)
 				
 				result.gamechange = setBool(result.gamechange, 0);
 				result.songGame = setBool(result.songGame, 0);	
-	
+
+				lastGameChange = Date.now();
+
 				LaunchGameNotif([result.gamechange, result.songGame, jeu]);
 			});
+		}else if(jeu == "Talk Shows"){
+			lastGameChange = null;
 		}
 	}
 }
@@ -181,23 +185,16 @@ function LaunchGameNotif(opt){
 
 	if(opt[0] == 1){
 		chrome.tabs.getSelected(null, function(onglet){
-			console.log("LaunchGameNotif getSelected");
 			var change = 0;
 			let i = 0;
-			console.log(onglet.url);
+
 			while(i< urls.length && onglet.url.toLowerCase() != urls[i]+channel.toLowerCase())
 			{
-				console.log(urls[i]+channel);
 				i++;
 			}	
-			console.log("i "+i);
 			change= (i< urls.length)? true: false;
-	
-			console.log("change " +change);
-			console.log("opt[0] "+opt[0] );
-	
 			gamechangeeffective = (change)? false: true;
-			console.log("gamechangeeffective "+gamechangeeffective)
+
 			if(gamechangeeffective == 1)
 			{
 				chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+opt[2]+" !", iconUrl: url}, function(id) {});
@@ -216,6 +213,7 @@ function LaunchGameNotif(opt){
 		});
 	}
 }
+
 /*	
 *	check_stream()
 *	Paramètres : /
@@ -264,7 +262,7 @@ function check_stream() {
 			}
 
 			/*Sauvegarde du statut du live en local (pour la popup)*/
-			chrome.storage.local.set({ 'living': live, 'game': game, 'viewers' : viewers, 'title': title }, function () {
+			chrome.storage.local.set({ 'living': live, 'game': game, 'viewers' : viewers, 'title': title, 'lastGameChange': lastGameChange }, function () {
 			});
 
 		}

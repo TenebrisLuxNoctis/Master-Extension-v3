@@ -24,23 +24,13 @@ live = 0;
 /*Variable utilisée pour détecter le changement de jeu*/
 oldG = "";
 newG = "";
-
-/*Paramètres de la notification*/
-title 			= channel + " - Je suis en live !";
-message 		= "Retrouvez moi en live dès maintenant sur ";
-messageG 		= "Je switch sur ";
-notifsound 		= new Audio('../mp3/notification.mp3');
-url				= "images/icon128.png";
-LiveOn			= "images/LiveOn.png";
-messageLiveOn	= channel + " - LIVE!";
-LiveOff			= "images/icon128.png";
-messageLiveOff	= channel;
+lastGameChange 	= null;
 
 /*	Fonctions
 *************************************************/
 
 /**
- * Lance la notification à partir des paramètres de l'utilisateur.
+ * Lance la notification de live à partir des paramètres de l'utilisateur.
  * @param {string[]} options tableau contenant les options de l'utilisateur
  */
 function notify(options)
@@ -49,7 +39,13 @@ function notify(options)
 	/*Si l'utilisateur a activé les notifications*/
 	if(options[0] == 1) 
 	{
-		chrome.notifications.create(channel+'notifL', { type: "basic", title: title, message: message+game+" !", iconUrl: url}, function(id) {});
+		chrome.notifications.create(channel+'notifL', { 
+			type: "basic", 
+			title: title, 
+			message: messageLive + game + " !", 
+			iconUrl: LiveInconUrl
+		}, function(id) {});
+
 		chrome.notifications.onClicked.addListener(function(id){
 			if(id== channel+'notifL')
 			{
@@ -80,9 +76,9 @@ function notifYouTube(title, id, options) {
 	{
 		var opt = {
 			type: "basic",
-			title: "Nouvelle vidéo YouTube",
+			title: channel + " Nouvelle vidéo YouTube",
 			message: title,
-			iconUrl: url
+			iconUrl: VideoIconUrl
 		}
 		chrome.notifications.create(id+"#YT", opt);
 		chrome.notifications.onClicked.addListener(function(id){
@@ -104,15 +100,12 @@ function notifYouTube(title, id, options) {
  */
 function LaunchNotif()
 {
-	chrome.storage.local.get(['baseurl', 'notif', 'song'], function(result){
-		var urls = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
-		
+	chrome.storage.local.get(['baseurl', 'notif', 'song'], function(result){		
 		result.notif = setBool(result.notif, 1);		
 		result.song = setBool(result.song, 1);
 
-		if (urls.indexOf(result.baseurl) == -1){
-			result.baseurl = "https://www.twitch.tv/";
-		}
+		result.baseurl = setUrlRedirect(result.baseurl);
+
 		/*On lance la notification*/
 		notify([result.notif, result.song, result.baseurl]);
 	});
@@ -142,7 +135,7 @@ function analyze(data)
 {
 	/*Construction de la structure de retour*/
 	var stream_data= new Array();
-	
+
 	/*Si la requête a retournée des données*/
 	if(!data)
 	{
@@ -197,7 +190,7 @@ function manageGameNotif(gameL, jeu)
 {
 	if(live == 1)
 	{
-		var doIchange = true;//DetectGameSwitch(gameL, jeu);
+		var doIchange = DetectGameSwitch(gameL, jeu);
 		/*Le jeu actuel vient de changer*/
 		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
 		{
@@ -206,9 +199,13 @@ function manageGameNotif(gameL, jeu)
 				
 				result.gamechange = setBool(result.gamechange, 0);
 				result.songGame = setBool(result.songGame, 0);	
-	
+
+				lastGameChange = Date.now();
+
 				LaunchGameNotif([result.gamechange, result.songGame, jeu]);
 			});
+		}else if(jeu == "Talk Shows"){
+			lastGameChange = null;
 		}
 	}
 }
@@ -221,26 +218,25 @@ function LaunchGameNotif(opt){
 
 	if(opt[0] == 1){
 		chrome.tabs.getSelected(null, function(onglet){
-			console.log("LaunchGameNotif getSelected");
 			var change = 0;
 			let i = 0;
-			console.log(onglet.url);
+
 			while(i< urls.length && onglet.url.toLowerCase() != urls[i]+channel.toLowerCase())
 			{
-				console.log(urls[i]+channel);
 				i++;
 			}	
-			console.log("i "+i);
 			change= (i< urls.length)? true: false;
-	
-			console.log("change " +change);
-			console.log("opt[0] "+opt[0] );
-	
 			gamechangeeffective = (change)? false: true;
-			console.log("gamechangeeffective "+gamechangeeffective)
+
 			if(gamechangeeffective == 1)
 			{
-				chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+opt[2]+" !", iconUrl: url}, function(id) {});
+				chrome.notifications.create(channel+'notifG', { 
+					type: "basic", 
+					title: title, 
+					message: messageG + opt[2] +" !", 
+					iconUrl: GameIconUrl
+				}, function(id) {});
+
 				chrome.notifications.onClicked.addListener(function(id){
 					if(id==channel+"notifG")
 					{
@@ -304,7 +300,7 @@ function check_stream() {
 			}
 			
 			/*Sauvegarde du statut du live en local (pour la popup)*/
-			chrome.storage.local.set({'living': live, 'game': game, 'viewers' : tmp[2], 'title': tmp[3]}, function(){
+			chrome.storage.local.set({'living': live, 'game': game, 'viewers' : tmp[2], 'title': tmp[3], 'lastGameChange': lastGameChange}, function(){
 			});
 			
 		}

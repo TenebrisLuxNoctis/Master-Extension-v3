@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": [ "js/fonctions.js", "js/background.js" ]
+      "scripts": [ "js/config.js", "js/fonctions.js", "js/background.js" ]
    },
    "browser_action": {
       "default_icon": "images/icon128.png",
@@ -14,7 +14,7 @@
    }, {
       "css": [ "css/twitch-event.css" ],
       "js": [ "libs/jquery/dist/jquery.min.js", "libs/socket.io-client/socket.io.js", "js/twitch-event.js" ],
-      "matches": [ "https://www.twitch.tv/tenebrisluxnoctis" ]
+      "matches": [ "https://www.twitch.tv/mastersnakou" ]
    } ],
    "description": "Ne rate plus les live et vidéos de Snakou avec la Master Extension !",
    "icons": {
@@ -26,5 +26,5 @@
    "name": "Master Sans Cou",
    "permissions": [ "storage", "notifications", "tabs", "http://*/*", "https://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "2.6.4"
+   "version": "2.6.5"
 }

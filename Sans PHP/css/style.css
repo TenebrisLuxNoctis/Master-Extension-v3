@@ -195,6 +195,16 @@ video{
 	display: none;
 }
 
+#game_uptime {
+  position:fixed;
+  right: 0;
+  width: 98px;
+  top: 140px;
+  text-align: center;
+  color: white;
+  font-size: 11px;
+}
+
 #social-media {
 	position : fixed;
 	bottom : 0;

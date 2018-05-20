@@ -27,14 +27,14 @@ $(function() {
 							alert("Soit t'as déjà joué, soit tu es arrivé trop tard poto ! ;)");
 						}
 					});
-					$('#event').fadeOut(2000)
+					$('#event').fadeOut(2000);
 				})
 			}
 		};
 
 		var get_username = function (callback) {
 			chrome.storage.local.get('username', function (items) {
-				callback(items['username'])
+				callback(items['username']);
 			});
 		};
 
@@ -43,7 +43,8 @@ $(function() {
 				if(username==null || username=="") {
 					return false;
 				}
-				//display_event($('.tw-z-default'), username)
+				//Ne s'affiche plus
+				display_event($('.chat-room'), username);
 			})
 		};
 
@@ -54,7 +55,7 @@ $(function() {
 
 		socket.on('event-launch', function() {
 			console.log('New event !');
-			launch_event()
-		})
-	}, 5000);
+			launch_event();
+		});
+	}, 5000);	
 });

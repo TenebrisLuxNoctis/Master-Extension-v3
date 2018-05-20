@@ -60,6 +60,7 @@ Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de v
 
 ### Intégration version PHP
 
+  * Cette version reprend les fichier de la version Sans PHP à l''exception du fichier `js/background.js`et du dossier `php`
   * upload les fichiers `php/twitch.php` et `php/youtube.php`
   * reporter l'url du répertoire dans `js/background.js` à la 12e ligne : `domainurl = "PUT_YOUR_DOMAIN_NAME_HERE";`
   * les clés d'API sont placées dans les fichiers php (un pour contacter les services youtube, l'autre pour atteindre ceux de twitch)
@@ -81,8 +82,6 @@ La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher.
 
   * Réparer l'event de lancement du live (+25xp) (il faudrait chercher la nouvelle classe css à cibler (peut être `chat-resub-notification` ?))
   * Modifier le son en fonction de la notification (vidéo/live/changement de jeu)
-  * Modifier l'image des notifications
-  * Ajouter l'uptime sur le jeu courant
   * ...
 
 ## Support
