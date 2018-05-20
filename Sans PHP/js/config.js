@@ -8,7 +8,7 @@
 /*	Configuration de l'extension
 ************************************************/
 
-channel         = "TenebrisLuxNoctis";
+channel         = "MasterSnakou";
 LiveOn			= "images/LiveOn.png";  //Icône dans la barre d'état du navigateur lorsque le live est lancé
 messageLiveOn	= channel + " - LIVE!"; //Texte dans la barre d'état du navigateur lorsque le live est lancé
 LiveOff			= "images/icon128.png"; //Icône dans la barre d'état du navigateur lorsque le live est off
