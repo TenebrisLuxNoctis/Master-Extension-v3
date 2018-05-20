@@ -24,6 +24,7 @@ live = 0;
 /*Variable utilisée pour détecter le changement de jeu*/
 oldG = "";
 newG = "";
+lastGameChange 	= null;
 
 /*Paramètres de la notification*/
 title 			= channel + " - Je suis en live !";
@@ -35,7 +36,7 @@ LiveOn			= "images/LiveOn.png";
 messageLiveOn	= channel + " - LIVE!";
 LiveOff			= "images/icon128.png";
 messageLiveOff	= channel;
-lastGameChange 	= null;
+
 
 /*	Fonctions
 *************************************************/
@@ -105,9 +106,7 @@ function notifYouTube(title, id, options) {
  */
 function LaunchNotif()
 {
-	chrome.storage.local.get(['baseurl', 'notif', 'song'], function(result){
-		var urls = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
-		
+	chrome.storage.local.get(['baseurl', 'notif', 'song'], function(result){		
 		result.notif = setBool(result.notif, 1);		
 		result.song = setBool(result.song, 1);
 
