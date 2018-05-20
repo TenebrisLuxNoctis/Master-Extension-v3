@@ -183,11 +183,16 @@ $(document).on('click', '#snapchat',function(){
 	snap = !snap;
 	if(snap)
 	{
+		img = $('#brand-logo-channel').attr("src");
 		/*on affiche le texte*/
 		$('#live').html("Mon snap : mastersnakou").show();
+		/*On affiche le snapcode*/
+		$('#brand-logo-channel').attr("src", '/images/snapcode.png');
 	}
 	else
 	{
+		/*On affiche le logo de l'extension*/
+		$('#brand-logo-channel').attr("src", img);
 		/*on affiche un autre message*/
 		$('#live').html("Love you my boy !").show();
 	}
