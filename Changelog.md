@@ -13,6 +13,7 @@
     * Changement de jeu - masterGOTY
     * Changement options - masterKC
 * Ajout d'une page de configuration de l'extension
+* Ajout du snapcode lors du clic sur le bouton correspondant dans la popup
 
 ## Version courante
 
