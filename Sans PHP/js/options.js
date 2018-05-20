@@ -96,10 +96,8 @@ function restaurerLesOptions()
 		result.songyt = setBool(result.songyt, 1);
 		checkIt($('#songG'), (result.songyt==1));
 		
-		
-		if (jQuery.inArray(result.baseurl, urls) == -1){
-			result.baseurl = "https://www.twitch.tv/";
-		}
+		result.baseurl = setUrlRedirect(result.baseurl);
+
 		var choix = $('#baseurl > option');
 		for (var i = 0; i < choix.length; i++)
 			{
@@ -140,15 +138,15 @@ function enregistrer()
 restaurerLesOptions();
 
 /*Lorsque l'on clique sur enregistrer*/		
-$(document).on('click','#save-cfg',function(){
-	var title 			= channel + " - Changements effectués !";
-	var message 		= "Vos changements d'options ont bien été pris en compte !";
-	var url				= "/images/icon128.png";
-   
+$(document).on('click','#save-cfg',function(){  
    enregistrer();
-   
-   chrome.notifications.create('notifO', { type: "basic", title: title, message: message, iconUrl: url}, function(id) {});
 
+   chrome.notifications.create(channel+'notifO', { 
+	   type: "basic", 
+	   title: titleOptions, 
+	   message: messageOptions, 
+	   iconUrl: OptionsIconUrl
+	}, function(id) {});
 });
 
 /*Lorsque l'on clique sur quitter*/		

@@ -4,12 +4,6 @@
 *	Dernière modification : mai 2018 			*
 ************************************************/
 
-/*
- * Constantes partagées entre les scripts
- */
-urls = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http://speedrun.tv/", "http://kadgar.net/live/"];
-channel = "MasterSnakou";
-
 /**
  * Vérifie le variable 'value' et l'initialise à 'defaultValue' si non valide
  * @param {boolean} value variable inconnue
@@ -23,5 +17,19 @@ function setBool(value, defaultVal)
 	if (bool.indexOf(value) == -1){
 		res = defaultVal;
 	}
+	return res;
+}
+
+/**
+ * Vérifie que la variable 'url' est bien définie dans la liste de la configuration et retourne twitch par défaut
+ * @param {string} url Lien vers la page pour regarder le stream 
+ */
+function setUrlRedirect(url){
+	var res = url;
+
+	if (urls.indexOf(res) == -1){
+		res = "https://www.twitch.tv/";
+	}
+
 	return res;
 }

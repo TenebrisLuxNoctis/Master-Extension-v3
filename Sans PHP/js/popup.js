@@ -73,9 +73,7 @@ chrome.storage.local.get(['baseurl', 'living', 'game', 'time', 'viewers', 'title
 	/*On récupère les informations sur le statut du live*/
 	result.living = setBool(result.living, 0);	
 
-	if (jQuery.inArray(result.baseurl, urls) == -1){
-		result.baseurl = "https://www.twitch.tv/";
-	}
+	result.baseurl = setUrlRedirect(result.baseurl);
 	
 	if(result.lastGameChange != null){
 		$("#game_uptime").text(uptime(result.lastGameChange, "Depuis : "));
