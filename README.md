@@ -25,6 +25,8 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
     * modifier le site vers lequel redirige le lien de la chaîne twitch
   * ajout d'un QRcode pour rejoindre la page twitch directement depuis la popup
   * ajout de l'**uptime** du live, du **titre** ainsi que le **nombre de viewers** dans la popup
+  * ajout de l'uptime du jeu courant dans la popup
+  * ajout de différentes images pour les notifications de l'extension
   * utilisation du stockage local afin d'avoir des options différentes sur des périphériques différents
   * suppression de l'appel à l'API twitch dans la popup
   * optimisation de taille (suppression de librairies inutilisées)
@@ -58,6 +60,8 @@ Une clé API youtube a été crée spécialement pour l'occasion mais peut être
 
 
 L'ensemble du code js modifié (`background.js`, `popup.js`, `options.js`) est commenté afin de faciliter la lecture ainsi que la compréhension. Les autres scripts (html,css) ont subies de légères modifications.
+
+L'ensemble de l'extension est paramétrable depuis le fichier `js/config.js` (message de notification, images...)
 
 Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de version ainsi que le nom de l'extension qui ont été modifiés pour la version de test publiée sur le chrome webstore.
 
