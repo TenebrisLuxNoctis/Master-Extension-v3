@@ -2,26 +2,31 @@
 
 ## A venir 
 
+*Pas de nouvelle version prévue pour le moment*
+
+## Version courante
+
 ### Version 2.6.4
 
-* Correctif notification vidéo
+* Correctif notification des vidéos youtube
 
 ## Anciennes versions
 
-### Version 2.6.3 *(Version courante)*
+### Version 2.6.3
 
 * Correction de l'apparition possible de notifications parasites anciennes lorsqu'une nouvelle notification apparaît
-* Ajout d'une fonctionnalité de désactivation des notifications de changement de jeu lorsque la page twitch du live est active
+* Modification complète de la fonctionnalité de désactivation des notifications de changement de jeu lorsque la page twitch du live est active
 * Ajout du lien de la vidéo au clic sur la notification d'une vidéo youtube
 * Centralisation des variables globales communes dans le fichier `fonctions.js`
 
 ### Version 2.6.2
 
-* Désactivation de l'événement '+25 xP' à la suite de plusieurs soucis d'affichage
+* Mise en place d'un système pour bloquer les notification de jeu lorsque la page du live est active
 
 ### Version 2.6.1
  
 * Correction d'un bug dans la requête aux services web de Twitch
+* Désactivation de l'événement '+25 xP' à la suite de plusieurs soucis d'affichage
 
 ### Version 2.6.0 
 

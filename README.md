@@ -1,7 +1,6 @@
 # Proposition d'amélioration de la Master Extension
 
-Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [chrome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr)
-
+Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [chrome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr) en non répertoriée
 Le code source est disponible ici, dans ce repository
 
 __Note :__ *Ceci est un petit projet sans prétention aucune. Il a été initié en juillet 2017 pour le fun avant tout ! C'est à coup de petites retouches ponctuelles quand j'en ai l'envie que je le mets à jour, et il s'écoule parfois un long moment avant que je n'y retouche* :)
@@ -35,11 +34,11 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 ![Icon Live Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/bariconoff.PNG)
 ![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/bariconon.PNG)
 
-![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notif.PNG)
+![Icon Notification](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notif.PNG)
 
-![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/showcase%20snakou.png)
+![Icon Popup](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/showcase%20snakou.png)
 
-![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/options.png)
+![Icon Options](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/options.png)
 
 ## Documentation
 
@@ -54,21 +53,20 @@ Les deux versions utilisent la clé API twitch de l'extension actuelle.
 Une clé API youtube a été crée spécialement pour l'occasion mais peut être modifiée aisément dans les deux versions.
 
 
-L'ensemble du code js modifié (background.js, popup.js, options.js) est commenté afin de faciliter la lecture ainsi que la compréhension. Les autres scripts (html,css) ont subies de légères modifications.
+L'ensemble du code js modifié (`background.js`, `popup.js`, `options.js`) est commenté afin de faciliter la lecture ainsi que la compréhension. Les autres scripts (html,css) ont subies de légères modifications.
 
-__NOTE__ : L'évènement de la Master Extension pour le Master Game ne s'affiche plus, il faudrait voir à changer la classe CSS pour l'afficher correctement
+Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de version ainsi que le nom de l'extension qui ont été modifiés pour la version de test publiée sur le chrome webstore.
 
 ### Intégration version PHP
 
   * upload les fichiers `php/twitch.php` et `php/youtube.php`
   * reporter l'url du répertoire dans `js/background.js` à la 12e ligne : `domainurl = "PUT_YOUR_DOMAIN_NAME_HERE";`
+  * les clés d'API sont placées dans les fichiers php (un pour contacter les services youtube, l'autre pour atteindre ceux de twitch)
   * Publier l'extension mise à jour
 
 ### Intégration version sans PHP
 
-Cette version ne nécessite aucune manipulation autre que de publier la mise à jour de l'extension
-
-
+Cette version ne nécessite aucune manipulation autre que de publier la mise à jour de l'extension.
 
 La modification des clés d'API se fait depuis le fichier `js/background.js`  aux lignes 16 et 17 :
 ```
