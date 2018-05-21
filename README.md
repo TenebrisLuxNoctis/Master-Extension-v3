@@ -68,17 +68,18 @@ Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de v
 
 ### Intégration version PHP
 
-  * Cette version reprend les fichier de la version Sans PHP à l''exception du fichier `js/background.js`et du dossier `php`
+  * Cette version reprend les fichiers de la version Sans PHP à l'exception du fichier `js/background.js`et du dossier `php`
   * upload les fichiers `php/twitch.php` et `php/youtube.php`
   * reporter l'url du répertoire dans `js/background.js` à la 12e ligne : `domainurl = "PUT_YOUR_DOMAIN_NAME_HERE";`
   * les clés d'API sont placées dans les fichiers php (un pour contacter les services youtube, l'autre pour atteindre ceux de twitch)
+  * Supprimer les clé API dans le fichier `js/config.js` (aux lignes 60 et 61)
   * Publier l'extension mise à jour
 
 ### Intégration version sans PHP
 
 Cette version ne nécessite aucune manipulation autre que de publier la mise à jour de l'extension.
 
-La modification des clés d'API se fait depuis le fichier `js/background.js`  aux lignes 16 et 17 :
+La modification des clés d'API se fait depuis le fichier `js/config.js`  aux lignes 60 et 61 :
 ```
 API_key_twitch = "1low3gl5nz7ep5o6•••••••••••••••••";
 API_key_youtube = "AIzaSyAANw33DQWRi5O•••••••••••••••••";

@@ -5,17 +5,11 @@
 ************************************************/
 
 
-/*	Variables globales
+/*	Variables globales de fonctionnement
 ************************************************/
 
 stream 	= "";						/*Stockage du timestamp du live*/
 game = "";							/*Stockage du jeu joué*/	
-
-Youtube_channel_ID	=	"UCOhP0t6arWMXqmcroJjMJ7A";
-
-/*Clé API*/	
-API_key_twitch = "1low3gl5nz7ep5o6qgj0xtrpd96mszn";
-API_key_youtube = "AIzaSyAANw33DQWRi5OlPqgtRum_oQGWjB_BXdA";
 
 /*Variables utilisées pour détecter le changement de statut du live (on/off)*/						
 off = 0;
@@ -76,11 +70,11 @@ function notifYouTube(title, id, options) {
 	{
 		var opt = {
 			type: "basic",
-			title: channel + " - Nouvelle vidéo YouTube",
+			title: titleYT,
 			message: title,
 			iconUrl: VideoIconUrl
 		}
-		chrome.notifications.create(id+"#YT", opt);
+		chrome.notifications.create(id+"#YT", opt,function(id){});
 		chrome.notifications.onClicked.addListener(function(id){
 			if(id.includes("#YT"))
 			{

@@ -50,11 +50,11 @@ $(function() {
 
 		var socket = io.connect(domain);
 		socket.on('connect', function () {
-			console.log('Connected !');
+			//console.log('Connected !');
 		});
 
 		socket.on('event-launch', function() {
-			console.log('New event !');
+			//console.log('New event !');
 			launch_event();
 		});
 	}, 5000);	
