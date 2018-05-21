@@ -2,7 +2,11 @@
 
 ## A venir 
 
-### Version 2.6.5 *(mardi)*
+*Pas de nouvelle version de prévue pour le moment*
+
+## Version courante
+
+### Version 2.6.5
 
 * Suppression du debug dans la fonctionnalité de changement de jeu
 * Correctif notification changement de jeu (le changement pouvait être détecté plusieurs fois de suite)
@@ -15,13 +19,11 @@
 * Ajout d'une page de configuration de l'extension
 * Ajout du snapcode lors du clic sur le bouton correspondant dans la popup
 
-## Version courante
+## Anciennes versions
 
 ### Version 2.6.4
 
 * Correctif notification des vidéos youtube
-
-## Anciennes versions
 
 ### Version 2.6.3
 
