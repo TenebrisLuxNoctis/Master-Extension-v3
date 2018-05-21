@@ -2,7 +2,9 @@
 
 ## A venir 
 
-*Pas de nouvelle version de prévue pour le moment*
+### Version 2.6.6
+
+* Optimisation du chargemetn de la popup
 
 ## Version courante
 
