@@ -1,8 +1,8 @@
 # Notes de versions
 
-## A venir (mardi)
+## A venir 
 
-### Version 2.6.5
+### Version 2.6.5 *(mardi)*
 
 * Suppression du debug dans la fonctionnalité de changement de jeu
 * Correctif notification changement de jeu (le changement pouvait être détecté plusieurs fois de suite)
