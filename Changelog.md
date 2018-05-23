@@ -5,8 +5,7 @@
 ### Version 2.6.6
 
 * Optimisation du chargement de la popup
-* Correctif rafraîchissement d'image dans la popup (lors du clic sur le code QR puis snapchat)
-* 
+* Correctif rafraîchissement d'image dans la popup (lors du clic sur le code QR puis snapchat) 
 
 ## Version courante
 
