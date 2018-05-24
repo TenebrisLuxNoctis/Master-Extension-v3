@@ -1,7 +1,8 @@
 /************************************************
 *	Page principale qui gère les notifications  *
 * 												*
-*	Dernière modification : mai 2018 			*
+*	Dernière modification : Mai 2018			*
+*					PHP version					*
 ************************************************/
 
 
@@ -21,22 +22,11 @@ oldG = "";
 newG = "";
 lastGameChange 	= null;
 
-/*Paramètres de la notification*/
-title 		= channel + " - Je suis en live !";
-message 	= "Retrouvez moi en live dès maintenant sur ";
-messageG 	= "Je switch sur ";
-notifsound 	= new Audio('../mp3/notification.mp3');
-url 		= "images/icon128.png";
-LiveOn		= "images/LiveOn.png";
-messageLiveOn = channel + " - LIVE!";
-LiveOff 	= "images/icon128.png";
-messageLiveOff = channel;
-
 /*	Fonctions
 *************************************************/
 
 /**
- * Lance la notification à partir des paramètres de l'utilisateur.
+ * Lance la notification de live à partir des paramètres de l'utilisateur.
  * @param {string[]} options tableau contenant les options de l'utilisateur
  */
 function notify(options)
@@ -45,7 +35,13 @@ function notify(options)
 	/*Si l'utilisateur a activé les notifications*/
 	if(options[0] == 1) 
 	{
-		chrome.notifications.create(channel+'notifL', { type: "basic", title: title, message: message+game+" !", iconUrl: url}, function(id) {});
+		chrome.notifications.create(channel+'notifL', { 
+			type: "basic", 
+			title: title, 
+			message: messageLive + game + " !", 
+			iconUrl: LiveIconUrl
+		}, function(id) {});
+
 		chrome.notifications.onClicked.addListener(function(id){
 			if(id== channel+'notifL')
 			{
@@ -56,7 +52,7 @@ function notify(options)
 		/*Si l'utilisateur a activé le son*/
 		if(options[1] == 1)
 		{
-			notifsound.play();
+			new Audio(notifsoundLive).play();
 		}
 	}
 	/*Mise à jour de la barre du navigateur*/
@@ -76,11 +72,11 @@ function notifYouTube(title, id, options) {
 	{
 		var opt = {
 			type: "basic",
-			title: "Nouvelle vidéo YouTube",
+			title: titleYT,
 			message: title,
-			iconUrl: url
+			iconUrl: VideoIconUrl
 		}
-		chrome.notifications.create(id+"#YT", opt);
+		chrome.notifications.create(id+"#YT", opt,function(id){});
 		chrome.notifications.onClicked.addListener(function(id){
 			if(id.includes("#YT"))
 			{
@@ -90,7 +86,7 @@ function notifYouTube(title, id, options) {
 		});
 		if(options[1] == 1)
 		{
-			notifsound.play();
+			new Audio(notifsoundYT).play();
 		}
 	}
 }
@@ -104,9 +100,8 @@ function LaunchNotif()
 		result.notif = setBool(result.notif, 1);		
 		result.song = setBool(result.song, 1);
 
-		if (urls.indexOf(result.baseurl) == -1){
-			result.baseurl = "https://www.twitch.tv/";
-		}
+		result.baseurl = setUrlRedirect(result.baseurl);
+
 		/*On lance la notification*/
 		notify([result.notif, result.song, result.baseurl]);
 	});
@@ -128,6 +123,25 @@ function LaunchNotifYouTube(title, id)
 	});
 }
 
+/**
+ * Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
+ * @param {string} oldG jeu avant changement
+ * @param {string} newJ jeu après changement
+ */
+function DetectGameSwitch(oldJ, newJ)
+{
+	var bool = true;
+
+	if(oldG != "" && newG != "")
+	{
+		if(newG == oldJ && newJ == oldG)
+			bool = false;
+	}
+	oldG = oldJ;
+	newG = newJ;
+	
+	return bool;
+}
 /**
  * Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
  * @param {string} oldG jeu avant changement
@@ -197,7 +211,13 @@ function LaunchGameNotif(opt){
 
 			if(gamechangeeffective == 1)
 			{
-				chrome.notifications.create(channel+'notifG', { type: "basic", title: title, message: messageG+opt[2]+" !", iconUrl: url}, function(id) {});
+				chrome.notifications.create(channel+'notifG', { 
+					type: "basic", 
+					title: title, 
+					message: messageG + opt[2] +" !", 
+					iconUrl: GameIconUrl
+				}, function(id) {});
+
 				chrome.notifications.onClicked.addListener(function(id){
 					if(id==channel+"notifG")
 					{
@@ -207,13 +227,12 @@ function LaunchGameNotif(opt){
 				/*Si l'utilisateur a activé le son*/
 				if(opt[1] == 1)
 				{
-					notifsound.play();
+					new Audio(notifsoundGame).play();
 				}
 			}
 		});
 	}
 }
-
 /*	
 *	check_stream()
 *	Paramètres : /

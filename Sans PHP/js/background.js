@@ -37,7 +37,7 @@ function notify(options)
 			type: "basic", 
 			title: title, 
 			message: messageLive + game + " !", 
-			iconUrl: LiveInconUrl
+			iconUrl: LiveIconUrl
 		}, function(id) {});
 
 		chrome.notifications.onClicked.addListener(function(id){
@@ -50,7 +50,7 @@ function notify(options)
 		/*Si l'utilisateur a activé le son*/
 		if(options[1] == 1)
 		{
-			notifsound.play();
+			new Audio(notifsoundLive).play();
 		}
 	}
 	/*Mise à jour de la barre du navigateur*/
@@ -84,7 +84,7 @@ function notifYouTube(title, id, options) {
 		});
 		if(options[1] == 1)
 		{
-			notifsound.play();
+			new Audio(notifsoundYT).play();
 		}
 	}
 }
@@ -240,7 +240,7 @@ function LaunchGameNotif(opt){
 				/*Si l'utilisateur a activé le son*/
 				if(opt[1] == 1)
 				{
-					notifsound.play();
+					new Audio(notifsoundGame).play();
 				}
 			}
 		});
@@ -286,7 +286,7 @@ function check_stream() {
 				if(off == 5 && live == 1)
 				{
 					/*Mise à jour de la barre du navigateur*/
-					chrome.browserAction.setIcon({path:LiveOff});
+					chrome.browserAction.setIcon({path: LiveOff});
 					chrome.browserAction.setTitle({title : messageLiveOff});
 					live = 0;
 				}	
@@ -356,7 +356,7 @@ setInterval(checkNewVideos,60000);
 checkNewVideos();
 
 /*On réinitialise l'icône dans la barre du navigateur*/
-chrome.browserAction.setIcon({path:LiveOff});
+chrome.browserAction.setIcon({path: LiveOff});
 
 /*Fonctions présentes de base qui permettent de récupérer le pseudo twitch de l'utilisateur*/
 var change_username = (username, callback) => {

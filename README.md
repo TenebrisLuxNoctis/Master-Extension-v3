@@ -79,7 +79,7 @@ Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de v
 
 Cette version ne nécessite aucune manipulation autre que de publier la mise à jour de l'extension.
 
-La modification des clés d'API se fait depuis le fichier `js/config.js`  aux lignes 60 et 61 :
+La modification des clés d'API se fait depuis le fichier `js/config.js`  aux lignes 80 et 81 :
 ```
 API_key_twitch = "1low3gl5nz7ep5o6•••••••••••••••••";
 API_key_youtube = "AIzaSyAANw33DQWRi5O•••••••••••••••••";
@@ -90,7 +90,6 @@ API_key_youtube = "AIzaSyAANw33DQWRi5O••••••••••••••
 La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher.
 
   * Réparer l'event de lancement du live (+25xp) (il faudrait chercher la nouvelle classe css à cibler (peut être `chat-resub-notification` ?))
-  * Modifier le son en fonction de la notification (vidéo/live/changement de jeu)
   * ...
 
 ## Support
