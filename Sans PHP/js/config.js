@@ -44,7 +44,7 @@ VideoIconUrl	    = "/images/omg.png";
 notifsoundYT 		= "../mp3/youtube.mp3";
 
 //Notification de changement d'options
-titleOptions	    = channel + " - Changements effectués !";
+titleOptions	    = channel + " - Enregistré !";
 messageOptions	    = "Vos changements d'options ont bien été pris en compte !";
 OptionsIconUrl	    = "/images/kc.png";
 
