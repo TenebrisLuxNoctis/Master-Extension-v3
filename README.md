@@ -11,27 +11,30 @@ __Note :__ *Ceci est un petit projet sans prétention aucune. Il a été initié
 ### Nouvelles fonctionnalités
 
 Ma proposition regroupe plusieurs nouvelles fonctionalités :
-  * affichage du jeu actuel dans la notification du navigateur et dans la popup 
-  * changement de l'icône dans la barre du navigateur quand le stream est lancé 
-  * meilleure **gestion des onglets** (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau) pour les liens de la popup
+* affichage du jeu actuel dans la notification du navigateur et dans la popup 
+* changement de l'icône dans la barre du navigateur quand le live est lancé 
+* Popup :
   * ajout d'une liste de liens vers les réseaux sociaux dans la popup 
+  * meilleure **gestion des onglets** (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau lors du clic sur un lien)
+  * ajout d'un QRcode pour rejoindre la page twitch directement
+  * ajout du snapcode lors du clic sur le bouton correspondant dans la popup
+  * ajout de l'**uptime** du live, du **titre** ainsi que le **nombre de viewers**
+  * ajout de l'uptime du jeu courant
+  * suppression de l'appel à l'API twitch (optimisation)
+* Notifications :
   * ajout d'une notification lors d'un **changement de jeu** *(paramétrable)*
     * La notification est désactivée lorsque la page twitch est active
   * ajout d'une notification lorsqu'une nouvelle **vidéo** youtube sort *(paramétrable)*
     * Le clic sur la notification ouvre directement la page de la vidéo
-  * ajout d'une page d'**options** qui permet de :
-    * désactiver les notifications 
-    * désactiver le son des notifications 
-    * modifier le site vers lequel redirige le lien de la chaîne twitch
-  * ajout d'un QRcode pour rejoindre la page twitch directement depuis la popup
-  * ajout du snapcode lors du clic sur le bouton correspondant dans la popup
-  * ajout de l'**uptime** du live, du **titre** ainsi que le **nombre de viewers** dans la popup
-  * ajout de l'uptime du jeu courant dans la popup
+  * chaque notification est affectée à un son différent
   * ajout d'images pour les différentes notifications de l'extension
-  * utilisation du stockage local afin d'avoir des options différentes sur des périphériques différents
-  * suppression de l'appel à l'API twitch dans la popup
-  * optimisation de taille (suppression de librairies inutilisées)
-  * possibilité de cacher la clé twitch dans l'extension (cf la partie [Documentation](/README.md#documentation)) 
+* ajout d'une page d'**options** qui permet de :
+  * désactiver les notifications 
+  * désactiver le son des notifications 
+  * modifier le site vers lequel redirige le lien de la chaîne twitch
+* utilisation du stockage local afin d'avoir des options différentes sur des périphériques différents
+* optimisation de taille (suppression de librairies inutilisées)
+* possibilité de cacher la clé twitch dans l'extension (cf la partie [Documentation](/README.md#documentation)) 
 
 ### Images tirées de l'extension
 
