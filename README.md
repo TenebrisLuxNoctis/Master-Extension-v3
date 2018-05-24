@@ -35,8 +35,7 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 
 ### Images tirées de l'extension
 
-![Icon Live Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/bariconoff.PNG)
-![Icon Live On](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/bariconon.PNG)
+![Icon Live On/Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/barrenavigateur.PNG)
 
 ![Icon Notification](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notif.PNG)
 ![Icon Notification youtube](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifyt.png)
