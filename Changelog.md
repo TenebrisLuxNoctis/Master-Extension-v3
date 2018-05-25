@@ -2,7 +2,9 @@
 
 ## A venir 
 
-*Pas de nouvelle version prévue*
+### Version 2.6.7
+
+* Modifications design de la page d'options
 
 ## Version courante
 
