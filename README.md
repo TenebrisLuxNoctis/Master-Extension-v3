@@ -13,7 +13,7 @@ __Note :__ *Ceci est un petit projet sans prétention aucune. Il a été initié
 Ma proposition regroupe plusieurs nouvelles fonctionalités :
 * affichage du jeu actuel dans la notification du navigateur et dans la popup 
 * changement de l'icône dans la barre du navigateur quand le live est lancé 
-* Popup :
+* **Popup** :
   * ajout d'une liste de liens vers les réseaux sociaux dans la popup 
   * meilleure **gestion des onglets** (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau lors du clic sur un lien)
   * ajout d'un QRcode pour rejoindre la page twitch directement
@@ -21,7 +21,7 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
   * ajout de l'**uptime** du live, du **titre** ainsi que le **nombre de viewers**
   * ajout de l'uptime du jeu courant
   * suppression de l'appel à l'API twitch (optimisation)
-* Notifications :
+* **Notifications** :
   * ajout d'une notification lors d'un **changement de jeu** *(paramétrable)*
     * La notification est désactivée lorsque la page twitch est active
   * ajout d'une notification lorsqu'une nouvelle **vidéo** youtube sort *(paramétrable)*
@@ -38,8 +38,7 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 
 ### Images tirées de l'extension
 
-![Icon Live On/Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/barrenavigateur.PNG)
-
+![Icon Live On/Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/barrenavigateur.png)
 ![Icon Notification](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notif.PNG)
 ![Icon Notification youtube](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifyt.png)
 ![Icon Notification game](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifGame.PNG)
