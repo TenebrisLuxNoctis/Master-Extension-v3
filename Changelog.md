@@ -1,10 +1,13 @@
 # Notes de versions
 
+Un grand merci à toutes les personnes qui m'aident à tester cette extension, qui me font remonter les bugs et qui me fournissent des idées pour avancer ! Vraiment, merci :)
+
 ## A venir 
 
 ### Version 2.6.7
 
-* Modifications design de la page d'options
+* Modifications du design de la page d'options
+* Remplacement de l'icône des clips par celle de twitch (pour faciliter la compréhension)
 
 ## Version courante
 
