@@ -82,12 +82,12 @@ td{
 }
 		
 #uptime{
-	color: #298A08;
+	color: #33ad0a;
 }
 
 #title{
 	display : block;
-	color: #009c89;
+	color: #03c7af;
 	line-height: 17px;
 	font-size: 14px;
 	margin-top: 5px;
@@ -118,4 +118,29 @@ td{
 	position: relative; 
 	top: 0px; 
 	left: 0px;
+}
+
+
+#icon_clips{
+	fill: white;
+	width: 30px;
+	height: 50px;
+}
+
+#icon_clips:hover{
+	fill: #00c8aa;
+}
+
+#live-icon{
+  background-color: red;
+  color: white;
+  border-radius: 10%;
+  padding: 2px 5px 2px;
+  margin-right : 5px;
+}
+
+#viewersCount{
+	position: absolute;
+  margin: 5px;
+  font-size: 0.8em;
 }

@@ -1,8 +1,14 @@
 # Notes de versions
 
+Un grand merci à toutes les personnes qui m'aident à tester cette extension, qui me font remonter les bugs et qui me fournissent des idées pour avancer ! Vraiment, merci :)
+
 ## A venir 
 
-*Pas de nouvelle version prévue*
+### Version 2.6.7 (lundi)
+
+* Modifications du design des pages d'options et popup
+* Remplacement de l'icône des clips par celle de twitch (pour faciliter la compréhension)
+* Suppression du code QR (jugé inutile), remplacé par l'adresse du TeamSpeak
 
 ## Version courante
 

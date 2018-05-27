@@ -9,7 +9,7 @@
 *************************************************/
 
 /**
- * Désactive ou non les boutons son passés en paramètres
+ * Désactive ou non les boutons 'son' passés en paramètres
  * @param {string} elem1 élément jquery (classe ou id CSS)
  * @param {string} elem2 élément jquery (classe ou id CSS)
  * @param {boolean} bool booléen état des éléments
@@ -18,10 +18,15 @@ function disableIt(elem1, elem2, bool)
 {
 	$(elem1).prop('disabled', bool);
 	$(elem2).prop('disabled', bool);
-	if(bool)
+	if(bool){
 		$(elem1).children('label').addClass('disable');
-	else
+		$(elem1).children('label').children('.fa').addClass('disable');
+	}
+	else{
 		$(elem1).children('label').removeClass('disable');
+		$(elem1).children('label').children('.fa').removeClass('disable');
+	}
+		
 }
 
 /**
@@ -51,7 +56,7 @@ function manageCheckbox(elem, oldclass, newclass, deactivate, activate, checked,
 		$(elem).children('label').removeClass(oldclass).addClass(newclass);
 		$(elem).children('label').children('i').removeClass(deactivate).addClass(activate);
 		$(elem).children('label').children(':checkbox').prop('checked', checked);
-		if(texte){$(elem).children('label').children('span').text(texte);}
+		//if(texte){$(elem).children('label').children('span').text(texte);}
 		
 		checkAble();
 }
@@ -63,10 +68,10 @@ function manageCheckbox(elem, oldclass, newclass, deactivate, activate, checked,
  */
 function checkIt(elem, bool)
 {
-	if(bool && $(elem).children('label').hasClass('btn-danger')){
+	if(bool && $(elem).children('label').hasClass('inactive')){
 		$(elem).get(0).click();
 	}	
-	else if(!bool && $(elem).children('label').hasClass('btn-success')){
+	else if(!bool && $(elem).children('label').hasClass('active')){
 		$(elem).get(0).click();
 	}
 }
@@ -158,13 +163,13 @@ $(document).on('click', '#quit-tab',function(){
 $(document).on('click', '.trigger', function(e){
 	e.preventDefault();
 	
-	var deactivated = 'fa-warning';
-	var activated = 'fa-check';
+	var deactivated = '';
+	var activated = '';
 	var texte = "";
 	
 if(!$(this).prop('disabled'))
 {
-  if($(this).children('label').hasClass('btn-danger'))
+  if($(this).children('label').hasClass('inactive'))
     {
 		texte = "Activé";
 		if($(this).hasClass('mute'))
@@ -173,7 +178,7 @@ if(!$(this).prop('disabled'))
 			activated = 'fa-volume-up';
 			texte = null;
 		}
-		manageCheckbox($(this), 'btn-danger', 'btn-success', deactivated, activated, true, texte);
+		manageCheckbox($(this), 'inactive', 'active', deactivated, activated, true, texte);
     }
     else
       {
@@ -184,7 +189,7 @@ if(!$(this).prop('disabled'))
 			activated = 'fa-volume-up';
 			texte = null;
 		}
-        manageCheckbox($(this), 'btn-success', 'btn-danger', activated, deactivated, false, texte);
+        manageCheckbox($(this), 'active', 'inactive', activated, deactivated, false, texte);
       }
 }
 });

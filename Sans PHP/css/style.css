@@ -84,11 +84,6 @@ table {
 	margin-bottom : 10px;
 }
 
-#viewersCount{
-	position: absolute;
-    margin: 5px;
-}
-
 .opacity1{
 	opacity: 1!important;
 }
@@ -428,8 +423,8 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 }
 
 h1 {
-  font-size: 40px;
-  font-family: Montserrat, "Helvetica Neue", "Lucida Grande", Arial, Verdana, sans-serif;
+  font-size: 20px;
+  font-family: Arial, Verdana, sans-serif;
   font-weight: 700;
 }
 
@@ -694,7 +689,7 @@ sup {
   position: absolute;
   left: 10%;
   top: 5%;
-  max-width: 250px;
+  max-width: 188px;
 }
 
 #left-side {

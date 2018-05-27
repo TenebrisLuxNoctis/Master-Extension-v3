@@ -16,7 +16,6 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 * **Popup** :
   * ajout d'une liste de liens vers les réseaux sociaux dans la popup 
   * meilleure **gestion des onglets** (si il n'est pas occupé on l'utilise au lieu d'en ouvrir un nouveau lors du clic sur un lien)
-  * ajout d'un QRcode pour rejoindre la page twitch directement
   * ajout du snapcode lors du clic sur le bouton correspondant dans la popup
   * ajout de l'**uptime** du live, du **titre** ainsi que le **nombre de viewers**
   * ajout de l'uptime du jeu courant
@@ -39,6 +38,7 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 ### Images tirées de l'extension
 
 ![Icon Live On/Off](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/barrenavigateur.png)
+
 ![Icon Notification](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notif.PNG)
 ![Icon Notification youtube](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifyt.png)
 ![Icon Notification game](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/notifGame.PNG)

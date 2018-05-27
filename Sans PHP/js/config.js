@@ -54,7 +54,6 @@ OptionsIconUrl	    = "/images/kc.png";
  */
 
 //Message de statut 'En live'
-LiveText            = "Je suis actuellement en live!";
 ViewersText         = " viewers";
 SnapText            = "Mon snap : mastersnakou";
 GameToolTip         = "En live sur ";

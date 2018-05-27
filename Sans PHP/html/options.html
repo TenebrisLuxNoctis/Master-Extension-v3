@@ -31,75 +31,57 @@
 			<!-- Logo -->
 			<img src="../images/icon128.png" alt="" class="brand-logo mCS_img_loaded">
 			<div class="content">
-				<h1>Options de la Master Extension</h1>
+				<h1 id="titleOptions">Options de la Master Extension</h1>
+				<hr id="separator"/>
 				<br/>	
 			
 				<form id="options-form" class="form-signin">
-					<table class="table">
-						<tr>
-							<td class="etiquette">
-								Notification de live
-							</td>
-							<td>
+							<div class="flex-container">
+								<div class="labelNotif">Notification de live</div>
 								<div id="notifL" class="trigger" data-toggle="buttons">
-									<label class="btn btn-lg btn-success">
-										<input type="checkbox" name="options" id="notifLC" autocomplete="off" checked />
-										<i class="fa fa-check"></i> <span>Activé</span>
-									</label>          
+									<label class="switch active">
+										<input type="checkbox" name="options" id="notifLC" checked>
+										<span class="slider round"></span>
+									</label>         
 								</div>
-							</td>
-							<td>
 								<div id="songL" class="trigger mute" data-toggle="buttons">
-									<label class="btn btn-lg btn-success">
+									<label class="song btn btn-lg active">
 										<input type="checkbox" name="options" id="songLC" autocomplete="off" checked />
 										<i class="fa fa-volume-up"></i>
 									</label>          
 								</div>
-							</td>
-						</tr>
-						<tr>
-							<td class="etiquette">
-								Notification de changement de jeu
-							</td>
-							<td>
-								<div id="notifG" class="trigger" data-toggle="buttons">
-									<label class="btn btn-lg btn-danger">
-										<input type="checkbox" name="options" id="notifGC" autocomplete="off">
-										<i class="fa fa-warning"></i> <span>Désactivé</span>
-									</label>							
-								</div>
-							</td>
-							<td>
-								<div id="songG" class="trigger mute" data-toggle="buttons">
-									<label class="btn btn-lg btn-danger">
-										<input type="checkbox" name="options" id="songGC" autocomplete="off"/>
-										<i class="fa fa-volume-off"></i>
-									</label>          
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td class="etiquette">
-								Notification de vidéo (youtube)
-							</td>
-							<td>
-								<div id="notifV" class="trigger" data-toggle="buttons">
-									<label class="btn btn-lg btn-success">
-										<input type="checkbox" name="options" id="notifVC" autocomplete="off" checked />
-										<i class="fa fa-check"></i> <span>Activé</span>
-									</label>          
-								</div>
-							</td>
-							<td>
-								<div id="songV" class="trigger mute" data-toggle="buttons">
-									<label class="btn btn-lg btn-success">
-										<input type="checkbox" name="options" id="songVC" autocomplete="off" checked />
-										<i class="fa fa-volume-up"></i>
-									</label>          
-								</div>
-							</td>
-						</tr>
-					</table>
+							</div>
+							<div class="flex-container">
+									<div class="labelNotif">Notification de changement de jeu</div>
+									<div id="notifG" class="trigger" data-toggle="buttons">
+										<label class="switch inactive">
+											<input type="checkbox" name="options" id="notifGC">
+											<span class="slider round"></span>
+										</label>						
+									</div>
+									<div id="songG" class="trigger mute" data-toggle="buttons">
+										<label class="song btn btn-lg mute">
+											<input type="checkbox" name="options" id="songGC" autocomplete="off"/>
+											<i class="fa fa-volume-off"></i>
+										</label>          
+									</div>
+							</div>
+							<div class="flex-container">
+									<div class="labelNotif">Notification de vidéo (youtube)</div>
+									<div id="notifV" class="trigger" data-toggle="buttons">
+										<label class="switch active">
+											<input type="checkbox" name="options" id="notifVC" checked>
+											<span class="slider round"></span>
+										</label>      
+									</div>
+									<div id="songV" class="trigger mute" data-toggle="buttons">
+										<label class="song btn btn-lg active">
+											<input type="checkbox" name="options" id="songVC" autocomplete="off" checked />
+											<i class="fa fa-volume-up"></i>
+										</label>          
+									</div>
+							</div>
+						
 					<label for="baseurl">Site web utilisé pour les redirections vers le live : </label>
 					<select class="form-control width35" name="baseurl" id="baseurl">
 						<option value="https://www.twitch.tv/">Twitch</option>

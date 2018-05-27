@@ -11,7 +11,6 @@
 domain = "https://game.mastersnakou.fr";
 
 img = null;
-qrcode = false;
 snap = false;
 live = 0;
 
@@ -118,10 +117,9 @@ $(document).ready(function(){
 			/*On modifie l'image de la popup*/
 			$('#brand-logo-channel').attr("src", LiveIconUrlPopup);
 			/*On change le texte de la popup*/
-			$('#live').html(LiveText);
+			$('#live').empty();
 			$('#live').css('color', '#CF0202');
-			$('#viewersCount').html("🔴 "+result.viewers + ViewersText);
-			
+			$('#viewersCount').html('<span id="live-icon">Live</span>'+result.viewers + ViewersText);
 			var uptimeText = uptime(result.time);
 			$('#uptime').text(uptimeText);
 			$('#title').text(result.title);
@@ -168,27 +166,6 @@ $(document).ready(function(){
 
 /*	Détection des évènements "click"
 *************************************************/
-
-/*Lors du clic sur le logo "QRCode"*/
-$(document).on('click', '#qrcode',function(){
-
-	//Variables de statut
-	qrcode = !qrcode;
-	snap = false;
-
-	if(qrcode)
-	{
-		/*On affiche le qrcode*/
-		$('#brand-logo-channel').attr("src", QRCodeUrl);
-		$('#brand-logo-channel').css('z-index', 11);
-	}
-	else
-	{
-		/*On affiche le logo de l'extension*/
-		$('#brand-logo-channel').attr("src", img);
-		$('#brand-logo-channel').css('z-index', 1);
-	}
-});
 
 /*Lors du clic sur le logo "snapchat"*/
 $(document).on('click', '#snapchat',function(){
