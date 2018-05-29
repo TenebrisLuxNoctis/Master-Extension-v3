@@ -49,14 +49,12 @@ function checkAble()
  * @param {string} deactivate élément jquery (classe ou id CSS)
  * @param {string} activate élément jquery (classe ou id CSS)
  * @param {boolean} checked booléen état des éléments
- * @param {boolean} texte booléen état des éléments
  */
-function manageCheckbox(elem, oldclass, newclass, deactivate, activate, checked, texte)
+function manageCheckbox(elem, oldclass, newclass, deactivate, activate, checked)
 {
 		$(elem).children('label').removeClass(oldclass).addClass(newclass);
 		$(elem).children('label').children('i').removeClass(deactivate).addClass(activate);
 		$(elem).children('label').children(':checkbox').prop('checked', checked);
-		//if(texte){$(elem).children('label').children('span').text(texte);}
 		
 		checkAble();
 }
@@ -96,10 +94,10 @@ function restaurerLesOptions()
 		checkIt($('#songG'), (result.songGame==1));
 		
 		result.youtubenotif = setBool(result.youtubenotif, 1);
-		checkIt($('#songG'), (result.youtubenotif==1));
+		checkIt($('#songV'), (result.youtubenotif==1));
 		
 		result.songyt = setBool(result.songyt, 1);
-		checkIt($('#songG'), (result.songyt==1));
+		checkIt($('#songV'), (result.songyt==1));
 		
 		result.baseurl = setUrlRedirect(result.baseurl);
 
@@ -165,31 +163,26 @@ $(document).on('click', '.trigger', function(e){
 	
 	var deactivated = '';
 	var activated = '';
-	var texte = "";
 	
 if(!$(this).prop('disabled'))
 {
   if($(this).children('label').hasClass('inactive'))
     {
-		texte = "Activé";
 		if($(this).hasClass('mute'))
 		{
 			deactivated = 'fa-volume-off';
 			activated = 'fa-volume-up';
-			texte = null;
 		}
-		manageCheckbox($(this), 'inactive', 'active', deactivated, activated, true, texte);
+		manageCheckbox($(this), 'inactive', 'active', deactivated, activated, true);
     }
     else
       {
-		texte = "Désactivé";
 		if($(this).hasClass('mute'))
 		{
 			deactivated = 'fa-volume-off';
 			activated = 'fa-volume-up';
-			texte = null;
 		}
-        manageCheckbox($(this), 'active', 'inactive', activated, deactivated, false, texte);
+        manageCheckbox($(this), 'active', 'inactive', activated, deactivated, false);
       }
 }
 });

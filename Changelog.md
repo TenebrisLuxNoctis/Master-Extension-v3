@@ -4,7 +4,7 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-### Version 2.6.8
+### Version 2.6.8 (mercredi)
 
 * Correctifs :
    * Correction d'un bug dans les options

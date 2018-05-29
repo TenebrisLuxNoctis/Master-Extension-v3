@@ -12,6 +12,7 @@ domain = "https://game.mastersnakou.fr";
 
 img = null;
 snap = false;
+ts = false;
 live = 0;
 
 $.ajaxSetup({
@@ -185,8 +186,14 @@ $(document).on('click', '#snapchat',function(){
 		/*On affiche le logo de l'extension*/
 		$('#brand-logo-channel').attr("src", img);
 		/*on affiche un autre message*/
-		$('#live').html((live? LiveText: "")).show();
+		$('#live').html("").show();
 	}
+});
+
+/*Lors du clic sur le logo "teamspeak"*/
+$(document).on('click', '#ts',function(){
+	ts = !ts;
+	$('#live').html(ts? TsTest : "").show();
 });
 
 /*Lors du clic sur les liens, on utilise les onglets intelligemment*/

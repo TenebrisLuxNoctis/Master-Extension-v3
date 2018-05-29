@@ -53,9 +53,10 @@ OptionsIconUrl	    = "/images/kc.png";
  * Configuration popup
  */
 
-//Message de statut 'En live'
+//Messages
 ViewersText         = " viewers";
 SnapText            = "Mon snap : mastersnakou";
+TsTest              = "TeamSpeak : barbus.mastersnakou.fr";
 GameToolTip         = "En live sur ";
 
 //Images de la popup

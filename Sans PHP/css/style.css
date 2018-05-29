@@ -707,10 +707,11 @@ sup {
 }
 #left-side .content {
   position: absolute;
+  /* position: relative; */
   z-index: 0;
   left: 0;
   padding: 0;
-  top: 50vh;
+  top: 55vh;
   width: 100%;
   padding: 0 10%;
   -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
@@ -1901,6 +1902,68 @@ footer p {
 
 .videoyt {
     min-height: 300px;
+    padding-bottom: 20px;
+    width: 96%;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+}
+
+@media only screen and (max-height: 760){
+  #left-side {
+
+  }
+  #left-side .content {
+    padding: 0 3%;
+  }
+  #left-side.minimal-phone {
+    height: 100vh;
+  }
+
+  h1.text-intro {
+    font-size: 30px;
+  }
+
+  h2.text-intro {
+    font-size: 18px;
+  }
+
+  .light-btn {
+    max-width: 80%;
+    min-width: 70%;
+  }
+
+  .action-btn {
+    max-width: 70%;
+    min-width: 70%;
+  }
+
+  .dialog__content {
+    width: 95%;
+    max-width: 95%;
+    min-width: 75%;
+  }
+
+  .dialog .close-newsletter {
+    top: 2px;
+    right: 5px;
+  }
+  .dialog .dialog-inner {
+    padding: 40px 20px 50px;
+  }
+  .dialog .dialog-inner h4 {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+
+  #subscribe .block-message {
+    padding: 5px 2px;
+  }
+  #subscribe p.notify-valid {
+    font-size: 12px;
+  }
+    .videoyt {
+    min-height: 200px;
     padding-bottom: 20px;
     width: 96%;
     margin-right: 2%;
