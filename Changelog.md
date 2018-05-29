@@ -6,7 +6,10 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ### Version 2.6.8
 
-* Correctifs *(détails à venir)*
+* Correctifs :
+   * Correction d'un bug dans les options
+   * Ajout d'un texte plutôt que d'un lien pour le TeamSpeak
+   * Améliorations du design responsive de la page d'options (adaptabilité aux écrans de toute taille)
 
 ## Version courante
 
@@ -15,6 +18,9 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 * Modifications du design des pages d'options et popup
 * Remplacement de l'icône des clips par celle de twitch (pour faciliter la compréhension)
 * Suppression du code QR (jugé inutile), remplacé par l'adresse du TeamSpeak
+
+## Anciennes versions
+
 
 ### Version 2.6.6
 
@@ -34,8 +40,6 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
     * Changement options    - masterKC
 * Ajout d'une page de configuration de l'extension
 * Ajout du snapcode lors du clic sur le bouton correspondant dans la popup
-
-## Anciennes versions
 
 ### Version 2.6.4
 
