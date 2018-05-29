@@ -233,12 +233,10 @@ function LaunchGameNotif(opt){
 		});
 	}
 }
-/*	
-*	check_stream()
-*	Paramètres : /
+
+/**	
 *	Teste le statut du stream et appelle LaunchNotif() si besoin
 */
-
 function check_stream() {
 	/*Initialisation de la requête*/
 	var xmlhttp = new XMLHttpRequest();
@@ -250,12 +248,14 @@ function check_stream() {
 			data= data.split(',');
 
 			created_at = data[0];
-			game = (data[1] != "error") ? data[1] : "";
+			game_tmp = (data[1] != "error") ? data[1] : "";
 			var viewers = (data[2] != "error") ? data[2] : "";
 			var title = (data[3] != "error") ? data[3] : "";
 
 			/*Si le live est lancé*/
 			if (created_at != "offline" && created_at != "error") {
+				manageGameNotif(game, game_tmp);
+				game = game_tmp;
 				if (created_at != stream) {
 					/*Sauvegarde du timestamp afin de ne pas relancer la notification*/
 					stream = created_at;
@@ -271,7 +271,7 @@ function check_stream() {
 			}
 			else if (created_at == "offline") {
 				/*L'API twitch renvoyant des erreurs assez fréquemment, la détection du statut OFF se fait au bout de 2 retours négatifs de l'API*/
-				if (off == 2 && live == 1) {
+				if (off == 5 && live == 1) {
 					/*Mise à jour de la barre du navigateur*/
 					chrome.browserAction.setIcon({ path: LiveOff });
 					chrome.browserAction.setTitle({ title: messageLiveOff });
@@ -292,6 +292,9 @@ function check_stream() {
 	xmlhttp.send();
 }
 
+/**
+ * Teste le statut des vidéos youtube et lance des notifications si besoin
+ */
 function checkNewVideos() {
 	/*Initialisation de la requête*/
 	var xmlhttp = new XMLHttpRequest();
