@@ -4,23 +4,25 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-### Version 2.6.8 (mercredi)
+*pas de nouvelle version prévue*
+
+## Version courante
+
+### Version 2.6.8
 
 * Correctifs :
    * Correction d'un bug dans les options
    * Ajout d'un texte plutôt que d'un lien pour le TeamSpeak
    * Améliorations du design responsive de la page d'options (adaptabilité aux écrans de toute taille)
 
-## Version courante
+
+## Anciennes versions
 
 ### Version 2.6.7
 
 * Modifications du design des pages d'options et popup
 * Remplacement de l'icône des clips par celle de twitch (pour faciliter la compréhension)
 * Suppression du code QR (jugé inutile), remplacé par l'adresse du TeamSpeak
-
-## Anciennes versions
-
 
 ### Version 2.6.6
 
