@@ -4,7 +4,11 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-*pas de nouvelle version prévue*
+### Version 2.6.9
+
+* Correctif d'un bug d'affichage lors du clic successif sur le bouton ts et le bouton snap
+* Correctif d'un bug d'affichage de l'uptime du jeu courant
+* Design de la page d'options
 
 ## Version courante
 

@@ -67,6 +67,27 @@ function manageTabs(elem)
 	});
 }
 
+/**
+ * Affiche ou non le snap code
+ */
+function toggleSnap()
+{
+	if(snap)
+	{
+		/*on affiche le texte*/
+		$('#live').html(SnapText).show();
+		/*On affiche le snapcode*/
+		$('#brand-logo-channel').attr("src", SnapCodeUrl);
+	}
+	else
+	{
+		/*On affiche le logo de l'extension*/
+		$('#brand-logo-channel').attr("src", img);
+		/*on affiche un autre message*/
+		$('#live').html("").show();
+	}
+}
+
 /*	Programme principal
 *************************************************/
 
@@ -78,10 +99,6 @@ $(document).ready(function(){
 		live = setBool(result.living, 0);	
 	
 		result.baseurl = setUrlRedirect(result.baseurl);
-		
-		if(result.lastGameChange != null){
-			$("#game_uptime").text(uptime(result.lastGameChange, "Depuis : "));
-		}
 	
 		$("#channel_link").attr("href", result.baseurl + channel);
 		$("#game_link").attr("href", result.baseurl + channel);
@@ -110,6 +127,10 @@ $(document).ready(function(){
 		}
 		else /*Si le live est lancé*/
 		{
+			if(result.lastGameChange != null){
+				$("#game_uptime").text(uptime(result.lastGameChange, "Depuis : "));
+			}
+			
 			/*On ajoute l'image du jeu*/
 			$('#game-logo').attr("src", "https://static-cdn.jtvnw.net/ttv-boxart/"+ (result.game).replace(/ /g, "%20") +"-96x144.jpg");
 			$('#game-logo').attr("alt", result.game);
@@ -172,28 +193,18 @@ $(document).ready(function(){
 $(document).on('click', '#snapchat',function(){
 	//Variables de statut
 	snap = !snap;
-	qrcode = false;
+	ts = false;
 
-	if(snap)
-	{
-		/*on affiche le texte*/
-		$('#live').html(SnapText).show();
-		/*On affiche le snapcode*/
-		$('#brand-logo-channel').attr("src", SnapCodeUrl);
-	}
-	else
-	{
-		/*On affiche le logo de l'extension*/
-		$('#brand-logo-channel').attr("src", img);
-		/*on affiche un autre message*/
-		$('#live').html("").show();
-	}
+	toggleSnap();
 });
 
 /*Lors du clic sur le logo "teamspeak"*/
 $(document).on('click', '#ts',function(){
 	ts = !ts;
-	$('#live').html(ts? TsTest : "").show();
+	toggleSnap();
+	snap = false
+
+	$('#live').html(ts? TsText : "").show();
 });
 
 /*Lors du clic sur les liens, on utilise les onglets intelligemment*/
@@ -201,3 +212,4 @@ $(document).on('click', '.redirect', function(event){
 	event.preventDefault();
 	manageTabs($(this));
 });
+

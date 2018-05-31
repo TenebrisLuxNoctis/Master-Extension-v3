@@ -26,5 +26,5 @@
    "name": "Master Sans Cou",
    "permissions": [ "storage", "notifications", "tabs", "http://*/*", "https://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "2.6.8"
+   "version": "2.6.9"
 }
