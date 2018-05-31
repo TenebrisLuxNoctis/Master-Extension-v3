@@ -4,7 +4,7 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-### Version 2.6.9
+### Version 2.6.9 (vendredi)
 
 * Correctif d'un bug d'affichage lors du clic successif sur le bouton ts et le bouton snap
 * Correctif d'un bug d'affichage de l'uptime du jeu courant
@@ -12,7 +12,7 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## Version courante
 
-### Version 2.6.8 (vendredi)
+### Version 2.6.8
 
 * Correctifs :
    * Correction d'un bug dans les options
