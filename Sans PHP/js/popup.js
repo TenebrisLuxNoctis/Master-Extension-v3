@@ -201,9 +201,10 @@ $(document).on('click', '#snapchat',function(){
 /*Lors du clic sur le logo "teamspeak"*/
 $(document).on('click', '#ts',function(){
 	ts = !ts;
-	toggleSnap();
 	snap = false
 
+	toggleSnap();
+	
 	$('#live').html(ts? TsText : "").show();
 });
 

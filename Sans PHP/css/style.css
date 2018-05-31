@@ -207,9 +207,9 @@ video{
 	text-align : center;
 }
 
-html,body{         /* Change width and height to own preferences */
-            width: 350px!important;
-            height: 450px!important;
+.popup {         /* Change width and height to own preferences */
+             width: 350px!important; 
+             height: 450px!important; 
  }
 @-webkit-keyframes spin-1 {
   0% {
