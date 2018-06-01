@@ -4,13 +4,17 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-### Version 2.6.9 (vendredi)
+*pas de nouvelle version prévue*
+
+## Version courante
+
+### Version 2.6.9
 
 * Correctif d'un bug d'affichage lors du clic successif sur le bouton ts et le bouton snap
 * Correctif d'un bug d'affichage de l'uptime du jeu courant
 * Design de la page d'options responsive (utilisation de grid CSS)
 
-## Version courante
+## Anciennes versions
 
 ### Version 2.6.8
 
@@ -18,9 +22,6 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
    * Correction d'un bug dans les options
    * Ajout d'un texte plutôt que d'un lien pour le TeamSpeak
    * Améliorations du design responsive de la page d'options (adaptabilité aux écrans de toute taille)
-
-
-## Anciennes versions
 
 ### Version 2.6.7
 
