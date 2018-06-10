@@ -4,12 +4,14 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
+*Pas de nouvelle version prévue*
+
+## Version courante
+
 ### Version 2.7.0
 
 * Meilleure gestion des onglets au clic sur les notifications
 * Ajout de liens de feedback pour l'équipe de testeurs dans la page d'options
-
-## Version courante
 
 ### Version 2.6.9
 
