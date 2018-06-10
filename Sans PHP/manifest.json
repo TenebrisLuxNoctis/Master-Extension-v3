@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": [ "js/config.js", "js/fonctions.js", "js/background.js" ]
+      "scripts": [ "js/config.js", "libs/jquery/dist/jquery.min.js", "js/fonctions.js", "js/background.js" ]
    },
    "browser_action": {
       "default_icon": "images/icon128.png",
@@ -26,5 +26,5 @@
    "name": "Master Sans Cou",
    "permissions": [ "storage", "notifications", "tabs", "http://*/*", "https://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "2.6.9"
+   "version": "2.7.0"
 }

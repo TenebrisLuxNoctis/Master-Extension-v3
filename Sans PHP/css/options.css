@@ -102,6 +102,21 @@ label
 	width: 50%;
 }
 
+#support{
+	grid-column-start: 3;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 3;
+}
+
+#support a {
+	color: #53aefb;
+}
+
+#support a:hover {
+	color: #f1b868;
+}
+
 /**
 *here is css code for switch
 */

@@ -43,31 +43,6 @@ function uptime(streamDate, text = "Uptime : ")
 }
 
 /**
- * Vérifie si l'onglet courant est utilisé ou non puis l'utilise ou en crée un nouveau selon le résultat
- * @param {string} elem élément jquery (classe ou id CSS)
- */
-function manageTabs(elem)
-{
-	/*On récupère les infos sur l'onglet courant*/
-	chrome.tabs.getSelected(null, function(onglet){
-		var redirectURL = $(elem).attr("href");
-
-		/*Si c'est un nouvel onglet*/
-		if(onglet.url == "chrome://newtab/")
-		{
-			/*On l'utilise*/
-			chrome.tabs.update(onglet.id,{url:redirectURL});
-		}
-		else{
-			/*Sinon, on en crée un nouveau*/
-			chrome.tabs.create({url:redirectURL});
-		}
-		/*on ferme la popup*/
-		window.close();
-	});
-}
-
-/**
  * Affiche ou non le snap code
  */
 function toggleSnap()
