@@ -6,7 +6,7 @@
 ************************************************/
 
 
-/*	Variables globales
+/*	Variables globales de fonctionnement
 ************************************************/
 
 domainurl 	= "PUT_YOUR_DOMAIN_HERE";	/*L'url du chemin de la page php que vous avez upload */
@@ -45,7 +45,8 @@ function notify(options)
 		chrome.notifications.onClicked.addListener(function(id){
 			if(id== channel+'notifL')
 			{
-				chrome.tabs.create({ url: options[2] + channel });
+				var url = options[2] + channel;
+				manageTabs(url, true);
 			}
 			chrome.notifications.clear(id, function(){});
 		});
@@ -80,7 +81,8 @@ function notifYouTube(title, id, options) {
 		chrome.notifications.onClicked.addListener(function(id){
 			if(id.includes("#YT"))
 			{
-				chrome.tabs.create({ url: "https://www.youtube.com/watch?v="+id.replace("#YT", "") });
+				var url = "https://www.youtube.com/watch?v="+id.replace("#YT", "");
+				manageTabs(url, true);
 			}
 			chrome.notifications.clear(id, function(){});
 		});
