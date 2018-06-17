@@ -4,11 +4,15 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-### Version 2.7.1 (lundi)
+*Pas de nouvelle version prévue*
+
+## Version courante
+
+### Version 2.7.1
 
 * Modifications graphiques légères de la page options
 
-## Version courante
+## Anciennes versions
 
 ### Version 2.7.0
 
@@ -20,8 +24,6 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 * Correctif d'un bug d'affichage lors du clic successif sur le bouton ts et le bouton snap
 * Correctif d'un bug d'affichage de l'uptime du jeu courant
 * Design de la page d'options responsive (utilisation de grid CSS)
-
-## Anciennes versions
 
 ### Version 2.6.8
 
