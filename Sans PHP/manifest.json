@@ -24,7 +24,8 @@
    },
    "manifest_version": 2,
    "name": "Master Sans Cou",
+   "short_name" : "Snakou",
    "permissions": [ "storage", "notifications", "tabs", "http://*/*", "https://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "2.7.0"
+   "version": "2.7.1"
 }

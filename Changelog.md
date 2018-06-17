@@ -4,7 +4,9 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-*Pas de nouvelle version prévue*
+### Version 2.7.1 (lundi)
+
+* Modifications graphiques légères de la page options
 
 ## Version courante
 
