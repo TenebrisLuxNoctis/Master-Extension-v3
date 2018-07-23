@@ -48,6 +48,8 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
 
 ![Icon Options](https://github.com/TenebrisLuxNoctis/Master-Extension-v3/blob/master/images/options.png)
 
+[Historique des versions](/Changelog.md)
+
 ## Documentation
 
 Ma solution contient deux versions :
