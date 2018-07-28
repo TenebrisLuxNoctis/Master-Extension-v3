@@ -4,7 +4,9 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-*Pas de nouvelle version prévue*
+### Version 2.7.2 (dimanche)
+
+* Modification de la notification de mise à jour des options
 
 ## Version courante
 
