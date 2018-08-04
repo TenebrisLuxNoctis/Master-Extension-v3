@@ -4,17 +4,19 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-### Version 2.7.2 (dimanche)
+*Pas de nouvelle version prévue*
+
+## Version courante
+
+### Version 2.7.2
 
 * Modification de la notification de mise à jour des options
 
-## Version courante
+## Anciennes versions
 
 ### Version 2.7.1
 
 * Modifications graphiques légères de la page options
-
-## Anciennes versions
 
 ### Version 2.7.0
 
