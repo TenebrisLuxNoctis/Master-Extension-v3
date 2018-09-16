@@ -8,11 +8,17 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## Version courante
 
+
+### Version 2.7.3
+
+* [Beta] Ajout d'une notification pour le resub (à paramétrer depuis la page d'options)
+
+## Anciennes versions
+
+
 ### Version 2.7.2
 
 * Modification de la notification de mise à jour des options
-
-## Anciennes versions
 
 ### Version 2.7.1
 
