@@ -1,7 +1,7 @@
 /************************************************
 *	Page de gestion des options utilisateur		*
 * 												*
-*	Dernière modification : Mai 2018 			*
+*	Dernière modification : Septembre 2018 			*
 ************************************************/
 
 //Variable globale permettant de savoir si on a ou non modifié le champ Date

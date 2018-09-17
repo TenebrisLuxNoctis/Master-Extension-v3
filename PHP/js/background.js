@@ -1,7 +1,7 @@
 /************************************************
 *	Page principale qui gère les notifications  *
 * 												*
-*	Dernière modification : Mai 2018			*
+*	Dernière modification : Septembre 2018			*
 *					PHP version					*
 ************************************************/
 
@@ -125,25 +125,6 @@ function LaunchNotifYouTube(title, id)
 	});
 }
 
-/**
- * Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
- * @param {string} oldG jeu avant changement
- * @param {string} newJ jeu après changement
- */
-function DetectGameSwitch(oldJ, newJ)
-{
-	var bool = true;
-
-	if(oldG != "" && newG != "")
-	{
-		if(newG == oldJ && newJ == oldG)
-			bool = false;
-	}
-	oldG = oldJ;
-	newG = newJ;
-	
-	return bool;
-}
 /**
  * Détecte si il faut lancer la notification tout en contournant un bug twitch lors d'un switch de jeu (le changement se fait en double)
  * @param {string} oldG jeu avant changement
@@ -331,6 +312,55 @@ function checkNewVideos() {
 
 }
 
+/**
+ * Vérifie si on a dépassé le jour de resub (prime) et le notifie si besoin
+ */
+function checkReSubDate(){
+	//Récupération de la date de resub (prime)
+	chrome.storage.local.get(['RSnotif', 'dateRS', 'RSnotified', 'ecartMois'], function(result){
+		var resubTime = (result.dateRS != null ? result.dateRS : "");
+		
+		result.RSnotif = setBool(result.RSnotif, 0);
+		result.RSnotified = setBool(result.RSnotified, 0);
+		
+		//On force la copie de la valeur
+		let tmp = result.RSnotified == true;
+
+		if(result.dateRS && resubTime != null){	
+			resubTime = new Date(result.dateRS);
+			let newEcart = Math.floor(getdiffJour(resubTime)/30);
+			var ToNotify =  newEcart > result.ecartMois;
+
+			if(ToNotify)
+			{
+				if(!result.RSnotified){
+					chrome.notifications.create(channel+'notifRS', { 
+					type: "basic", 
+					title: titleRS, 
+					message: messageRS, 
+					iconUrl: iconRS
+				}, function(id) {
+					//Si la notification est bien créée, on sauvegarde le fait que l'on a notifié l'utilisateur
+					result.RSnotified = true;
+					result.ecartMois = newEcart;
+				});
+	
+				chrome.notifications.onClicked.addListener(function(id){
+					if(id==channel+"notifRS")
+						chrome.notifications.clear(id, function(){});
+				});
+				}
+			}
+			else{
+				result.RSnotified = false;
+			}
+			
+			if(result.RSnotified != tmp)
+				chrome.storage.local.set({'RSnotified': result.RSnotified, 'ecartMois' : result.ecartMois }, function(){});
+		}	
+	});
+}
+
 /*	Programme principal
 *************************************************/
 
@@ -340,6 +370,10 @@ check_stream();
 
 setInterval(checkNewVideos,60000);
 checkNewVideos();
+
+//Répétition de checkReSubDate() toutes les 6 heures
+setInterval(checkReSubDate,21600000);
+checkReSubDate();
 
 /*On réinitialise l'icône dans la barre du navigateur*/
 chrome.browserAction.setIcon({path:LiveOff});
@@ -351,8 +385,8 @@ var change_username = (username, callback) => {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-      username = request.username
+      username = request.username;
       if(request.username==null)
-        username = ""
-      change_username(username, function(){})
+        username = "";
+      change_username(username, function(){});
   });
