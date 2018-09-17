@@ -82,5 +82,5 @@ urls                = ["https://www.twitch.tv/", "http://multitwitch.tv/", "http
  * Clés API	
  */
 
-API_key_twitch     = "1low3gl5nz•••••••••••••••••";
-API_key_youtube    = "AIzaSyAANw•••••••••••••••••";
+API_key_twitch     = "1low3gl5nz7ep5o6qgj0xtrpd96mszn";
+API_key_youtube    = "AIzaSyAANw33DQWRi5OlPqgtRum_oQGWjB_BXdA";

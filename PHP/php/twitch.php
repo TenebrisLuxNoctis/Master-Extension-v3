@@ -10,7 +10,7 @@
 //      header('Access-Control-Allow-Origin: *');
 
     $channel = "mastersnakou";
-    $API_key_twitch   = '1low3gl5n•••••••••••••••••';
+    $API_key_twitch   = '1low3gl5nz7ep5o6qgj0xtrpd96mszn';
 
     $url = "https://api.twitch.tv/kraken/streams/$channel?client_id=$API_key_twitch&amp;timestamp=".time();
     
