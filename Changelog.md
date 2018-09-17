@@ -4,6 +4,13 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
+### Version 2.7.5
+
+* Correctif lien discord (avec c'est mieux !)
+* Correctif graphique du champ date dans la page des options
+
+## Version courante
+
 ### Version 2.7.4
 
 * Correctifs popup : 
@@ -13,16 +20,12 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 * Correctif du système du gestion des onglets (rendu inutilisable par la mise à jour précédente)
 * Correctif des options liées à la notification de resub
 * Mise à jour de la librairie des icônes Font-Awesome
-  
 
-## Version courante
+## Anciennes versions
 
 ### Version 2.7.3
 
 * [Beta] Ajout d'une notification pour le resub (à paramétrer depuis la page d'options)
-
-## Anciennes versions
-
 
 ### Version 2.7.2
 
