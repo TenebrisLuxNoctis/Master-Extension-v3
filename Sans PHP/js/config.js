@@ -1,7 +1,7 @@
 /************************************************
 *           Page de configuration               *
 * 												*
-*	Dernière modification : Mai 2018 			*
+*	Dernière modification : Septembre 2018 			*
 ************************************************/
 
 
@@ -47,6 +47,11 @@ notifsoundYT 		= "../mp3/youtube.mp3";
 titleOptions	    = channel + " - Enregistré !";
 messageOptions	    = "Vos changements d'options ont bien été pris en compte !";
 OptionsIconUrl	    = "/images/shtlf.png";
+
+//Notification de date de resub (prime)
+titleRS             = channel + " - Jour de resub !";
+messageRS           = "N'oublie pas de te resub !";
+iconRS              = "/images/rs.png";
 
 
 /**

@@ -1,7 +1,7 @@
 /************************************************
 *	Page contenant des fonctions réutilisables  *
 * 			dans les autres scripts				*
-*	Dernière modification : Mai 2018 			*
+*	Dernière modification : Septembre 2018 			*
 ************************************************/
 
 /**
@@ -32,6 +32,17 @@ function setUrlRedirect(url){
 	}
 
 	return res;
+}
+
+/**
+* Renvoie la différence en jour entre une date et aujourd'hui
+* @param {Date} dateSub Date de resub
+*/
+function getdiffJour(dateSub){
+	var today = new Date(Date.now());
+	var diff=today.getTime() - dateSub.getTime();
+	
+	return Math.floor(diff/8640000);
 }
 
 /**
