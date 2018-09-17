@@ -55,7 +55,7 @@ label
 	/* background-image: repeating-linear-gradient(130deg, transparent, transparent 25px, rgba(255, 255, 255, 0.5) 25px, rgba(255,255,255,0.5) 50px); */
 }
 		
-.fa{
+.fas{
 	font-size: 1.5em!important;
 }	
 
@@ -180,4 +180,9 @@ label
   
   .slider.round:before {
 	border-radius: 50%;
+  }
+  
+  
+  #resubRSC{
+	  color: black;
   }

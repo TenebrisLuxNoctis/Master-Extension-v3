@@ -48,6 +48,11 @@ titleOptions	    = channel + " - Enregistré !";
 messageOptions	    = "Vos changements d'options ont bien été pris en compte !";
 OptionsIconUrl	    = "/images/shtlf.png";
 
+//Notification de date de resub (prime)
+titleRS             = channel + " - Jour de resub !";
+messageRS           = "N'oublie pas de te resub !";
+iconRS              = "/images/rs.png";
+
 
 /**
  * Configuration popup

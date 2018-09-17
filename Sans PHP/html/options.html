@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>MasterSnakou | Options</title>
+	<link rel="stylesheet" href="../libs/font-awesome/css/all.css">
     <link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/options.css">
 </head>
@@ -43,7 +44,7 @@
                     <div id="songL" class="trigger mute" data-toggle="buttons">
                         <label class="song btn btn-lg active">
                             <input type="checkbox" name="options" id="songLC" autocomplete="off" checked />
-                            <i class="fa fa-volume-up"></i>
+                            <i class="fas fa-volume-up"></i>
                         </label>          
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                         <div id="songG" class="trigger mute" data-toggle="buttons">
                             <label class="song btn btn-lg mute inactive">
                                 <input type="checkbox" name="options" id="songGC" autocomplete="off"/>
-                                <i class="fa fa-volume-off"></i>
+                                <i class="fas fa-volume-off"></i>
                             </label>          
                         </div>
                 </div>
@@ -73,10 +74,24 @@
                         <div id="songV" class="trigger mute" data-toggle="buttons">
                             <label class="song btn btn-lg active">
                                 <input type="checkbox" name="options" id="songVC" autocomplete="off" checked />
-                                <i class="fa fa-volume-up"></i>
+                                <i class="fas fa-volume-up"></i>
                             </label>          
                         </div>
                 </div>
+                <div class="flex-container">
+                    <div class="labelNotif">Notification de date de resub</div>
+                    <div id="notifRS" class="trigger" data-toggle="buttons">
+                        <label class="switch active">
+                            <input type="checkbox" name="options" id="notifRSC" checked>
+                            <span class="slider round"></span>
+                        </label>      
+                    </div>
+                    <div id="resubRS" class="trigger mute" data-toggle="buttons">
+                        <label class="resub btn btn-lg active">
+                            <input type="date" name="options" id="resubRSC" autocomplete="off" checked />
+                        </label>          
+                    </div>
+            </div>
                 <label for="baseurl">Site web utilisé pour les redirections vers le live : </label>
                 <select class="form-control width35" name="baseurl" id="baseurl">
                     <option value="https://www.twitch.tv/">Twitch</option>
