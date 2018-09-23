@@ -89,10 +89,7 @@ API_key_youtube = "AIzaSyAANw33DQW•••••••••••••••�
 
 ## Améliorations possibles
 
-La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher.
-
-  * Réparer l'event de lancement du live (+25xp) (il faudrait chercher la nouvelle classe css à cibler (peut être `chat-resub-notification` ?))
-  * ...
+La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher. Soyez créatifs ! :)
 
 ## Support
 

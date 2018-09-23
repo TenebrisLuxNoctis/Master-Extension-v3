@@ -317,46 +317,52 @@ function checkNewVideos() {
  */
 function checkReSubDate(){
 	//Récupération de la date de resub (prime)
-	chrome.storage.local.get(['RSnotif', 'dateRS', 'RSnotified', 'ecartMois'], function(result){
+	chrome.storage.local.get(['RSnotif', 'dateRS', 'RSnotified', 'ecartMoisRS', 'songRS'], function(result){
 		var resubTime = (result.dateRS != null ? result.dateRS : "");
 		
 		result.RSnotif = setBool(result.RSnotif, 0);
 		result.RSnotified = setBool(result.RSnotified, 0);
+		result.songRS = setBool(result.songRS, 1);
 		
 		//On force la copie de la valeur
 		let tmp = result.RSnotified == true;
-
+	
 		if(result.dateRS && resubTime != null){	
 			resubTime = new Date(result.dateRS);
 			let newEcart = Math.floor(getdiffJour(resubTime)/30);
-			var ToNotify =  newEcart > result.ecartMois;
+			var ToNotify =  newEcart > result.ecartMoisRS;
 
 			if(ToNotify)
 			{
-				if(!result.RSnotified){
+				if(result.RSnotified == 0){
 					chrome.notifications.create(channel+'notifRS', { 
-					type: "basic", 
-					title: titleRS, 
-					message: messageRS, 
-					iconUrl: iconRS
-				}, function(id) {
+						type: "basic", 
+						title: titleRS, 
+						message: messageRS, 
+						iconUrl: iconRS
+					}, function(id) {});
+					
 					//Si la notification est bien créée, on sauvegarde le fait que l'on a notifié l'utilisateur
-					result.RSnotified = true;
-					result.ecartMois = newEcart;
-				});
+					tmp = true;
+					result.ecartMoisRS = newEcart;
+						
+					if(result.songRS == 1)
+					{
+						new Audio(notifsoundRS).play();
+					}
 	
-				chrome.notifications.onClicked.addListener(function(id){
-					if(id==channel+"notifRS")
-						chrome.notifications.clear(id, function(){});
-				});
+					chrome.notifications.onClicked.addListener(function(id){
+						if(id==channel+"notifRS")
+							chrome.notifications.clear(id, function(){});
+					});
 				}
 			}
 			else{
-				result.RSnotified = false;
+				tmp = false;
 			}
-			
+
 			if(result.RSnotified != tmp)
-				chrome.storage.local.set({'RSnotified': result.RSnotified, 'ecartMois' : result.ecartMois }, function(){});
+				chrome.storage.local.set({'RSnotified': tmp, 'ecartMoisRS' : result.ecartMoisRS }, function(){});
 		}	
 	});
 }
@@ -372,7 +378,7 @@ setInterval(checkNewVideos,60000);
 checkNewVideos();
 
 //Répétition de checkReSubDate() toutes les 6 heures
-setInterval(checkReSubDate,21600000);
+setInterval(checkReSubDate,3600000);
 checkReSubDate();
 
 /*On réinitialise l'icône dans la barre du navigateur*/
