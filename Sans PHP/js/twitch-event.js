@@ -44,7 +44,7 @@ $(function() {
 					return false;
 				}
 				//Ne s'affiche plus
-				display_event($('.chat-room'), username);
+				display_event($('.chat-room__notifications'), username);
 			})
 		};
 
@@ -57,5 +57,6 @@ $(function() {
 			//console.log('New event !');
 			launch_event();
 		});
+		
 	}, 5000);	
 });

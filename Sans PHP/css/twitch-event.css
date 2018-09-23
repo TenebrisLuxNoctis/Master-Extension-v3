@@ -8,8 +8,9 @@
     background-color: #108778;
 }
 
-/* Green color for button and text */
-.chat-buttons-container .button.js-chat-buttons__submit {
+ /* Green color for button and text */
+-.chat-buttons-container .button.js-chat-buttons__submit {
+
     background-color: #019985 !important;
 }
 
@@ -17,7 +18,7 @@
     background: #029986 !important;
 }
 
-.ember-chat .top-notification.resub-notification {
+.chat-room__content .top-notification.resub-notification {
     background-color: #029986 !important;
 }
 
@@ -26,7 +27,7 @@
     color: #FFFFFF !important;
 }
 
-.ember-chat .top-notification.resub-notification {
+.chat-room__content .top-notification.resub-notification {
     background-color: #00796A !important;
     cursor: default;
 }
@@ -35,19 +36,20 @@
     fill: #029986 !important;
 }
 
-.ember-chat .blc-notification, .ember-chat .sticky-message {
+.chat-room__content .blc-notification, .chat-room__content .sticky-message {
     background-color: #014D44 !important;
 }
 
-.ember-chat .blc-notification .broadcaster-language-notification, .ember-chat .blc-notification .message-content, .ember-chat .sticky-message .broadcaster-language-notification, .ember-chat .sticky-message .message-content {
+.chat-room__content .blc-notification .broadcaster-language-notification, .chat-room__content .blc-notification .message-content, .chat-room__content .sticky-message .broadcaster-language-notification, .chat-room__content .sticky-message .message-content {
     color: #FBFBFB !important;
 }
+
 
 #channel-prompt, .upsell-banner {
     border-left: 5px solid #029986 !important;
 }
 
-.chat-container.dark .button.glyph svg path, .app-main.theatre .chat-container .button.glyph svg path, .chat-container.dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-container.dark .glyph.follow svg path, .app-main.theatre .chat-container .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-container .glyph.follow svg path, .chat-container.dark .button.glyph-only svg path, .app-main.theatre .chat-container .button.glyph-only svg path, .chat-container.dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-container.dark .glyph-only.follow svg path, .app-main.theatre .chat-container .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-container .glyph-only.follow svg path, .chat-container.force-dark .button.glyph svg path, .chat-container.force-dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-container.force-dark .glyph.follow svg path, .chat-container.force-dark .button.glyph-only svg path, .chat-container.force-dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-container.force-dark .glyph-only.follow svg path, .ember-chat-container.dark .button.glyph svg path, .app-main.theatre .ember-chat-container .button.glyph svg path, .ember-chat-container.dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .ember-chat-container.dark .glyph.follow svg path, .app-main.theatre .ember-chat-container .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .ember-chat-container .glyph.follow svg path, .ember-chat-container.dark .button.glyph-only svg path, .app-main.theatre .ember-chat-container .button.glyph-only svg path, .ember-chat-container.dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .ember-chat-container.dark .glyph-only.follow svg path, .app-main.theatre .ember-chat-container .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .ember-chat-container .glyph-only.follow svg path, .ember-chat-container.force-dark .button.glyph svg path, .ember-chat-container.force-dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .ember-chat-container.force-dark .glyph.follow svg path, .ember-chat-container.force-dark .button.glyph-only svg path, .ember-chat-container.force-dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .ember-chat-container.force-dark .glyph-only.follow svg path {
+.chat-container.dark .button.glyph svg path, .app-main.theatre .chat-container .button.glyph svg path, .chat-container.dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-container.dark .glyph.follow svg path, .app-main.theatre .chat-container .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-container .glyph.follow svg path, .chat-container.dark .button.glyph-only svg path, .app-main.theatre .chat-container .button.glyph-only svg path, .chat-container.dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-container.dark .glyph-only.follow svg path, .app-main.theatre .chat-container .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-container .glyph-only.follow svg path, .chat-container.force-dark .button.glyph svg path, .chat-container.force-dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-container.force-dark .glyph.follow svg path, .chat-container.force-dark .button.glyph-only svg path, .chat-container.force-dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-container.force-dark .glyph-only.follow svg path, .chat-room__content-container.dark .button.glyph svg path, .app-main.theatre .chat-room__content-container .button.glyph svg path, .chat-room__content-container.dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.dark .glyph.follow svg path, .app-main.theatre .chat-room__content-container .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-room__content-container .glyph.follow svg path, .chat-room__content-container.dark .button.glyph-only svg path, .app-main.theatre .chat-room__content-container .button.glyph-only svg path, .chat-room__content-container.dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.dark .glyph-only.follow svg path, .app-main.theatre .chat-room__content-container .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-room__content-container .glyph-only.follow svg path, .chat-room__content-container.force-dark .button.glyph svg path, .chat-room__content-container.force-dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.force-dark .glyph.follow svg path, .chat-room__content-container.force-dark .button.glyph-only svg path, .chat-room__content-container.force-dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.force-dark .glyph-only.follow svg path {
     fill: #019985 !important;
 }
 
@@ -129,7 +131,7 @@ div[data-sender='mastersnakou'] .badges .subscriber {
     background-size: 100% !important;
 }
 
-div[data-sender='moobot'] .line .bot, .ember-chat .badges .bot {
+div[data-sender='moobot'] .line .bot, .chat-room__content .badges .bot {
     background: url(http://i.imgur.com/wNAIYhh.png) !important;
     background-size: 100% !important;
 }
@@ -156,4 +158,27 @@ div[data-sender='cookkkie'] .from {
 div[data-sender='hellslicer'] .from {
     color: rgba(0, 99, 229, 1) !important;
     text-shadow: 0px 0px 10px rgba(0, 99, 229, 1);
+}
+
+/*Welcome back to reality*/
+
+/*Event de lancement de stream*/
+#event{
+	background-color: #014D44;
+	color: #FBFBFB;
+	text-align: center;
+	padding: 2px;
+}
+#event button{
+	padding: 2px;
+    margin: 2px;
+}
+
+/*Couleur des boutons*/
+.tw-button[data-test-selector='chat-send-button']{
+	 background-color: #019985 !important;
+}
+.tw-button[data-test-selector='follow-button'], .tw-button[data-test-selector='subscribe-button__dropdown']{
+	background: #029986 !important;
+    color: #FFFFFF !important;
 }

@@ -52,7 +52,7 @@ OptionsIconUrl	    = "/images/shtlf.png";
 titleRS             = channel + " - Jour de resub !";
 messageRS           = "N'oublie pas de te resub !";
 iconRS              = "/images/rs.png";
-
+notifsoundRS		= "../mp3/youtube.mp3";
 
 /**
  * Configuration popup

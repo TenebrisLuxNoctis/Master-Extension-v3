@@ -179,12 +179,17 @@ function enregistrer()
 	var songV = ($('#songVC').is(':checked'))? 1: 0;
 	var notifRS = ($('#notifRSC').is(':checked'))? 1: 0;
 	var dateRS = $('#resubRSC').val();
+	var songRS = ($('#songRSC').is(':checked'))? 1: 0;
 	
 	var dateSub = new Date(dateRS);
 	var tmp = Math.floor(getdiffJour(dateSub)/30);
 	var ecartMois = tmp > 0 ? tmp : -1;
 	//Si on a modifié la date, on reset le système de "déja notifié"
 	var RSnotified = changedDate ? true :alreadyNotifiedRS;
+	
+	console.log(changedDate);
+	console.log(alreadyNotifiedRS);
+	console.log(RSnotified);
 	
 	/*Sauvegarde en local*/
 	chrome.storage.local.set({
@@ -198,8 +203,16 @@ function enregistrer()
 		'RSnotif': notifRS,
 		'dateRS': dateRS,
 		'ecartMoisRS': ecartMois,
-		'RSnotified' : RSnotified
-		}, function(){});
+		'RSnotified' : RSnotified,
+		'songRS' : songRS
+		}, function(){
+			
+			//if(changedDate)
+			//	checkReSubDate();
+			
+		});
+		
+		
 }
 
 

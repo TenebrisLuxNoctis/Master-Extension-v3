@@ -4,7 +4,11 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-*Pas de nouvelle version prévue*
+### Version 2.7.6
+
+* Correctifs sur la fonctionnalité de notification de resub
+* Retour de la fonctionnalité de partage lors du début du stream
+* Début de retour de la feuille de style personnalisant la page twitch du stream
 
 ## Version courante
 
