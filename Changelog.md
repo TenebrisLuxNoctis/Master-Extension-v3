@@ -4,20 +4,25 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
+### Version 2.7.7
+
+* Modifications légères du design de la page twitch
+* Modifications structurelles dans l'appel aux services web de twitch
+
+## Version courante
+
 ### Version 2.7.6
 
 * Correctifs sur la fonctionnalité de notification de resub
 * Retour de la fonctionnalité de partage lors du début du stream
 * Début de retour de la feuille de style personnalisant la page twitch du stream
 
-## Version courante
+## Anciennes versions
 
 ### Version 2.7.5
 
 * Correctif lien discord (avec c'est mieux !)
 * Correctif graphique du champ date dans la page des options
-
-## Anciennes versions
 
 ### Version 2.7.4
 

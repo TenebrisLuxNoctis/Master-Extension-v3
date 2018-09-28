@@ -253,86 +253,66 @@ function LaunchGameNotif(opt){
  * Teste le statut du stream et appelle LaunchNotif() si besoin
  */
 function check_stream() {
-	/*Initialisation de la requête*/
-    var xmlhttp=new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200){
-			/*Récupération des données*/
-			var data = xmlhttp.responseText;
-			var tmp = analyze(JSON.parse(data));
-			
-			game_tmp = tmp[1];
-			var created_at = tmp[0];
-			
-			/*Si le live est lancé*/
-			if(created_at != "offline" && created_at != "error")
-			{
-					manageGameNotif(game, game_tmp);
-					game = game_tmp;
-					if(created_at != stream)
-					{
-						/*Sauvegarde du timestamp afin de ne pas relancer la notification*/
-						stream = created_at;
-						LaunchNotif();
-						/*Sauvegarde du timestamp de création de la session actuelle*/
-						chrome.storage.local.set({'time': stream}, function(){
-						});
-					}
-					/*Mise à jour des variables de statut*/
-					off = 0;
-					live = 1;
-			}
-			else if (created_at == "offline")
-			{
-				/*L'API twitch renvoyant des erreurs assez fréquemment, la détection du statut OFF se fait au bout de 2 retours négatifs de l'API*/
-				if(off == 5 && live == 1)
-				{
-					/*Mise à jour de la barre du navigateur*/
-					chrome.browserAction.setIcon({path: LiveOff});
-					chrome.browserAction.setTitle({title : messageLiveOff});
-					live = 0;
-				}	
-				off += 1;	
-			}
-			
-			/*Sauvegarde du statut du live en local (pour la popup)*/
-			chrome.storage.local.set({'living': live, 'game': game, 'viewers' : tmp[2], 'title': tmp[3], 'lastGameChange': lastGameChange}, function(){
-			});
-			
-		}
-	}
-
+	
 	/*Lancement de la requête à l'API*/
     var url = "https://api.twitch.tv/kraken/streams/" + channel;
-    xmlhttp.open("GET",url,true);
-    xmlhttp.setRequestHeader("Client-ID", API_key_twitch);
-    xmlhttp.send();
+	
+	fetch(url, {'Client-ID': API_key_twitch})
+		.then(function(response){
+			if(response.status == 200){
+				response.json().then(function(data){
+					var tmp = analyze(data);
+		
+					game_tmp = tmp[1];
+					var created_at = tmp[0];
+					
+					/*Si le live est lancé*/
+					if(created_at != "offline" && created_at != "error")
+					{
+							manageGameNotif(game, game_tmp);
+							game = game_tmp;
+							if(created_at != stream)
+							{
+								/*Sauvegarde du timestamp afin de ne pas relancer la notification*/
+								stream = created_at;
+								LaunchNotif();
+								/*Sauvegarde du timestamp de création de la session actuelle*/
+								chrome.storage.local.set({'time': stream}, function(){
+								});
+							}
+							/*Mise à jour des variables de statut*/
+							off = 0;
+							live = 1;
+					}
+					else if (created_at == "offline")
+					{
+						/*L'API twitch renvoyant des erreurs assez fréquemment, la détection du statut OFF se fait au bout de 2 retours négatifs de l'API*/
+						if(off == 5 && live == 1)
+						{
+							/*Mise à jour de la barre du navigateur*/
+							chrome.browserAction.setIcon({path: LiveOff});
+							chrome.browserAction.setTitle({title : messageLiveOff});
+							live = 0;
+						}	
+						off += 1;	
+					}
+						
+					/*Sauvegarde du statut du live en local (pour la popup)*/
+					chrome.storage.local.set({'living': live, 'game': game, 'viewers' : tmp[2], 'title': tmp[3], 'lastGameChange': lastGameChange}, function(){
+					});
+				});
+			}else{console.error(response.json());}
+		})
+		.catch(function(error){
+			console.error(error);
+		});
 }
 
 /**
  * Teste le statut des vidéos youtube et lance des notifications si besoin
  */
 function checkNewVideos() {
-	/*Initialisation de la requête*/
-    var xmlhttp=new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200){
-			/*Récupération des données*/
-			var tmp = xmlhttp.responseText;
-			data = JSON.parse(tmp);
-
-			if(data.items.length > 0) {
-				var tmp = data.items[0].snippet.publishedAt;
-				var d = new Date(tmp);
-				d.setTime(d.getTime()+1000);
-				chrome.storage.local.set({'yt_time': d.toISOString()}, function(){});
-				for (var video of data.items) {
-					LaunchNotifYouTube(video.snippet.title, video.id.videoId);
-				}
-			}	
-		}
-	}
-
+	
 	chrome.storage.local.get(['yt_time'], function(result){
 		var lastTime = null;
 		if(result.yt_time)
@@ -340,11 +320,26 @@ function checkNewVideos() {
 		
 		var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId="+Youtube_channel_ID+"&order=date&key="+API_key_youtube+"&maxResults=1"+(lastTime?("&publishedAfter="+lastTime.toISOString()):"");
 
-		/*Lancement de la requête à l'API*/
-		xmlhttp.open("GET",url,true);
-		xmlhttp.send();
+		fetch(url)
+			.then(function(response){
+				if(response.status == 200){
+					response.json().then(function(data){
+						if(data.items.length > 0) {
+							var tmp = data.items[0].snippet.publishedAt;
+							var d = new Date(tmp);
+							d.setTime(d.getTime()+1000);
+							chrome.storage.local.set({'yt_time': d.toISOString()}, function(){});
+							for (var video of data.items) {
+								LaunchNotifYouTube(video.snippet.title, video.id.videoId);
+							}
+						}
+					});
+				}else{console.error(response.json());}
+			})
+			.catch(function(error){
+				console.error(error);
+			});
 	});
-	
 }
 
 /**

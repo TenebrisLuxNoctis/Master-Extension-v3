@@ -28,7 +28,17 @@
         $viewers = ($json['stream']['viewers'])? ','.$json['stream']['viewers'] : ",error";
         $status= ($json['stream']['channel']['status'])? ','.$json['stream']['channel']['status'] : ",error";
 
-        echo $created_at.$game.$viewers.$status;
+       // echo $created_at.$game.$viewers.$status;
+
+        echo 
+        "
+        {
+            'created_at' : $created_at,
+            'game' : $game,
+            'viewers' : $viewers,
+            'status' : $status
+        }
+        ";
     }
 
 ?>

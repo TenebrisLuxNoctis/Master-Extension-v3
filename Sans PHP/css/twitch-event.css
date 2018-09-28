@@ -182,3 +182,11 @@ div[data-sender='hellslicer'] .from {
 	background: #029986 !important;
     color: #FFFFFF !important;
 }
+.tw-button[data-a-target='hosting-notification-gotochannel-button']{
+	background: #029986 !important;
+    color: #FFFFFF !important;
+}
+.hosting-notification[data-a-target='hosting-notification-container']{
+	background-color: #014D44!important;
+	color: #FFFFFF !important;
+}
