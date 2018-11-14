@@ -2,6 +2,8 @@
 
 Documentation de ma proposition d'amélioration de la Master Extension (Version chrome uniquement, pour le moment). Une version demo est disponible sur le [chrome webstore](https://chrome.google.com/webstore/detail/master-sans-cou/caklmgbmfcingplfkkdadejihhjocjpi/related?hl=fr) en non répertoriée.
 
+Le code source est disponible ici, dans ce repository
+
 __Note :__ *Ceci est un petit projet sans prétention aucune. Il a été initié en juillet 2017 pour le fun avant tout ! C'est à coup de petites retouches ponctuelles quand j'en ai l'envie que je le mets à jour, et il s'écoule parfois un long moment avant que je n'y retouche* :)
 
 ## Présentation
@@ -23,7 +25,6 @@ Ma proposition regroupe plusieurs nouvelles fonctionalités :
     * La notification est désactivée lorsque la page twitch est active
   * ajout d'une notification lorsqu'une nouvelle **vidéo** youtube sort *(paramétrable)*
     * Le clic sur la notification ouvre directement la page de la vidéo
-  * ajout d'une notification pour le resub (à paramétrer depuis la page des options)
   * chaque notification est affectée à un son différent
   * ajout d'images pour les différentes notifications de l'extension
 * ajout d'une page d'**options** qui permet de :
@@ -66,7 +67,7 @@ L'ensemble du code js modifié (`background.js`, `popup.js`, `options.js`) est c
 
 L'ensemble de l'extension est paramétrable depuis le fichier `js/config.js` (message de notification, images...)
 
-Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de version ainsi que le nom de l'extension qui ont été modifiés pour la version de test publiée sur le chrome webstore (en non répertoriée).
+Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de version ainsi que le nom de l'extension qui ont été modifiés pour la version de test publiée sur le chrome webstore.
 
 ### Intégration version PHP
 
@@ -74,7 +75,7 @@ Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de v
   * upload les fichiers `php/twitch.php` et `php/youtube.php`
   * reporter l'url du répertoire dans `js/background.js` à la 12e ligne : `domainurl = "PUT_YOUR_DOMAIN_NAME_HERE";`
   * les clés d'API sont placées dans les fichiers php (un pour contacter les services youtube, l'autre pour atteindre ceux de twitch)
-  * Supprimer les clés API dans le fichier `js/config.js` (aux lignes 80 et 81)
+  * Supprimer les clé API dans le fichier `js/config.js` (aux lignes 60 et 61)
   * Publier l'extension mise à jour
 
 ### Intégration version sans PHP
@@ -84,12 +85,15 @@ Cette version ne nécessite aucune manipulation autre que de publier la mise à 
 La modification des clés d'API se fait depuis le fichier `js/config.js`  aux lignes 80 et 81 :
 ```
 API_key_twitch = "1low3gl5nz7ep5o6•••••••••••••••••";
-API_key_youtube = "AIzaSyAANw33DQW•••••••••••••••••";
+API_key_youtube = "AIzaSyAANw33DQWRi5O•••••••••••••••••";
 ```
 
 ## Améliorations possibles
 
-La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher. Soyez créatifs ! :)
+La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher.
+
+  * Réparer l'event de lancement du live (+25xp) (il faudrait chercher la nouvelle classe css à cibler (peut être `chat-resub-notification` ?))
+  * ...
 
 ## Support
 
