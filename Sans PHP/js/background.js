@@ -29,7 +29,6 @@ lastGameChange 	= null;
  */
 function notify(options)
 {    	
-
 	/*Si l'utilisateur a activé les notifications*/
 	if(options[0] == 1) 
 	{
@@ -187,8 +186,11 @@ function manageGameNotif(gameL, jeu)
 	if(live == 1)
 	{
 		var doIchange = DetectGameSwitch(gameL, jeu);
-		/*Le jeu actuel vient de changer*/
-		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
+		
+		var isBlacklisted = blacklistGame.indexOf(jeu) != -1;
+		
+		/*Le jeu actuel vient de changer et il n'est pas dans la liste d'exclusion*/
+		if(off == 0 && jeu && gameL != jeu && !isBlacklisted && doIchange)
 		{
 			/*Récupération des options liées au changement de jeu*/
 			chrome.storage.local.get(['gamechange', 'songGame'], function(result){
@@ -200,7 +202,7 @@ function manageGameNotif(gameL, jeu)
 
 				LaunchGameNotif([result.gamechange, result.songGame, jeu]);
 			});
-		}else if(jeu == "Talk Shows"){
+		}else if(isBlacklisted){
 			lastGameChange = null;
 		}
 	}
@@ -257,7 +259,14 @@ function check_stream() {
 	/*Lancement de la requête à l'API*/
     var url = "https://api.twitch.tv/kraken/streams/" + channel;
 	
-	fetch(url, {'Client-ID': API_key_twitch})
+	var myHeaders = new Headers();
+	myHeaders.append('Client-ID', API_key_twitch);
+	var myInit = { method: 'GET',
+               headers: myHeaders,
+               mode: 'cors',
+               cache: 'default' };
+	
+	fetch(url, myInit)
 		.then(function(response){
 			if(response.status == 200){
 				response.json().then(function(data){

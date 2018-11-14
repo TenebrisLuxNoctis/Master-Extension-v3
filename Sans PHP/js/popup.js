@@ -75,8 +75,8 @@ $(document).ready(function(){
 	
 		result.baseurl = setUrlRedirect(result.baseurl);
 	
-		$("#channel_link").attr("href", result.baseurl + channel);
-		$("#game_link").attr("href", result.baseurl + channel);
+		$("#channel_link").attr("href", result.baseurl + channel.toLowerCase());
+		$("#game_link").attr("href", result.baseurl + channel.toLowerCase());
 	
 		/*Si le live est off*/
 		if(live == 0)
