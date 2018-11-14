@@ -16,7 +16,7 @@
 		$cusor = "&publishedAfter=".$datetime->format(DateTime::ATOM);
 	}
     $channelID			= "UCOhP0t6arWMXqmcroJjMJ7A";
-    $API_key_youtube	= 'AIzaSyAANw33DQWRi5OlPqgtRum_oQGWjB_BXdA';
+    $API_key_youtube	= 'AIzaSyAANw33DQWRi•••••••••••••••••';
 
 	$url = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=".$channelID."&order=date&key=".$API_key_youtube."&maxResults=1".$cursor;
 
