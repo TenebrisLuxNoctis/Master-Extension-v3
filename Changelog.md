@@ -4,11 +4,15 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
+<<<<<<< HEAD
 ### Version 2.8.0
 
 **Version stabilisée de l'extension**
 
 * Ajout de Just Chatting à la liste des jeux ne pouvant pas lancer de notification de changement de jeu
+=======
+*Pas de nouvelle version prévue*
+>>>>>>> c2b41aa904de070fabe493f0b3d3e9b9b5937da3
 
 ## Version courante
 
