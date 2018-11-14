@@ -4,15 +4,49 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
-*Pas de nouvelle version prévue*
+### Version 2.8.0
+
+**Version stabilisée de l'extension**
+
+* Ajout de Just Chatting à la liste des jeux ne pouvant pas lancer de notification de changement de jeu
 
 ## Version courante
+
+### Version 2.7.7
+
+* Modifications légères du design de la page twitch
+* Modifications structurelles dans l'appel aux services web de twitch
+
+## Anciennes versions
+
+### Version 2.7.6
+
+* Correctifs sur la fonctionnalité de notification de resub
+* Retour de la fonctionnalité de partage lors du début du stream
+* Début de retour de la feuille de style personnalisant la page twitch du stream
+
+### Version 2.7.5
+
+* Correctif lien discord (avec c'est mieux !)
+* Correctif graphique du champ date dans la page des options
+
+### Version 2.7.4
+
+* Correctifs popup : 
+  * Correction d'un bug de redirection lors du clic sur le logo
+  * Correction sur les liens des réseaux
+  * Ajout du discord
+* Correctif du système du gestion des onglets (rendu inutilisable par la mise à jour précédente)
+* Correctif des options liées à la notification de resub
+* Mise à jour de la librairie des icônes Font-Awesome
+
+### Version 2.7.3
+
+* [Beta] Ajout d'une notification pour le resub (à paramétrer depuis la page d'options)
 
 ### Version 2.7.2
 
 * Modification de la notification de mise à jour des options
-
-## Anciennes versions
 
 ### Version 2.7.1
 

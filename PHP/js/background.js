@@ -155,8 +155,11 @@ function manageGameNotif(gameL, jeu)
 	if(live == 1)
 	{
 		var doIchange = DetectGameSwitch(gameL, jeu);
-		/*Le jeu actuel vient de changer*/
-		if(off == 0 && jeu && gameL != jeu && jeu != 'Talk Shows' && doIchange)
+		
+		var isBlacklisted = blacklistGame.indexOf(jeu) != -1;
+		
+		/*Le jeu actuel vient de changer et il n'est pas dans la liste d'exclusion*/
+		if(off == 0 && jeu && gameL != jeu && !isBlacklisted && doIchange)
 		{
 			/*Récupération des options liées au changement de jeu*/
 			chrome.storage.local.get(['gamechange', 'songGame'], function(result){
@@ -168,7 +171,7 @@ function manageGameNotif(gameL, jeu)
 
 				LaunchGameNotif([result.gamechange, result.songGame, jeu]);
 			});
-		}else if(jeu == "Talk Shows"){
+		}else if(isBlacklisted){
 			lastGameChange = null;
 		}
 	}
@@ -221,95 +224,90 @@ function LaunchGameNotif(opt){
 *	Teste le statut du stream et appelle LaunchNotif() si besoin
 */
 function check_stream() {
-	/*Initialisation de la requête*/
-	var xmlhttp = new XMLHttpRequest();
 
-	xmlhttp.onreadystatechange = function () {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			/*Récupération des données*/
-			var data = xmlhttp.responseText;
-			data= data.split(',');
+	var url = domainurl + "/twitch.php";
 
-			created_at = data[0];
-			game_tmp = (data[1] != "error") ? data[1] : "";
-			var viewers = (data[2] != "error") ? data[2] : "";
-			var title = (data[3] != "error") ? data[3] : "";
+	fetch(url)
+			.then(function(response){
+				if(response.status == 200){
+					response.json().then(function(data){
+						created_at = data.created_at;
+						game_tmp = (data.game != "error") ? data.game : "";
+						var viewers = (data.viewers != "error") ? data.viewers : "";
+						var title = (data.status != "error") ? data.status : "";
 
-			/*Si le live est lancé*/
-			if (created_at != "offline" && created_at != "error") {
-				manageGameNotif(game, game_tmp);
-				game = game_tmp;
-				if (created_at != stream) {
-					/*Sauvegarde du timestamp afin de ne pas relancer la notification*/
-					stream = created_at;
-					LaunchNotif();
+						/*Si le live est lancé*/
+						if (created_at != "offline" && created_at != "error") {
+							manageGameNotif(game, game_tmp);
+							game = game_tmp;
+							if (created_at != stream) {
+								/*Sauvegarde du timestamp afin de ne pas relancer la notification*/
+								stream = created_at;
+								LaunchNotif();
 
-					/*Sauvegarde du timestamp de création de la session actuelle pour la popup*/
-					chrome.storage.local.set({'time': stream}, function(){
+								/*Sauvegarde du timestamp de création de la session actuelle pour la popup*/
+								chrome.storage.local.set({'time': stream}, function(){
+								});
+							}
+							/*Mise à jour des variables de statut*/
+							live = 1;
+							off = 0;
+						}
+						else if (created_at == "offline") {
+							/*L'API twitch renvoyant des erreurs assez fréquemment, la détection du statut OFF se fait au bout de 2 retours négatifs de l'API*/
+							if (off == 5 && live == 1) {
+								/*Mise à jour de la barre du navigateur*/
+								chrome.browserAction.setIcon({ path: LiveOff });
+								chrome.browserAction.setTitle({ title: messageLiveOff });
+								live = 0;
+							}
+							off += 1;
+						}
+
+						/*Sauvegarde du statut du live en local (pour la popup)*/
+						chrome.storage.local.set({ 'living': live, 'game': game, 'viewers' : viewers, 'title': title, 'lastGameChange': lastGameChange }, function () {
+						});
 					});
-				}
-				/*Mise à jour des variables de statut*/
-				live = 1;
-				off = 0;
-			}
-			else if (created_at == "offline") {
-				/*L'API twitch renvoyant des erreurs assez fréquemment, la détection du statut OFF se fait au bout de 2 retours négatifs de l'API*/
-				if (off == 5 && live == 1) {
-					/*Mise à jour de la barre du navigateur*/
-					chrome.browserAction.setIcon({ path: LiveOff });
-					chrome.browserAction.setTitle({ title: messageLiveOff });
-					live = 0;
-				}
-				off += 1;
-			}
-
-			/*Sauvegarde du statut du live en local (pour la popup)*/
-			chrome.storage.local.set({ 'living': live, 'game': game, 'viewers' : viewers, 'title': title, 'lastGameChange': lastGameChange }, function () {
+				}else{console.error(response.json());}
+			})
+			.catch(function(error){
+				console.error(error);
 			});
-
-		}
-	}
-
-	/*Lancement de la requête à l'API via le script PHP*/
-	xmlhttp.open("GET", domainurl + "/twitch.php", true);
-	xmlhttp.send();
 }
 
 /**
  * Teste le statut des vidéos youtube et lance des notifications si besoin
  */
 function checkNewVideos() {
-	/*Initialisation de la requête*/
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function () {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			/*Récupération des données*/
-			var tmp = xmlhttp.responseText;
-
-			data = JSON.parse(tmp);
-
-			if (data.items.length > 0) {
-				var tmp = data.items[0].snippet.publishedAt;
-				var d = new Date(tmp);
-				d.setTime(d.getTime() + 1000);
-				chrome.storage.local.set({ 'yt_time': d.toISOString() }, function () { });
-				for (var video of data.items) {
-					LaunchNotifYouTube(video.snippet.title, video.id.videoId);
-				}
-			}
-		}
-	}
 
 	chrome.storage.local.get(['yt_time'], function (result) {
 		var lastTime = null;
 		if (result.yt_time)
 			lastTime = new Date(result.yt_time);
 
-		/*Lancement de la requête à l'API*/
-		xmlhttp.open("GET", domainurl + "/youtube.php", true);
-		xmlhttp.send();
+		var url = domainurl + "/youtube.php" + (lastTime != null ? "?lasttime=" + lastTime : "");
+		
+		fetch(url)
+			.then(function(response){
+				if(response.status == 200){
+					response.json().then(function(data){
+						if (data.items.length > 0) {
+							var tmp = data.items[0].snippet.publishedAt;
+							var d = new Date(tmp);
+							d.setTime(d.getTime() + 1000);
+							chrome.storage.local.set({ 'yt_time': d.toISOString() }, function () { });
+							for (var video of data.items) {
+								LaunchNotifYouTube(video.snippet.title, video.id.videoId);
+							}
+						}
+					});
+				}else{console.error(response.json());}
+			})
+			.catch(function(error){
+				console.error(error);
+			});
+		
 	});
-
 }
 
 /**
@@ -317,46 +315,52 @@ function checkNewVideos() {
  */
 function checkReSubDate(){
 	//Récupération de la date de resub (prime)
-	chrome.storage.local.get(['RSnotif', 'dateRS', 'RSnotified', 'ecartMois'], function(result){
+	chrome.storage.local.get(['RSnotif', 'dateRS', 'RSnotified', 'ecartMoisRS', 'songRS'], function(result){
 		var resubTime = (result.dateRS != null ? result.dateRS : "");
 		
 		result.RSnotif = setBool(result.RSnotif, 0);
 		result.RSnotified = setBool(result.RSnotified, 0);
+		result.songRS = setBool(result.songRS, 1);
 		
 		//On force la copie de la valeur
 		let tmp = result.RSnotified == true;
-
+	
 		if(result.dateRS && resubTime != null){	
 			resubTime = new Date(result.dateRS);
 			let newEcart = Math.floor(getdiffJour(resubTime)/30);
-			var ToNotify =  newEcart > result.ecartMois;
+			var ToNotify =  newEcart > result.ecartMoisRS;
 
 			if(ToNotify)
 			{
-				if(!result.RSnotified){
+				if(result.RSnotified == 0){
 					chrome.notifications.create(channel+'notifRS', { 
-					type: "basic", 
-					title: titleRS, 
-					message: messageRS, 
-					iconUrl: iconRS
-				}, function(id) {
+						type: "basic", 
+						title: titleRS, 
+						message: messageRS, 
+						iconUrl: iconRS
+					}, function(id) {});
+					
 					//Si la notification est bien créée, on sauvegarde le fait que l'on a notifié l'utilisateur
-					result.RSnotified = true;
-					result.ecartMois = newEcart;
-				});
+					tmp = true;
+					result.ecartMoisRS = newEcart;
+						
+					if(result.songRS == 1)
+					{
+						new Audio(notifsoundRS).play();
+					}
 	
-				chrome.notifications.onClicked.addListener(function(id){
-					if(id==channel+"notifRS")
-						chrome.notifications.clear(id, function(){});
-				});
+					chrome.notifications.onClicked.addListener(function(id){
+						if(id==channel+"notifRS")
+							chrome.notifications.clear(id, function(){});
+					});
 				}
 			}
 			else{
-				result.RSnotified = false;
+				tmp = false;
 			}
-			
+
 			if(result.RSnotified != tmp)
-				chrome.storage.local.set({'RSnotified': result.RSnotified, 'ecartMois' : result.ecartMois }, function(){});
+				chrome.storage.local.set({'RSnotified': tmp, 'ecartMoisRS' : result.ecartMoisRS }, function(){});
 		}	
 	});
 }
@@ -371,8 +375,8 @@ check_stream();
 setInterval(checkNewVideos,60000);
 checkNewVideos();
 
-//Répétition de checkReSubDate() toutes les 6 heures
-setInterval(checkReSubDate,21600000);
+//Répétition de checkReSubDate() toutes les heures
+setInterval(checkReSubDate,3600000);
 checkReSubDate();
 
 /*On réinitialise l'icône dans la barre du navigateur*/

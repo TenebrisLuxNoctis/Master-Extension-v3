@@ -8,15 +8,16 @@
 /*	Configuration de l'extension
 ************************************************/
 
-channel             = "MasterSnakou";
-Youtube_channel_ID	=	"UCOhP0t6arWMXqmcroJjMJ7A";
+channel             = "MasterSnakou";					//chaîne twitch
+Youtube_channel_ID	=	"UCOhP0t6arWMXqmcroJjMJ7A";		//Youtube ID
 
 //Icône et texte de la barre d'état du navigateur
-LiveOn			    = "images/LiveOn.png";  //Icône lorsque le live est lancé
-messageLiveOn	    = channel + " - LIVE!"; //Texte lorsque le live est lancé
-LiveOff			    = "images/icon128.png"; //Icône lorsque le live est off
-messageLiveOff	    = channel;              //Texte le live est off
+LiveOn			    = "images/LiveOn.png";  			//Icône lorsque le live est lancé
+messageLiveOn	    = channel + " - LIVE!"; 			//Texte lorsque le live est lancé
+LiveOff			    = "images/icon128.png"; 			//Icône lorsque le live est off
+messageLiveOff	    = channel;             				//Texte le live est off
 
+blacklistGame 		= ['Talk Shows', 'Just Chatting'] ; //Liste des jeux que l'on ne souhaite pas notifier lorsqu'ils apparaissent
 
 /**
  * Paramètres des notifications
@@ -52,7 +53,7 @@ OptionsIconUrl	    = "/images/shtlf.png";
 titleRS             = channel + " - Jour de resub !";
 messageRS           = "N'oublie pas de te resub !";
 iconRS              = "/images/rs.png";
-
+notifsoundRS		= "../mp3/youtube.mp3";
 
 /**
  * Configuration popup
