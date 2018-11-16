@@ -1,7 +1,7 @@
 /************************************************
 *	Page de gestion de la fenêtre popup			*
 * 												*
-*	Dernière modification : Mai 2018 			*
+*	Dernière modification : Novebre 2018 		*
 ************************************************/
 
 

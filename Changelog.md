@@ -4,20 +4,24 @@ Un grand merci à toutes les personnes qui m'aident à tester cette extension, q
 
 ## A venir 
 
+### Version 2.8.1
+
+* Correction d'un bug dans les notifications de resub
+
+## Version courante
+
 ### Version 2.8.0
 
 **Version stabilisée de l'extension**
 
 * Ajout de Just Chatting à la liste des jeux ne pouvant pas lancer de notification de changement de jeu
 
-## Version courante
+## Anciennes versions
 
 ### Version 2.7.7
 
 * Modifications légères du design de la page twitch
 * Modifications structurelles dans l'appel aux services web de twitch
-
-## Anciennes versions
 
 ### Version 2.7.6
 

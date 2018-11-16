@@ -1,7 +1,7 @@
 /************************************************
 *	Page principale qui gère les notifications  *
 * 												*
-*	Dernière modification : Septembre 2018			*
+*	Dernière modification : Septembre 2018		*
 *					PHP version					*
 ************************************************/
 

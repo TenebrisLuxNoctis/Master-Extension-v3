@@ -1,7 +1,7 @@
 /************************************************
 *	Page contenant des fonctions réutilisables  *
 * 			dans les autres scripts				*
-*	Dernière modification : Septembre 2018 			*
+*	Dernière modification : Novebre 2018 		*
 ************************************************/
 
 /**
@@ -42,7 +42,7 @@ function getdiffJour(dateSub){
 	var today = new Date(Date.now());
 	var diff=today.getTime() - dateSub.getTime();
 	
-	return Math.floor(diff/8640000);
+	return Math.floor(diff/86400000);
 }
 
 /**

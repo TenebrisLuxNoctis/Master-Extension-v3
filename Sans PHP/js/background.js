@@ -1,7 +1,7 @@
 /************************************************
 *	Page principale qui gère les notifications  *
 * 												*
-*	Dernière modification : Septembre 2018 			*
+*	Dernière modification : Novebre 2018 		*
 ************************************************/
 
 
@@ -366,11 +366,11 @@ function checkReSubDate(){
 		//On force la copie de la valeur
 		let tmp = result.RSnotified == true;
 	
-		if(result.dateRS && resubTime != null){	
+		if(resubTime != ""){	
 			resubTime = new Date(result.dateRS);
 			let newEcart = Math.floor(getdiffJour(resubTime)/30);
 			var ToNotify =  newEcart > result.ecartMoisRS;
-
+			
 			if(ToNotify)
 			{
 				if(result.RSnotified == 0){

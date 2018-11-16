@@ -141,6 +141,7 @@ td{
 
 #viewersCount{
 	position: absolute;
-  margin: 5px;
-  font-size: 0.8em;
+	margin: 5px;
+	margin-bottom:  10px;
+	font-size: 0.8em;
 }

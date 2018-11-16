@@ -8,114 +8,7 @@
     background-color: #108778;
 }
 
- /* Green color for button and text */
--.chat-buttons-container .button.js-chat-buttons__submit {
-
-    background-color: #019985 !important;
-}
-
-.button.primary:not(.disabled):hover, .follow-button:not(.ember-follow) .follow:not(.disabled):hover {
-    background: #029986 !important;
-}
-
-.chat-room__content .top-notification.resub-notification {
-    background-color: #029986 !important;
-}
-
-.button.primary, .follow-button:not(.ember-follow) .follow {
-    background: #029986 !important;
-    color: #FFFFFF !important;
-}
-
-.chat-room__content .top-notification.resub-notification {
-    background-color: #00796A !important;
-    cursor: default;
-}
-
-.button.glyph svg path, .follow-button:not(.ember-follow) .glyph.follow svg path, .button.glyph-only svg path, .follow-button:not(.ember-follow) .glyph-only.follow svg path {
-    fill: #029986 !important;
-}
-
-.chat-room__content .blc-notification, .chat-room__content .sticky-message {
-    background-color: #014D44 !important;
-}
-
-.chat-room__content .blc-notification .broadcaster-language-notification, .chat-room__content .blc-notification .message-content, .chat-room__content .sticky-message .broadcaster-language-notification, .chat-room__content .sticky-message .message-content {
-    color: #FBFBFB !important;
-}
-
-
-#channel-prompt, .upsell-banner {
-    border-left: 5px solid #029986 !important;
-}
-
-.chat-container.dark .button.glyph svg path, .app-main.theatre .chat-container .button.glyph svg path, .chat-container.dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-container.dark .glyph.follow svg path, .app-main.theatre .chat-container .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-container .glyph.follow svg path, .chat-container.dark .button.glyph-only svg path, .app-main.theatre .chat-container .button.glyph-only svg path, .chat-container.dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-container.dark .glyph-only.follow svg path, .app-main.theatre .chat-container .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-container .glyph-only.follow svg path, .chat-container.force-dark .button.glyph svg path, .chat-container.force-dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-container.force-dark .glyph.follow svg path, .chat-container.force-dark .button.glyph-only svg path, .chat-container.force-dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-container.force-dark .glyph-only.follow svg path, .chat-room__content-container.dark .button.glyph svg path, .app-main.theatre .chat-room__content-container .button.glyph svg path, .chat-room__content-container.dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.dark .glyph.follow svg path, .app-main.theatre .chat-room__content-container .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-room__content-container .glyph.follow svg path, .chat-room__content-container.dark .button.glyph-only svg path, .app-main.theatre .chat-room__content-container .button.glyph-only svg path, .chat-room__content-container.dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.dark .glyph-only.follow svg path, .app-main.theatre .chat-room__content-container .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .app-main.theatre .chat-room__content-container .glyph-only.follow svg path, .chat-room__content-container.force-dark .button.glyph svg path, .chat-room__content-container.force-dark .follow-button:not(.ember-follow) .glyph.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.force-dark .glyph.follow svg path, .chat-room__content-container.force-dark .button.glyph-only svg path, .chat-room__content-container.force-dark .follow-button:not(.ember-follow) .glyph-only.follow svg path, .follow-button:not(.ember-follow) .chat-room__content-container.force-dark .glyph-only.follow svg path {
-    fill: #019985 !important;
-}
-
-#channel-prompt, .upsell-banner {
-    border-left: 5px solid #019985 !important;
-}
-
-.ember-follow.follow-button:not(.is-following) a {
-    background-color: rgb(160, 41, 79) !important;
-    color: #FFFFFF !important;
-}
-
-.ember-follow.follow-button:not(.is-following) a:hover {
-    background-color: #8C1F42 !important;
-}
-
-.clearfix {
-    color: #8c8c8c !important;
-}
-
-.button.primary, .follow-button:not(.ember-follow) .follow {
-    background: #029986 !important;
-}
-
-.links_group a {
-    color: #8c8c8c !important;
-}
-
-.show-more-toggle a {
-    color: #8c8c8c !important;
-}
-
-.twitch_subwindow_container {
-    background: rgba(2, 153, 134, 0.49) !important;
-}
-
-.ember-follow.follow-button.is-following a {
-    background-color: #CB0040 !important;
-}
-
-.upsell-banner {
-    color: #3c3a41;
-}
-
-/* Green color for player */
-.player-loading-spinner {
-    border-left: .3em solid #029986 !important;
-}
-
-.player-button:hover:enabled svg {
-    fill: #029986 !important;
-}
-
-.player-video-issue__submit {
-    background: #029986 !important;
-}
-
-.player-slider .ui-slider-range {
-    background: #029986 !important;
-}
-
-.player-button:hover .player-tip {
-    display: inherit ! important;
-}
-
-/*Badges and name color */
+/*Badges and name color 
 div[data-sender='azizbot'] .from {
     color: #029986 !important;
     text-shadow: 0px 0px 10px rgba(2, 153, 134, 0.75) !important;
@@ -134,33 +27,7 @@ div[data-sender='mastersnakou'] .badges .subscriber {
 div[data-sender='moobot'] .line .bot, .chat-room__content .badges .bot {
     background: url(http://i.imgur.com/wNAIYhh.png) !important;
     background-size: 100% !important;
-}
-
-div[data-sender='azizbot'] .message {
-    color: #029986 !important;
-}
-
-div[data-sender='mastersnakou'] .from {
-    color: #9600ff !important;
-    text-shadow: rgba(150, 0, 255, 1) 0px 0px 10px !important;
-}
-
-div[data-sender='flacou2p'] .from {
-    color: #6441a5 !important;
-    text-shadow: rgba(100, 65, 165, 0.05) 0px 0px 10px !important;
-}
-
-div[data-sender='cookkkie'] .from {
-    color: rgb(255, 187, 51) !important;
-    text-shadow: 0px 0px 10px rgba(255, 187, 51, 0.75);
-}
-
-div[data-sender='hellslicer'] .from {
-    color: rgba(0, 99, 229, 1) !important;
-    text-shadow: 0px 0px 10px rgba(0, 99, 229, 1);
-}
-
-/*Welcome back to reality*/
+}*/
 
 /*Event de lancement de stream*/
 #event{
