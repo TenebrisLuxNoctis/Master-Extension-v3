@@ -1,7 +1,7 @@
 /************************************************
 *           Page de configuration               *
 * 												*
-*	Dernière modification : Septembre 2018 			*
+*	Dernière modification : Novebre 2018 		*
 ************************************************/
 
 
