@@ -69,6 +69,8 @@ L'ensemble de l'extension est paramétrable depuis le fichier `js/config.js` (me
 
 Ne pas oublier de modifier le fichier `manifest.json`, notamment le numéro de version ainsi que le nom de l'extension qui ont été modifiés pour la version de test publiée sur le chrome webstore.
 
+Le fichier [firefoxtabs.md](/firefoxtabs.md) regroupe des modifications à effectuer pour gérer la compatibilité.
+
 ### Intégration version PHP
 
   * Cette version reprend les fichiers de la version Sans PHP à l'exception du fichier `js/background.js`et du dossier `php`
@@ -91,9 +93,6 @@ API_key_youtube = "AIzaSyAANw33DQWRi5O••••••••••••••
 ## Améliorations possibles
 
 La perfection n'existe pas, et on a toujours plein d'idées pour s'en approcher.
-
-  * Réparer l'event de lancement du live (+25xp) (il faudrait chercher la nouvelle classe css à cibler (peut être `chat-resub-notification` ?))
-  * ...
 
 ## Support
 
